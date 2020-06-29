@@ -1,0 +1,12 @@
+.content {
+    border: 1px solid chartreuse;
+
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-gap: 10px;
+}
+
+.nav {
+    border: 1px solid black;
+}
+

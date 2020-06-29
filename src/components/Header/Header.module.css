@@ -1,0 +1,66 @@
+.header {
+    grid-area: h;
+    padding: 0 15px;
+    height: 60px;
+    background-color: #262626;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    text-transform: uppercase;
+    background: linear-gradient(45deg, snow 33%, #0D61BC 66%, #0d58c8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #0B2349;
+    display: table;
+}
+
+/*Навигация*/
+
+.nav {
+    display: flex;
+}
+.nav a.activeLink {
+    color: #0d58c8;
+}
+
+.link {
+    display: inline-block;
+    /*border: 1px solid red;*/
+    padding: 19px 25px;
+    font-size: 16px;
+    line-height: 20px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.2s linear, border 0.2s linear;
+}
+
+.link:hover {
+    border-top: 1px solid #0d58c8;
+    color: #0d58c8;
+}
+
+.login {
+    padding: 12px 19px;
+    background: #0d58c8;
+    border: 1px solid #0d58c8;
+    border-radius: 7px;
+
+    line-height: 10px;
+    font-size: 12px;
+    text-transform: uppercase ;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+
+    transition: background 0.2s linear;
+}
+
+.login:hover {
+    background: #262626;
+}
+
+
+

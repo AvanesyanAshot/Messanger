@@ -1,0 +1,49 @@
+/* Спецификатия */
+body {
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background: #fff;
+    line-height: 1.47059;
+    font-weight: 400;
+    letter-spacing: -.022em;
+    font-size: 14px;
+    font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+
+*, ::before, ::after {
+    box-sizing: border-box;
+}
+/* App */
+
+.app-wrapper {
+    display: grid;
+    grid-template-areas:
+            'h h'
+            'c c'
+            'f f'
+}
+
+.app-content {
+    grid-area: c;
+    padding: 0 15px;
+}
+
+/*
+#882426 бордовый
+#CDBEA7 Овсянка
+#323030 Зола
+#C29545 Золото
+*/
+
+
+
