@@ -12,7 +12,7 @@ import Messages from "./components/Content/Messages/Messages";
 // TODO сделать блок Profile
 // TODO сделать блок Messages
 // TODO сделать блок Settings
-
+// TODO сделать state (redux)
 
 function App() {
     return (

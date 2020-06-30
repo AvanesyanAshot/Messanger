@@ -3,6 +3,10 @@
     padding: 0 15px;
     height: 60px;
     background-color: #262626;
+
+    position: sticky;
+    top: 0;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
