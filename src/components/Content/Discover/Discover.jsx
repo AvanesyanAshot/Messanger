@@ -1,34 +1,12 @@
 import React from "react";
 import css from './Discover.module.css'
-
-
-const DiscoverItem = (props) => {
-    return (
-        <div className={css.item}>
-            <h4>{props.id}</h4>
-            <hr/>
-            <span className={css.itemAuthor}>{props.name}</span>
-        </div>
-    )
-}
+import DiscoverItem from "./DiscoverItem/DiscoverItem";
 
 //TODO Сделать фильтры
 //TODO Доверстать item
 
-const Discover = () => {
-    const discoverData = [
-        {id:1,name:'Pasha'},
-        {id:2,name:'Kolya'},
-        {id:3,name:'Sveta'},
-        {id:4,name:'Ahmed'},
-        {id:5,name:'Razmik'},
-        {id:6,name:'Gevorg'},
-        {id:7,name:'Artem'},
-        {id:8,name:'Vitalik'},
-        {id:9,name:'Grey'}
-    ]
-
-    let newDiscoverData = discoverData.map(item => (<DiscoverItem id={item.id} name={item.name} />))
+const Discover = (props) => {
+    let newDiscoverData = props.discover.discoverData.map(item => (<DiscoverItem id={item.id} name={item.name}></DiscoverItem>))
 
     return (
         <div className={css.content}>

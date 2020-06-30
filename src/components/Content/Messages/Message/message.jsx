@@ -3,7 +3,6 @@ import css from "../Messages.module.css"
 
 // TODO Фиксануть position сообщение (появлятся в header-e)
 
-
 const MessageBlock = (props) => {
     return (
         <div className={css.messageItem}>
