@@ -1,5 +1,5 @@
 .content {
-    border: 1px solid chartreuse;
+    padding: 10px 0;
 
     display: grid;
     grid-template-columns: 1fr 4fr;
@@ -10,3 +10,19 @@
     border: 1px solid black;
 }
 
+.result {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+    /* УБрать rows*/
+    grid-template-rows: repeat(4, 150px);
+
+    grid-auto-rows: 100px;
+    grid-gap: 20px;
+}
+
+.item {
+    border: 1px solid #edeff2;
+    border-radius: 2px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}

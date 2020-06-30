@@ -8,14 +8,11 @@ import Discover from "./components/Content/Discover/Discover";
 import Settings from "./components/Content/Settings/Settings";
 import Messages from "./components/Content/Messages/Messages";
 
-
-//http://preview.themeforest.net/item/nrgnetwork-responsive-social-network-theme/full_screen_preview/18254111?_ga=2.212103572.1612551880.1593415554-1707849987.1593415441
-
-
 // TODO сделать блок Discover
 // TODO сделать блок Profile
 // TODO сделать блок Messages
 // TODO сделать блок Settings
+
 
 function App() {
     return (
