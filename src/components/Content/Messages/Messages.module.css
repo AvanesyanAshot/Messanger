@@ -1,10 +1,13 @@
 .section {
-    /*background: black;*/
-    height: 800px;
     padding: 7px 0;
 
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: minmax(320px,auto) 4fr;
+}
+
+.messageList {
+    padding: 5px;
+    border: 1px solid black;
 }
 
 .messageItem {
@@ -12,6 +15,11 @@
 
     display: grid;
     grid-template-columns: 1fr 4fr;
+}
+
+.messagesTitle {
+    text-align: center;
+    padding-bottom: 5px;
 }
 
 .photo {
@@ -43,4 +51,34 @@
     position: absolute;
     bottom: 0;
     left: 0;
+}
+
+/*сorrespondence*/
+
+.сorrespondence {
+    display: grid;
+    grid-template-rows: minmax(25px, 1fr) 75% minmax(25px, 1fr);
+    border: 1px solid red;
+}
+
+.corTitle {
+    border: 1px solid red;
+
+}
+
+.corManage {
+    display: flex;
+}
+
+.corManage textarea {
+    resize: none;
+    width: 95%;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 5px;
+    border: 0;
+    background: #0D61BC;
+    color: white;
 }

@@ -5,7 +5,7 @@ import css from "../Messages.module.css"
 
 const MessageBlock = (props) => {
     return (
-        <div onClick={() => alert('Hello')} className={css.messageItem}>
+        <div onClick={() => alert(props.id)} className={css.messageItem}>
             <div className={css.photo}>
             </div>
             <div className={css.content}>
