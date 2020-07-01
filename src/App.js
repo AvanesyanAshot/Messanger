@@ -21,10 +21,10 @@ function App(props) {
             <div className="app-wrapper">
                 <Header/>
                 <div className='app-content'>
-                    <Route path='/Discover' render = { () => <Discover discover={props.state.Discover}/>}></Route>
-                    <Route path='/Profile' render = { () => <Profile />}></Route>
-                    <Route path='/Messages' render = { () => <Messages messages={props.state.Messages}/>}></Route>
-                    <Route path='/Settings' render = { () => <Settings />}></Route>
+                    <Route path='/Discover' render={() => <Discover discover={props.state.Discover}/>}></Route>
+                    <Route path='/Profile' render={() => <Profile/>}></Route>
+                    <Route path='/Messages' render={() => <Messages messages={props.state.Messages}/>}></Route>
+                    <Route path='/Settings' render={() => <Settings/>}></Route>
                 </div>
                 <Footer/>
             </div>
