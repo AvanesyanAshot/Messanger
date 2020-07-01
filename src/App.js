@@ -23,7 +23,7 @@ function App(props) {
                 <div className='app-content'>
                     <Route path='/Discover' render={() => <Discover discover={props.state.Discover}/>}></Route>
                     <Route path='/Profile' render={() => <Profile/>}></Route>
-                    <Route path='/Messages' render={() => <Messages messages={props.state.Messages}/>}></Route>
+                    <Route path='/Messages' render={() => <Messages messages={props.state.Messages} addMessage={props.addMessage}/>}></Route>
                     <Route path='/Settings' render={() => <Settings/>}></Route>
                 </div>
                 <Footer/>

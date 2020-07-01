@@ -1,5 +1,7 @@
 // Псевдо REDUX
 
+import {rerenderEntireTree} from "../render";
+
 let state = {
     Discover: {
         discoverData: [
@@ -23,7 +25,19 @@ let state = {
             {id: 5, name: 'Vitalik', time: '11:19', message: 'BB'}
         ]
     }
+}
+
+export let addMessage = (message) => {
+    let newMessage = {
+        id: 6,
+        name: 'Kolya',
+        time: '11:53',
+        message: message
+    }
+    state.Messages.message.push(newMessage)
+    rerenderEntireTree(state)
 
 }
+
 
 export default state

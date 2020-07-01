@@ -7,7 +7,7 @@
 
 .messageList {
     padding: 5px;
-    border: 1px solid black;
+    border-right:1px solid black;
 }
 
 .messageItem {
@@ -56,14 +56,13 @@
 /*сorrespondence*/
 
 .сorrespondence {
+    margin-left: 10px;
     display: grid;
     grid-template-rows: minmax(25px, 1fr) 75% minmax(25px, 1fr);
-    border: 1px solid red;
 }
 
 .corTitle {
-    border: 1px solid red;
-
+    border: 1px solid black;
 }
 
 .corManage {
@@ -81,4 +80,8 @@
     border: 0;
     background: #0D61BC;
     color: white;
+}
+
+corItem {
+    border: #0D61BC;
 }
