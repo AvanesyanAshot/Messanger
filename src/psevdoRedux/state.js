@@ -23,21 +23,28 @@ let state = {
             {id: 3, name: 'Sveta', time: '10:32', message: 'How are u?'},
             {id: 4, name: 'Katya', time: '11:21', message: 'Thx'},
             {id: 5, name: 'Vitalik', time: '11:19', message: 'BB'}
-        ]
+        ],
+        newMessageText: ''
     }
 }
 
-export let addMessage = (message) => {
+export let addMessage = () => {
     let newMessage = {
         id: 6,
         name: 'Kolya',
         time: '11:53',
-        message: message
+        message: state.Messages.newMessageText
     }
     state.Messages.message.push(newMessage)
+    state.Messages.newMessageText = ''
     rerenderEntireTree(state)
-
 }
 
+export let updateNewMessage = (newText) => {
+    state.Messages.newMessageText = newText
+    rerenderEntireTree(state)
+}
+
+window.state = state
 
 export default state

@@ -11,10 +11,17 @@ const Messages = (props) => {
     let newCorrespondence = props.messages.message.map( m => (
         <сorrespondence message={m.message}/>
     ))
+
     let newMessageElement = React.createRef()
+
     let addMessage = () => {
-        let message = newMessageElement.current.value
-        props.addMessage(message)
+        props.addMessage()
+        newMessageElement.current.value = ''
+    }
+
+    let onMessageChange = () => {
+        let text = newMessageElement.current.value
+        props.updateNewMessage(text)
     }
 
     return (
@@ -31,7 +38,7 @@ const Messages = (props) => {
                     {newCorrespondence}
                 </div>
                 <div className={css.corManage}>
-                    <textarea ref={newMessageElement} placeholder='Написать сообщение...'></textarea>
+                    <textarea onChange={onMessageChange} value={props.newMessageText} ref={newMessageElement} placeholder='Написать сообщение...'></textarea>
                     <button onClick={addMessage} className={css.btn}>Отправить</button>
                 </div>
             </div>
