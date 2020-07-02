@@ -8,7 +8,7 @@ const Messages = (props) => {
         <MessageBlock id={m.id} name={m.name} time={m.time} message={m.message}/>)
     )
 
-    let newCorrespondence = props.messages.message.map( m => (
+    let newCorrespondence = props.messages.message.map(m => (
         <сorrespondence message={m.message}/>
     ))
 
@@ -38,7 +38,10 @@ const Messages = (props) => {
                     {newCorrespondence}
                 </div>
                 <div className={css.corManage}>
-                    <textarea onChange={onMessageChange} value={props.newMessageText} ref={newMessageElement} placeholder='Написать сообщение...'></textarea>
+                    <textarea onChange={onMessageChange}
+                              value={props.newMessageText}
+                              ref={newMessageElement}
+                              placeholder='Написать сообщение...'></textarea>
                     <button onClick={addMessage} className={css.btn}>Отправить</button>
                 </div>
             </div>

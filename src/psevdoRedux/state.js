@@ -28,9 +28,14 @@ let store = {
     },
     _callSubscriber() {
         console.log("State changed")
+
+        // debugger
     },
     getState() {
         return this._state
+    },
+    subscribe(observer) {
+        this._callSubscriber = observer //Паттерн Observer
     },
     addMessage() {
         let newMessage = {
@@ -40,22 +45,16 @@ let store = {
             message: this._state.Messages.newMessageText
         }
         this._state.Messages.message.push(newMessage)
-
-        this.updateNewMessage('')
-
-
-        debugger;
-
-
+        this._state.Messages.newMessageText = ''
         this._callSubscriber(this._state)
     },
     updateNewMessage(newText) {
         this._state.Messages.newMessageText = newText
         this._callSubscriber(this._state)
     },
-    subscribe(observer) {
-        this._callSubscribe = observer //Паттерн Observer
-    }
+    // dispatch(action) {
+    //
+    // }
 }
 
 export default store
