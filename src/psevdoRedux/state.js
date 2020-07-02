@@ -1,6 +1,7 @@
 // Псевдо REDUX
-
-import {rerenderEntireTree} from "../render";
+let rerenderEntireTree = () => {
+    console.log("State changed")
+}
 
 let state = {
     Discover: {
@@ -28,7 +29,7 @@ let state = {
     }
 }
 
-export let addMessage = () => {
+export const addMessage = () => {
     let newMessage = {
         id: 6,
         name: 'Kolya',
@@ -40,9 +41,13 @@ export let addMessage = () => {
     rerenderEntireTree(state)
 }
 
-export let updateNewMessage = (newText) => {
+export const updateNewMessage = (newText) => {
     state.Messages.newMessageText = newText
     rerenderEntireTree(state)
+}
+
+export const subscribe = (observer) => {
+    rerenderEntireTree = observer //Паттерн Observer
 }
 
 window.state = state
