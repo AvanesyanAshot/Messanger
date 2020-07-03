@@ -1,5 +1,10 @@
+// ACTION TYPE
 let NEW_MESSAGE = 'NEW-MESSAGE';
 let UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE'
+
+// ACTION CREATOR
+export const actionAddMessage = () => ({type: NEW_MESSAGE})
+export const actionOnMessageChange = (text) => ({type: UPDATE_NEW_MESSAGE, newText: text})
 
 const messagesReducer = (state, action) => {
     switch (action.type) {

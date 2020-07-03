@@ -3,7 +3,7 @@ import React from "react";
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 // Псевдо REDUX
-import store from './psevdoRedux/state'
+import store from './psevdoRedux/store'
 import {BrowserRouter} from "react-router-dom"
 
 
