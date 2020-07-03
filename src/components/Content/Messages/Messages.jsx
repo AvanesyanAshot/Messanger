@@ -5,13 +5,16 @@ import сorrespondence from "./Message/correspondence";
 import {actionAddMessage, actionOnMessageChange} from "../../../psevdoRedux/state";
 
 
+// TODO Сделать отдельный компонент для вывода всех сообщений и отдельно диалог
+
+
 const Messages = (props) => {
     // MAP jsx
     let newMessages = props.messages.message.map(m => (
         <MessageBlock id={m.id} name={m.name} time={m.time} message={m.message}/>)
     )
 
-    let newCorrespondence = props.messages.message.map(m => (
+    let newCorrespondence = props.messages.correspondence.map(m => (
         <сorrespondence message={m.message}/>
     ))
 

@@ -2,6 +2,9 @@
 
 
 // ACTION TYPE
+import discoverReducer from "./discoverReducer";
+import messagesReducer from "./messagesReducer";
+
 let NEW_MESSAGE = 'NEW-MESSAGE';
 let UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE'
 
@@ -33,6 +36,12 @@ let store = {
                 {id: 4, name: 'Katya', time: '11:21', message: 'Thx'},
                 {id: 5, name: 'Vitalik', time: '11:19', message: 'BB'}
             ],
+            correspondence: [
+                {id: 1, time: '10:45', message: 'Hello world'},
+                {id: 2, time: '10:45', message: 'BRUH'},
+                {id: 3, time: '10:45', message: 'Hi'},
+                {id: 4, time: '10:45', message: 'thx'}
+            ],
             newMessageText: ''
         }
     },
@@ -46,25 +55,10 @@ let store = {
         this._callSubscriber = observer //Паттерн Observer
     },
     dispatch(action) {
-        debugger
-        switch (action.type) {
-            case NEW_MESSAGE:
-                let newMessage = {
-                    id: 6,
-                    name: 'Qe',
-                    time: '11:53',
-                    message: this._state.Messages.newMessageText
-                }
-                this._state.Messages.message.push(newMessage)
-                this._state.Messages.newMessageText = ''
-                this._callSubscriber(this._state)
-                break
-            case UPDATE_NEW_MESSAGE:
-                this._state.Messages.newMessageText = action.newText
-                this._callSubscriber(this._state)
-                break
+        // discoverReducer(this._state.Discover, action)
+        messagesReducer(this._state.Messages, action)
 
-        }
+        this._callSubscriber(this._state)
     }
 }
 
