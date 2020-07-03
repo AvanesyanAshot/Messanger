@@ -7,7 +7,7 @@ import {BrowserRouter, Route} from 'react-router-dom'
 import Discover from "./components/Content/Discover/Discover";
 import Settings from "./components/Content/Settings/Settings";
 import Messages from "./components/Content/Messages/Messages";
-import state from "./psevdoRedux/store";
+import state from "./Redux/store";
 
 // TODO сделать блок Discover
 // TODO сделать блок Profile

@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Messages.module.css"
 import MessageBlock from "./Message/message";
 import сorrespondence from "./Message/correspondence";
-import {actionAddMessage, actionOnMessageChange} from '../../../psevdoRedux/messagesReducer';
+import {actionAddMessage, actionOnMessageChange} from '../../../Redux/messagesReducer';
 
 
 // TODO Сделать отдельный компонент для вывода всех сообщений и отдельно диалог

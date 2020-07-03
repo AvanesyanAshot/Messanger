@@ -3,7 +3,7 @@ import React from "react";
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 // Псевдо REDUX
-import store from './psevdoRedux/store'
+import store from './Redux/redux-store'
 import {BrowserRouter} from "react-router-dom"
 
 
@@ -17,6 +17,8 @@ let rerenderEntireTree = (state) => {
 }
 rerenderEntireTree(store.getState())
 
-store.subscribe(rerenderEntireTree)
+store.subscribe(() => {
+    rerenderEntireTree(store.getState())
+})
 
 serviceWorker.unregister();
