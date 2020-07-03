@@ -2,8 +2,11 @@ import React from "react";
 import css from "./Messages.module.css"
 import MessageBlock from "./Message/message";
 import сorrespondence from "./Message/correspondence";
+import {actionAddMessage, actionOnMessageChange} from "../../../psevdoRedux/state";
+
 
 const Messages = (props) => {
+    // MAP jsx
     let newMessages = props.messages.message.map(m => (
         <MessageBlock id={m.id} name={m.name} time={m.time} message={m.message}/>)
     )
@@ -12,16 +15,18 @@ const Messages = (props) => {
         <сorrespondence message={m.message}/>
     ))
 
+    // REFS
     let newMessageElement = React.createRef()
 
+    //Functions
     let addMessage = () => {
-        props.addMessage()
+        props.dispatch(actionAddMessage())
         newMessageElement.current.value = ''
     }
 
     let onMessageChange = () => {
         let text = newMessageElement.current.value
-        props.updateNewMessage(text)
+        props.dispatch(actionOnMessageChange(text))
     }
 
     return (

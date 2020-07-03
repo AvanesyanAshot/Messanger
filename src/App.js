@@ -25,8 +25,8 @@ function App(props) {
                     <Route path='/Profile' render={() => <Profile/>}></Route>
                     <Route path='/Messages' render={() => <Messages messages={props.state.Messages}
                                                                     newMessageText={props.newMessageTexts}
-                                                                    addMessage={props.addMessage}
-                                                                    updateNewMessage={props.updateNewMessage}
+                                                                    dispatch={props.dispatch}
+
                     />}></Route>
                     <Route path='/Settings' render={() => <Settings/>}></Route>
                 </div>

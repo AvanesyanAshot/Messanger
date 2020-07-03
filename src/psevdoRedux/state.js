@@ -1,5 +1,15 @@
 // Псевдо REDUX
 
+
+// ACTION TYPE
+let NEW_MESSAGE = 'NEW-MESSAGE';
+let UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE'
+
+// ACTION CREATOR
+export const actionAddMessage = () => ({type: NEW_MESSAGE})
+export const actionOnMessageChange = (text) => ({type: UPDATE_NEW_MESSAGE, newText: text})
+
+
 let store = {
     _state: {
         Discover: {
@@ -28,8 +38,6 @@ let store = {
     },
     _callSubscriber() {
         console.log("State changed")
-
-        // debugger
     },
     getState() {
         return this._state
@@ -37,24 +45,27 @@ let store = {
     subscribe(observer) {
         this._callSubscriber = observer //Паттерн Observer
     },
-    addMessage() {
-        let newMessage = {
-            id: 6,
-            name: 'Kolya',
-            time: '11:53',
-            message: this._state.Messages.newMessageText
+    dispatch(action) {
+        debugger
+        switch (action.type) {
+            case NEW_MESSAGE:
+                let newMessage = {
+                    id: 6,
+                    name: 'Qe',
+                    time: '11:53',
+                    message: this._state.Messages.newMessageText
+                }
+                this._state.Messages.message.push(newMessage)
+                this._state.Messages.newMessageText = ''
+                this._callSubscriber(this._state)
+                break
+            case UPDATE_NEW_MESSAGE:
+                this._state.Messages.newMessageText = action.newText
+                this._callSubscriber(this._state)
+                break
+
         }
-        this._state.Messages.message.push(newMessage)
-        this._state.Messages.newMessageText = ''
-        this._callSubscriber(this._state)
-    },
-    updateNewMessage(newText) {
-        this._state.Messages.newMessageText = newText
-        this._callSubscriber(this._state)
-    },
-    // dispatch(action) {
-    //
-    // }
+    }
 }
 
 export default store
