@@ -8,7 +8,7 @@ import сorrespondence from "./Message/correspondence";
 
 
 const Messages = (props) => {
-    // debugger
+     debugger
     // MAP jsx
     let newMessages = props.state.message.map(m => (
         <MessageBlock id={m.id} name={m.name} time={m.time} message={m.message}/>)
