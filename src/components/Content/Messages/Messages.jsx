@@ -2,19 +2,19 @@ import React from "react";
 import css from "./Messages.module.css"
 import MessageBlock from "./Message/message";
 import сorrespondence from "./Message/correspondence";
-import {actionAddMessage, actionOnMessageChange} from '../../../Redux/messagesReducer';
 
 
 // TODO Сделать отдельный компонент для вывода всех сообщений и отдельно диалог
 
 
 const Messages = (props) => {
+    // debugger
     // MAP jsx
-    let newMessages = props.messages.message.map(m => (
+    let newMessages = props.state.message.map(m => (
         <MessageBlock id={m.id} name={m.name} time={m.time} message={m.message}/>)
     )
 
-    let newCorrespondence = props.messages.correspondence.map(m => (
+    let newCorrespondence = props.state.correspondence.map(m => (
         <сorrespondence message={m.message}/>
     ))
 
@@ -23,15 +23,15 @@ const Messages = (props) => {
 
     //Functions
     let addMessage = () => {
-        props.dispatch(actionAddMessage())
+        props.addMessage()
         newMessageElement.current.value = ''
     }
 
     let onMessageChange = () => {
         let text = newMessageElement.current.value
-        props.dispatch(actionOnMessageChange(text))
+        props.updateMessage(text)
     }
-
+    // debugger
     return (
         <div className={css.section}>
             <div className={css.messageList}>
@@ -47,7 +47,7 @@ const Messages = (props) => {
                 </div>
                 <div className={css.corManage}>
                     <textarea onChange={onMessageChange}
-                              value={props.newMessageText}
+                              value={props.state.newMessageText}
                               ref={newMessageElement}
                               placeholder='Написать сообщение...'></textarea>
                     <button onClick={addMessage} className={css.btn}>Отправить</button>

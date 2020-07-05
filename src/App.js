@@ -8,6 +8,7 @@ import Discover from "./components/Content/Discover/Discover";
 import Settings from "./components/Content/Settings/Settings";
 import Messages from "./components/Content/Messages/Messages";
 import state from "./Redux/store";
+import MessagesContainer from "./components/Content/Messages/MessagesContainer";
 
 // TODO сделать блок Discover
 // TODO сделать блок Profile
@@ -23,9 +24,8 @@ function App(props) {
                 <div className='app-content'>
                     <Route path='/Discover' render={() => <Discover discover={props.state.Discover}/>}></Route>
                     <Route path='/Profile' render={() => <Profile/>}></Route>
-                    <Route path='/Messages' render={() => <Messages messages={props.state.Messages}
-                                                                    newMessageText={props.newMessageTexts}
-                                                                    dispatch={props.dispatch}
+                    <Route path='/Messages' render={() => <MessagesContainer messages={props.state}
+                                                                             dispatch={props.dispatch}
 
                     />}></Route>
                     <Route path='/Settings' render={() => <Settings/>}></Route>
