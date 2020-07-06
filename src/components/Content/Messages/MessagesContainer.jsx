@@ -21,5 +21,5 @@ let mapDispatchToProps = (dispatch) => { // всегда принимет в с�
 
 }
 
-const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Messages)
+const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Messages) // у connect есть свой subscribe на рендер своей компоненты (перерисовка происходит при изм. mapStateToProps )
 export default MessagesContainer

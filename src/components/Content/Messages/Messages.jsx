@@ -8,14 +8,13 @@ import сorrespondence from "./Message/correspondence";
 
 
 const Messages = (props) => {
-     debugger
-    // MAP jsx
+   // MAP jsx
     let newMessages = props.state.message.map(m => (
-        <MessageBlock id={m.id} name={m.name} time={m.time} message={m.message}/>)
+        <MessageBlock id={m.id} key={m.id} name={m.name} time={m.time} message={m.message}/>)
     )
 
     let newCorrespondence = props.state.correspondence.map(m => (
-        <сorrespondence message={m.message}/>
+        <сorrespondence key={m.id} message={m.message}/>
     ))
 
     // REFS
@@ -31,7 +30,6 @@ const Messages = (props) => {
         let text = newMessageElement.current.value
         props.updateMessage(text)
     }
-    // debugger
     return (
         <div className={css.section}>
             <div className={css.messageList}>

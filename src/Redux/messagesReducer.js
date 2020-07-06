@@ -26,17 +26,17 @@ export const actionOnMessageChange = (text) => ({type: UPDATE_NEW_MESSAGE, newTe
 const messagesReducer = (state = initState, action) => {
     switch (action.type) {
         case NEW_MESSAGE:
-            let newMessage = {
-                id: 5,
-                time: new Date(),
-                message: state.newMessageText
+            return {
+                ...state,
+                ...state,correspondence: [...state.correspondence,{id: 5, time: new Date(), message: state.newMessageText}],
+                newMessageText: ''
             }
-            state.correspondence.push(newMessage)
-            state.newMessageText = ''
-            return state
-        case UPDATE_NEW_MESSAGE:
-            state.newMessageText = action.newText
-            return state
+        case UPDATE_NEW_MESSAGE:{
+            return {
+                ...state,
+                newMessageText: action.newText
+            }
+        }
         default:
             return state
     }
