@@ -1,5 +1,6 @@
 import React from "react";
 import css from "./Profile.module.css"
+import {NavLink} from "react-router-dom";
 
 const Profile = () => {
     return (
@@ -21,7 +22,15 @@ const Profile = () => {
             </div>
 
             <div className={css.posts}>
-                posts
+                <div className={css.nav}>
+                    <a href='#' className={css.link}>Projects</a>
+                    <a href='#' className={css.link}>Collections</a>
+                    <a href='#' className={css.link}>Followers</a>
+                    <a href='#' className={css.link}>Following</a>
+                </div>
+                <div className={css.content}>
+                    some content
+                </div>
             </div>
 
         </div>

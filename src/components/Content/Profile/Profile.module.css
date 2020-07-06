@@ -2,7 +2,8 @@
     padding: 10px;
 
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: minmax(200px, 350px) 4fr;
+    grid-gap: 20px;
 }
 
 .btn {
@@ -16,7 +17,9 @@
 /*USER info*/
 
 .userDetail {
-    border: 1px solid wheat;
+    /*border: 1px solid wheat;*/
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+
 }
 
 .header {
@@ -44,6 +47,37 @@
 
     display: flex;
     justify-content: space-between;
+}
+
+/* POSTS */
+
+.posts {
+    /*border: 1px solid wheat;*/
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+
+}
+
+.nav {
+    border-bottom: 1px solid #f6f6f7;
+}
+
+.link {
+    display: inline-block;
+    padding: 16.5px 30px;
+    background: #f6f6f7;
+    border: 1px solid #edeff2;
+
+    color: black;
+
+    font-size: 13px;
+    line-height: 13px;
+    text-decoration: none;
+
+    transition: background 0.3s linear;
+}
+
+.link:hover {
+    background: white;
 }
 
 
