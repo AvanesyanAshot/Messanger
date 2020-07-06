@@ -8,6 +8,7 @@ import Discover from "./components/Content/Discover/Discover";
 import Settings from "./components/Content/Settings/Settings";
 import MessagesContainer from "./components/Content/Messages/MessagesContainer";
 import DiscoverContainer from "./components/Content/Discover/DiscoverContainer";
+import ProfileContainer from "./components/Content/Profile/ProfileContainer";
 
 // TODO сделать блок Discover
 // TODO сделать блок Profile
@@ -21,11 +22,10 @@ function App(props) {
             <div className='app-content'>
                 <Route path='/Discover' render={() => <DiscoverContainer discover={props.state}
                                                                          dispatch={props.dispatch}/>}></Route>
-                <Route path='/Profile' render={() => <Profile/>}></Route>
+                <Route path='/Profile' render={() => <ProfileContainer profile={props.state}
+                                                                       dispatch={props.dispatch}/>}></Route>
                 <Route path='/Messages' render={() => <MessagesContainer messages={props.state}
-                                                                         dispatch={props.dispatch}
-
-                />}></Route>
+                                                                         dispatch={props.dispatch}/>}></Route>
                 <Route path='/Settings' render={() => <Settings/>}></Route>
             </div>
             <Footer/>
