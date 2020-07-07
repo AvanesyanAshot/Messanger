@@ -13,6 +13,7 @@ class Header extends React.Component {
                     <nav className={css.nav}>
                         <NavLink className={css.link} activeClassName={css.activeLink} to='/Discover'>Discover</NavLink>
                         <NavLink className={css.link} activeClassName={css.activeLink} to='/Profile'>Profile</NavLink>
+                        <NavLink className={css.link} activeClassName={css.activeLink} to='/Followers'>Followers</NavLink>
                         <NavLink className={css.link} activeClassName={css.activeLink} to='/Messages'>Messages</NavLink>
                         <NavLink className={css.link} activeClassName={css.activeLink} to='/Settings'>Settings</NavLink>
                     </nav>

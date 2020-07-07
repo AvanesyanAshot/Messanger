@@ -1,17 +1,16 @@
 import React from "react";
 import css from "./Profile.module.css"
 import {NavLink} from "react-router-dom";
-import UserBlock from "./Contents/users";
 
 
 // TODO сделать свой REST API
 
 const Profile = (props) => {
-    debugger
+    // debugger
     // MAP jsx
-    let newUsers = props.state.users.map(m => (
-        <UserBlock firstName={m.firstName} age={m.age}/>)
-    )
+    // let newUsers = props.state.users.map(m => (
+    //     <UserBlock firstName={m.firstName} age={m.age}/>)
+    // )
     return (
         <div className={css.section}>
             <div className={css.userDetail}>
@@ -38,7 +37,7 @@ const Profile = (props) => {
                     <a href='#' className={css.link}>Following</a>
                 </div>
                 <div className={css.content}>
-                    {newUsers}
+                    some info
                 </div>
             </div>
 

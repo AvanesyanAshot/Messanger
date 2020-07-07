@@ -1,0 +1,48 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    align-items: center;
+
+}
+.card {
+}
+
+.userBlock {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.avatar {
+    width: 75px;
+    height: auto;
+}
+
+.userName {
+
+}
+
+.country {
+    margin-bottom: 10px;
+
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 400;
+    color: #a1a5b1;
+}
+
+.infoBlock {
+    display: flex;
+
+}
+
+.follow {
+    background: #0D61BC;
+    padding: 15px 18px;
+    border: 0;
+
+    color: white;
+    text-transform: uppercase;
+    font-size: 10px;
+    line-height: 10px;
+}
