@@ -3,7 +3,10 @@ import css from "./Profile.module.css"
 import {NavLink} from "react-router-dom";
 
 
+// TODO userDetail сделать отдельной компонентой
+// TODO Реализовать отрисовку по условию
 // TODO сделать свой REST API
+
 
 const Profile = (props) => {
     // debugger
