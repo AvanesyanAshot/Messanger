@@ -13,6 +13,7 @@ import FollowersContainer from "./components/Content/Followers/FollowersContaine
 // TODO сделать блок Profile
 // TODO сделать блок Messages
 // TODO сделать блок Settings
+// TODO сделать классовые компоненты discover, profile, followers, messages
 
 function App(props) {
     return (

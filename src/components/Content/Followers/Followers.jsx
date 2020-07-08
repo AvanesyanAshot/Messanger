@@ -9,6 +9,7 @@ import avatar from '../../../assets/img/avatar.png'
 
 
 const UserBlock = (props) => {
+    // debugger
     if (props.state.users.length === 0) {
         axios.get('https://jsonplaceholder.typicode.com/users')
             .then(response => {
