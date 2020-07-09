@@ -6,7 +6,7 @@ import DiscoverItem from "./DiscoverItem/DiscoverItem";
 //TODO Доверстать item
 
 const Discover = (props) => {
-    let newDiscoverData = props.state.discoverData.map(item => (<DiscoverItem id={item.id} name={item.name}></DiscoverItem>))
+    let newDiscoverData = props.store.discoverData.map(item => (<DiscoverItem key={item.id} id={item.id} name={item.name}></DiscoverItem>))
 
     return (
         <div className={css.content}>

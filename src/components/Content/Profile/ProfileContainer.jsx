@@ -1,6 +1,5 @@
 import React from "react";
 import {connect} from "react-redux";
-import Profile from "./Profile";
 import {followAC, setUsersAC, unfollowAC} from "../../../Redux/usersReducer";
 import ProfileC from "./ProfileC";
 

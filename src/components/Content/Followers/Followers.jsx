@@ -6,19 +6,11 @@ import avatar from '../../../assets/img/avatar.png'
 
 // TODO перекинуть этот блок в profile
 class UserBlock extends React.Component {
-    constructor(props) {
-        alert('Конструктор')
-        super(props);
-
-    }
     componentDidMount() {
-        alert('didMount')
         axios.get('https://jsonplaceholder.typicode.com/users')
             .then(response => {
                 this.props.setUsers(response.data)
             })
-        console.log(this.props)
-
     }
 
     render() {

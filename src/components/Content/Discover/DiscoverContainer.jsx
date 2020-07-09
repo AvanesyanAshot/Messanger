@@ -2,9 +2,9 @@ import React from "react";
 import {connect} from "react-redux";
 import Discover from "./Discover";
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (store) => {
     return {
-        state: state.Discover
+        store: store.Discover
     }
 }
 

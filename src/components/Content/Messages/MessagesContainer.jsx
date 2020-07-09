@@ -3,7 +3,7 @@ import {actionAddMessage, actionOnMessageChange} from '../../../Redux/messagesRe
 import Messages from "./Messages";
 import {connect} from "react-redux";
 
-let mapStateToProps = (state) => { // всегда принимет в себя state
+let mapStateToProps = (state) => { // всегда принимет в себя store
     return {
         state: state.Messages
     }

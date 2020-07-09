@@ -8,6 +8,7 @@ import * as axios from "axios";
 
 class Profile extends React.Component {
     componentDidMount() {
+        console.log(this.props)
         axios.get('https://jsonplaceholder.typicode.com/users')
             .then(response => {
                 this.props.setUsers(response.data)
@@ -17,7 +18,7 @@ class Profile extends React.Component {
     render() {
         return <div className={css.section}>
 
-            <User user={this.props.state.users[0]}/>
+            <User users={this.props.state.users}/>
 
             <div className={css.posts}>
                 <div className={css.nav}>
