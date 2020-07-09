@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import Profile from "./Profile";
 import {followAC, setUsersAC, unfollowAC} from "../../../Redux/usersReducer";
+import ProfileC from "./ProfileC";
 
 let mapStateToProps = (state) => {
     return {
@@ -22,7 +23,7 @@ let mapDispatchToProps = (dispatch) => {
         }
     }
 }
-const ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(Profile)
+const ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(ProfileC)
 
 export default ProfileContainer
 
