@@ -1,20 +1,23 @@
 let initState = {
-    users: [
-        // {id: 1,followed: true, name: 'Misha Ivanov', age: 21, location: {city: 'Moscow', county: 'Russia'}},
-        // {id: 2,followed: false, name: 'Pasha Pupcov', age: 20, location: {city: 'Moscow', county: 'Russia'}},
-        // {id: 3,followed: true, name: 'Vasia Tarnaiken', age: 19, location: {city: 'Moscow', county: 'Russia'}},
-        // {id: 4,followed: false, name: 'Petys kulikov', age: 17, location: {city: 'Moscow', county: 'Russia'}},
-    ]
+    users: [],
+    pageSize: 9,
+    totalUsersCount: 100,
+    currentPages: 1
+
 }
 // ACTION TYPE
 let SET_USERS = 'SET_USERS';
 let FOLLOW = 'FOLLOW'
 let UNFOLLOW = 'UNFOLLOW'
+let SET_CURRENT_PAGE = 'SETCURRENTPAGE'
+let SET_TOTAL_USER_COUNT = 'SETTOTALUSERCOUNT'
 
 // ACTION CREATOR
 export const setUsersAC = (users) => ({type: SET_USERS, users})
 export const followAC = (userId) => ({type: FOLLOW, userId})
 export const unfollowAC = (userId) => ({type: UNFOLLOW, userId})
+export const setCurrentPage = (page) => ({type: SET_CURRENT_PAGE, page})
+export const setTotalUserCount = (num) => ({type: SET_TOTAL_USER_COUNT, num})
 
 
 const usersReducer = (state = initState, action) => {
@@ -44,8 +47,16 @@ const usersReducer = (state = initState, action) => {
             return {
                 // ...state, users: [...state.users, ...action.users]
                 ...state, users: [...action.users]
-
             }
+        case SET_CURRENT_PAGE:
+            return {
+                ...state, currentPages: action.page
+            }
+        case SET_TOTAL_USER_COUNT:
+            return {
+                ...state, totalUsersCount: action.num
+            }
+
 
         default:
             return state
