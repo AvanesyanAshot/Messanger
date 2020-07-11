@@ -1,13 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import {
-    follow,
-    unfollow,
-    setCurrentPage,
-    setTotalUserCount,
-    setUsers,
-    toggleIsFetching,
-} from "../../../Redux/usersReducer";
+import {follow, unfollow, setCurrentPage, setTotalUserCount, setUsers, toggleIsFetching} from "../../../Redux/usersReducer";
 import * as axios from "axios";
 import Users from "./Users";
 import Preloader from "../../Common/Preloader/Preloader";
@@ -24,7 +17,6 @@ class UserBlock extends React.Component {
                 // this.props.setTotalUserCount(response.data.totalCount)
             })
     }
-
     onPageChanged = (page) => {
         this.props.setCurrentPage(page)
         this.props.toggleIsFetching(true)
@@ -37,7 +29,6 @@ class UserBlock extends React.Component {
 
             })
     }
-
     render() {
         return <>
             {this.props.isFetching ? <Preloader /> : null}
@@ -46,9 +37,10 @@ class UserBlock extends React.Component {
                    users={this.props.users}
                    currentPages={this.props.currentPages}
                    onPageChanged={this.onPageChanged}
+                   follow={this.props.follow}
+                   unfollow={this.props.unfollow}
             />
         </>
-
     }
 }
 
@@ -58,7 +50,7 @@ let mapStateToProps = (state) => {
         pageSize: state.Users.pageSize,
         totalUsersCount: state.Users.totalUsersCount,
         currentPages: state.Users.currentPages,
-        isFetching: state.Users.isFetching
+        isFetching: state.Users.isFetching,
     }
 }
 
