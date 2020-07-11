@@ -1,16 +1,16 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    followAC,
+    follow,
+    unfollow,
     setCurrentPage,
     setTotalUserCount,
-    setUsersAC,
+    setUsers,
     toggleIsFetching,
-    unfollowAC
 } from "../../../Redux/usersReducer";
 import * as axios from "axios";
 import Users from "./Users";
-import preloader from '../../../assets/img/loader.svg'
+import Preloader from "../../Common/Preloader/Preloader";
 
 // TODO перекинуть этот блок в profile
 
@@ -40,7 +40,7 @@ class UserBlock extends React.Component {
 
     render() {
         return <>
-            {this.props.isFetching ? <img src={preloader} alt="preloader"/> : null}
+            {this.props.isFetching ? <Preloader /> : null}
             <Users totalUsersCount={this.props.totalUsersCount}
                    pageSize={this.props.pageSize}
                    users={this.props.users}
@@ -62,30 +62,14 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (userId) => {
-            dispatch(followAC(userId))
-        },
-        unfollow: (userId) => {
-            dispatch(unfollowAC(userId))
-        },
-        setUsers: (users) => {
-            dispatch(setUsersAC(users))
-        },
-        setCurrentPage: (page) => {
-            dispatch(setCurrentPage(page))
-        },
-        setTotalUserCount: (num) => {
-            dispatch(setTotalUserCount(num))
-        },
-        toggleIsFetching: (isFetching) => {
-            dispatch(toggleIsFetching(isFetching))
-        }
-    }
-}
-
-const FollowersContainer = connect(mapStateToProps, mapDispatchToProps)(UserBlock)
+const FollowersContainer = connect(mapStateToProps, {
+    follow,
+    unfollow,
+    setUsers,
+    setCurrentPage,
+    setTotalUserCount,
+    toggleIsFetching
+})(UserBlock)
 
 export default FollowersContainer
 

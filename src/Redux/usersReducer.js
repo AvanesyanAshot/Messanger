@@ -15,9 +15,9 @@ let SET_TOTAL_USER_COUNT = 'SETTOTALUSERCOUNT'
 let TOGGLE_IS_FETCHING = 'TOGGLEISFETCHING'
 
 // ACTION CREATOR
-export const setUsersAC = (users) => ({type: SET_USERS, users})
-export const followAC = (userId) => ({type: FOLLOW, userId})
-export const unfollowAC = (userId) => ({type: UNFOLLOW, userId})
+export const setUsers = (users) => ({type: SET_USERS, users})
+export const follow = (userId) => ({type: FOLLOW, userId})
+export const unfollow = (userId) => ({type: UNFOLLOW, userId})
 export const setCurrentPage = (page) => ({type: SET_CURRENT_PAGE, page})
 export const setTotalUserCount = (num) => ({type: SET_TOTAL_USER_COUNT, num})
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
