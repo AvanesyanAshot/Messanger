@@ -13,7 +13,8 @@ let Users = (props) => {
             {
                 props.users.map(u => <div key={u.id} className={css.card}>
                     <div className={css.userBlock}>
-                        <img className={css.avatar} src={u.photos.small != null  ? u.photos.small : avatar} alt="#"/>
+                        <img className={css.avatar} src={avatar} alt="#"/>
+                        {/*<img className={css.avatar} src={u.photos.small != null  ? u.photos.small : avatar} alt="#"/>*/}
                         <h3 className={css.userName}>{u.name}</h3>
                         <span className={css.country}>u.address.city</span>
                         <div className={css.infoBlock}>
