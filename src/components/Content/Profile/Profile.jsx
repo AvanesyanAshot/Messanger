@@ -1,41 +1,32 @@
 import React from "react";
 import css from "./Profile.module.css"
-import User from "./Contents/User/User";
+import Userprofile from "./Contents/Profile/Userprofile";
 import * as axios from "axios";
+import Preloader from "../../Common/Preloader/Preloader";
 
-
-// TODO userDetail сделать отдельной компонентой
-// TODO Реализовать отрисовку по условию
-// TODO сделать свой REST API
-
-
-const Profile = (props) => {
-    // debugger
-    if (props.state.users.length === 0) {
-        axios.get('https://jsonplaceholder.typicode.com/users')
-            .then(response => {
-                // debugger
-                props.setUsers(response.data)
-            })
+let Profile = (props) => {
+    if (!props.profile){
+        return <Preloader />
     }
+
     return (
         <div className={css.section}>
-            <User user={props.state.users[4]} setUsers={props.setUsers}/>
+            <Userprofile profile={props.profile}/>
+
             <div className={css.posts}>
                 <div className={css.nav}>
-                    <a href='#' className={css.link}>Projects</a>
-                    <a href='#' className={css.link}>Collections</a>
-                    <a href='#' className={css.link}>Followers</a>
-                    <a href='#' className={css.link}>Following</a>
+                    <button className={css.link}>Projects</button>
+                    <button className={css.link}>Collections</button>
+                    <button className={css.link}>Followers</button>
+                    <button className={css.link}>Following</button>
                 </div>
                 <div className={css.content}>
                     some info
                 </div>
             </div>
-
         </div>
-
     )
+
 }
 
 export default Profile
