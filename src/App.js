@@ -23,7 +23,7 @@ function App() {
             <div className='app-content'>
                 <Route path='/Discover'
                        render={() => <DiscoverContainer />}></Route>
-                <Route path='/Profile'
+                <Route path='/Profile/:userId?'
                        render={() => <ProfileContainer />}></Route>
                 <Route path='/Followers'
                        render={() => <FollowersContainer />}></Route>
