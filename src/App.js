@@ -8,6 +8,7 @@ import MessagesContainer from "./components/Content/Messages/MessagesContainer";
 import DiscoverContainer from "./components/Content/Discover/DiscoverContainer";
 import ProfileContainer from "./components/Content/Profile/ProfileContainer";
 import FollowersContainer from "./components/Content/Followers/FollowersContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 // TODO сделать блок Discover
 // TODO сделать блок Profile
@@ -19,7 +20,7 @@ import FollowersContainer from "./components/Content/Followers/FollowersContaine
 function App() {
     return (
         <div className="app-wrapper">
-            <Header/>
+            <HeaderContainer/>
             <div className='app-content'>
                 <Route path='/Discover'
                        render={() => <DiscoverContainer />}></Route>
