@@ -2,6 +2,7 @@ import React from "react";
 import css from "./Messages.module.css"
 import MessageBlock from "./Message/message";
 import сorrespondence from "./Message/correspondence";
+import Redirect from "react-router-dom/es/Redirect";
 
 
 // TODO Сделать отдельный компонент для вывода всех сообщений и отдельно диалог
@@ -30,6 +31,8 @@ const Messages = (props) => {
         let text = newMessageElement.current.value
         props.onMessageChange(text)
     }
+
+    if(!props.isAuth) return <Redirect to={'/login'}/>
     return (
         <div className={css.section}>
             <div className={css.messageList}>

@@ -8,6 +8,7 @@ import DiscoverContainer from "./components/Content/Discover/DiscoverContainer";
 import ProfileContainer from "./components/Content/Profile/ProfileContainer";
 import FollowersContainer from "./components/Content/Followers/FollowersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import Login from "./components/Content/Login/login";
 
 // TODO сделать блок Discover
 // TODO сделать блок Profile
@@ -29,6 +30,7 @@ function App() {
                        render={() => <FollowersContainer />}></Route>
                 <Route path='/Messages'
                        render={() => <MessagesContainer />}></Route>
+                <Route path='/login' render={() => <Login />}></Route>
                 <Route path='/Settings' render={() => <Settings/>}></Route>
             </div>
             <Footer/>

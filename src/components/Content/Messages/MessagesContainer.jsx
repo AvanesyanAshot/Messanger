@@ -5,7 +5,8 @@ import {connect} from "react-redux";
 
 let mapStateToProps = (state) => { // всегда принимет в себя store
     return {
-        state: state.Messages
+        state: state.Messages,
+        isAuth: state.auth.isAuth
     }
 }
 
