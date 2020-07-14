@@ -1,40 +1,19 @@
 import React from "react";
 import {connect} from "react-redux";
-import {
-    follow,
-    unfollow,
-    setCurrentPage,
-    setTotalUserCount,
-    setUsers,
-    toggleIsFetching, toggleIsFollowingInProgress
-} from "../../../Redux/usersReducer";
+import {follow, unfollow, setCurrentPage, toggleIsFollowingInProgress, getUsers} from "../../../Redux/usersReducer";
 import Users from "./Users";
 import Preloader from "../../Common/Preloader/Preloader";
-import {usersAPI} from "../../../DAL/api";
 
 // TODO перекинуть этот блок в profile
 
 class UserBlock extends React.Component {
     componentDidMount() {
-        this.props.toggleIsFetching(true)
-        usersAPI.getUsers(this.props.currentPages, this.props.pageSize)
-            .then(data => {
-                this.props.toggleIsFetching(false)
-                this.props.setUsers(data.items)
-                // this.props.setTotalUserCount(data.totalCount)
-            })
+        this.props.getUsers(this.props.currentPages, this.props.pageSize)
     }
-
     onPageChanged = (page) => {
+        this.props.getUsers(page, this.props.pageSize)
         this.props.setCurrentPage(page)
-        this.props.toggleIsFetching(true)
-        usersAPI.getUsers(page, this.props.pageSize)
-            .then(data => {
-                this.props.toggleIsFetching(false)
-                this.props.setUsers(data.items)
-            })
     }
-
     render() {
         return <>
             {this.props.isFetching ? <Preloader/> : null}
@@ -63,15 +42,7 @@ let mapStateToProps = (state) => {
     }
 }
 
-const FollowersContainer = connect(mapStateToProps, {
-    follow,
-    unfollow,
-    setUsers,
-    setCurrentPage,
-    setTotalUserCount,
-    toggleIsFetching,
-    toggleIsFollowingInProgress
-})(UserBlock)
+const FollowersContainer = connect(mapStateToProps, {follow, unfollow, setCurrentPage, toggleIsFollowingInProgress, getUsers})(UserBlock)
 
 export default FollowersContainer
 

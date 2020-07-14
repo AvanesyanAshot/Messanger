@@ -2,7 +2,6 @@ import React from "react";
 import css from './User.module.css'
 import avatar from '../../../assets/img/avatar.png'
 import {NavLink} from "react-router-dom";
-import * as axios from "axios";
 
 let Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
@@ -26,49 +25,21 @@ let Users = (props) => {
                             <span>15 views</span>
                         </div>
                         {u.followed
-                            ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                                props.toggleIsFollowingInProgress(true, u.id)
-                                axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
-                                    withCredentials: true,
-                                    headers: {
-                                        "API-KEY": "61a5ce91-0013-44e5-9ca4-7aef27d4ef3d"
-                                    }
-                                })
-                                    .then(response => {
-                                        if (response.data.resultCode === 0) {
-                                            props.unfollow(u.id)
-                                            props.toggleIsFollowingInProgress(false, u.id)
-                                        }
-                                    })
-                            }} className={css.unfollow}>Unfollow</button>
-                            : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                                props.toggleIsFollowingInProgress(true, u.id)
-                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
-                                    withCredentials: true,
-                                    headers: {
-                                        "API-KEY": "61a5ce91-0013-44e5-9ca4-7aef27d4ef3d"
-                                    }
-                                })
-                                    .then(response => {
-                                        if (response.data.resultCode === 0) {
-                                            props.follow(u.id)
-                                            props.toggleIsFollowingInProgress(false, u.id)
-
-
-                                        }
-                                    })
-                            }} className={css.follow}>Follow</button>}
+                            ? <button disabled={props.followingInProgress.some(id => id === u.id)}
+                                      onClick={() => {props.unfollow(u.id)}} className={css.unfollow}>Unfollow</button>
+                            : <button disabled={props.followingInProgress.some(id => id === u.id)}
+                                      onClick={() => {props.follow(u.id) }} className={css.follow}>Follow</button>}
                     </div>
                 </div>)
             }
         </div>
 
         <div className={css.pagination}>
-            {pages.map(p => {
+            {
+                pages.map(p => {
                 return <span key={p} onClick={(e) => {
                     props.onPageChanged(p)
                 }} className={props.currentPages === p && css.selectedPage}>{p}</span>
-
             })}
         </div>
 
