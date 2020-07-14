@@ -1,3 +1,4 @@
+// INIT
 let initState = {
     message: [
         {id: 1, name: 'Pasha', time: '10:45', message: 'Hello world'},
@@ -20,18 +21,20 @@ let NEW_MESSAGE = 'NEW-MESSAGE';
 let UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE'
 
 // ACTION CREATOR
-export const actionAddMessage = () => ({type: NEW_MESSAGE})
-export const actionOnMessageChange = (text) => ({type: UPDATE_NEW_MESSAGE, newText: text})
+export const addMessage = () => ({type: NEW_MESSAGE})
+export const onMessageChange = (text) => ({type: UPDATE_NEW_MESSAGE, newText: text})
 
+// REDUCER
 const messagesReducer = (state = initState, action) => {
     switch (action.type) {
         case NEW_MESSAGE:
             return {
                 ...state,
-                ...state,correspondence: [...state.correspondence,{id: 5, time: new Date(), message: state.newMessageText}],
+                ...state,
+                correspondence: [...state.correspondence, {id: 5, time: new Date(), message: state.newMessageText}],
                 newMessageText: ''
             }
-        case UPDATE_NEW_MESSAGE:{
+        case UPDATE_NEW_MESSAGE: {
             return {
                 ...state,
                 newMessageText: action.newText

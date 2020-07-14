@@ -8,11 +8,5 @@ let mapStateToProps = (store) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-
-    }
-}
-
-const DiscoverContainer = connect(mapStateToProps, mapDispatchToProps)(Discover)
+const DiscoverContainer = connect(mapStateToProps, {})(Discover)
 export default DiscoverContainer

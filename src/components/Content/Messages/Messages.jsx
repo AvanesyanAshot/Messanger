@@ -28,7 +28,7 @@ const Messages = (props) => {
 
     let onMessageChange = () => {
         let text = newMessageElement.current.value
-        props.updateMessage(text)
+        props.onMessageChange(text)
     }
     return (
         <div className={css.section}>

@@ -6,7 +6,8 @@ import DiscoverItem from "./DiscoverItem/DiscoverItem";
 //TODO Доверстать item
 
 const Discover = (props) => {
-    let newDiscoverData = props.store.discoverData.map(item => (<DiscoverItem key={item.id} id={item.id} name={item.name}></DiscoverItem>))
+    let newDiscoverData = props.store.discoverData.map(item => (
+        <DiscoverItem key={item.id} id={item.id} name={item.name}></DiscoverItem>))
 
     return (
         <div className={css.content}>
@@ -17,7 +18,7 @@ const Discover = (props) => {
                 <br/><br/><br/><br/><br/>
             </aside>
             <div className={css.result}>
-                { newDiscoverData }
+                {newDiscoverData}
             </div>
         </div>
     )

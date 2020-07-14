@@ -1,5 +1,5 @@
 import {usersAPI} from "../DAL/api";
-
+// INIT
 let initState = {
     users: [],
     pageSize: 9,
@@ -65,6 +65,7 @@ export const unfollow = (userId) => {
     }
 }
 
+// REDUCER
 const usersReducer = (state = initState, action) => {
     switch (action.type) {
         case FOLLOW:

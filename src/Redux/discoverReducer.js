@@ -1,3 +1,4 @@
+// INIT
 let initState = {
     discoverData: [
         {id: 1, name: 'Pasha'},
@@ -12,6 +13,7 @@ let initState = {
     ]
 }
 
+// REDUCER
 const discoverReducer = (state = initState, action) => {
     switch (action.type) {
         default:
