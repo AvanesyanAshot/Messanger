@@ -52,6 +52,9 @@
     font-size: 10px;
     line-height: 10px;
 }
+.follow:disabled {
+    color: grey;
+}
 .unfollow {
     background: red;
     padding: 15px 18px;
@@ -61,6 +64,9 @@
     text-transform: uppercase;
     font-size: 10px;
     line-height: 10px;
+}
+.unfollow:disabled {
+    color: grey;
 }
 
 .selectedPage {

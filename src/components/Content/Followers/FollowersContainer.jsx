@@ -6,9 +6,8 @@ import {
     setCurrentPage,
     setTotalUserCount,
     setUsers,
-    toggleIsFetching
+    toggleIsFetching, toggleIsFollowingInProgress
 } from "../../../Redux/usersReducer";
-import * as axios from "axios";
 import Users from "./Users";
 import Preloader from "../../Common/Preloader/Preloader";
 import {usersAPI} from "../../../DAL/api";
@@ -46,6 +45,8 @@ class UserBlock extends React.Component {
                    onPageChanged={this.onPageChanged}
                    follow={this.props.follow}
                    unfollow={this.props.unfollow}
+                   followingInProgress={this.props.followingInProgress}
+                   toggleIsFollowingInProgress={this.props.toggleIsFollowingInProgress}
             />
         </>
     }
@@ -58,6 +59,7 @@ let mapStateToProps = (state) => {
         totalUsersCount: state.Users.totalUsersCount,
         currentPages: state.Users.currentPages,
         isFetching: state.Users.isFetching,
+        followingInProgress: state.Users.followingInProgress
     }
 }
 
@@ -67,7 +69,8 @@ const FollowersContainer = connect(mapStateToProps, {
     setUsers,
     setCurrentPage,
     setTotalUserCount,
-    toggleIsFetching
+    toggleIsFetching,
+    toggleIsFollowingInProgress
 })(UserBlock)
 
 export default FollowersContainer

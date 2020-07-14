@@ -1,7 +1,6 @@
 import React from "react";
 import css from "./Profile.module.css"
 import Userprofile from "./Contents/Profile/Userprofile";
-import * as axios from "axios";
 import Preloader from "../../Common/Preloader/Preloader";
 
 let Profile = (props) => {
@@ -12,7 +11,6 @@ let Profile = (props) => {
     return (
         <div className={css.section}>
             <Userprofile profile={props.profile}/>
-
             <div className={css.posts}>
                 <div className={css.nav}>
                     <button className={css.link}>Projects</button>

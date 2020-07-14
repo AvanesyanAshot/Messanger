@@ -1,6 +1,5 @@
 import React from "react";
 import css from "./User.module.css"
-import * as axios from 'axios'
 
 const Userprofile = (props) => {
     return (
