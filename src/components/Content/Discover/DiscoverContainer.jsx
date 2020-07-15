@@ -1,6 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import Discover from "./Discover";
+import {compose} from "redux";
 
 let mapStateToProps = (store) => {
     return {
@@ -8,5 +9,6 @@ let mapStateToProps = (store) => {
     }
 }
 
-const DiscoverContainer = connect(mapStateToProps, {})(Discover)
-export default DiscoverContainer
+export default compose(
+    connect(mapStateToProps, {})
+)(Discover)

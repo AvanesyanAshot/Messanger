@@ -3,13 +3,15 @@ import {addMessage, onMessageChange} from '../../../Redux/messagesReducer';
 import Messages from "./Messages";
 import {connect} from "react-redux";
 import {withAuthRedirect} from "../Hoc/withAuthRedirect";
+import {compose} from "redux";
 
-let mapStateToProps = (state) => { // всегда принимет в себя store
+let mapStateToProps = (state) => {
     return {
         state: state.Messages
     }
 }
-let AuthRedirectComponent = withAuthRedirect(Messages)
 
-const MessagesContainer = connect(mapStateToProps, {addMessage, onMessageChange})(AuthRedirectComponent) // у connect есть свой subscribe на рендер своей компоненты (перерисовка происходит при изм. mapStateToProps )
-export default MessagesContainer
+export default compose(
+    connect(mapStateToProps, {addMessage, onMessageChange}),
+    withAuthRedirect
+)(Messages)

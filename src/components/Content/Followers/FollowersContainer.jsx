@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {follow, unfollow, setCurrentPage, toggleIsFollowingInProgress, getUsers} from "../../../Redux/usersReducer";
 import Users from "./Users";
 import Preloader from "../../Common/Preloader/Preloader";
+import {compose} from "redux";
 
 // TODO перекинуть этот блок в profile
 
@@ -42,8 +43,9 @@ let mapStateToProps = (state) => {
     }
 }
 
-const FollowersContainer = connect(mapStateToProps, {follow, unfollow, setCurrentPage, toggleIsFollowingInProgress, getUsers})(UserBlock)
 
-export default FollowersContainer
+export default compose(
+    connect(mapStateToProps, {follow, unfollow, setCurrentPage, toggleIsFollowingInProgress, getUsers})
+)(UserBlock)
 
 
