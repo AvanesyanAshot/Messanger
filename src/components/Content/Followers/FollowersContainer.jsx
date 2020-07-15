@@ -4,6 +4,7 @@ import {follow, unfollow, setCurrentPage, toggleIsFollowingInProgress, getUsers}
 import Users from "./Users";
 import Preloader from "../../Common/Preloader/Preloader";
 import {compose} from "redux";
+import {withAuthRedirect} from "../Hoc/withAuthRedirect";
 
 // TODO перекинуть этот блок в profile
 
@@ -45,6 +46,7 @@ let mapStateToProps = (state) => {
 
 
 export default compose(
+    withAuthRedirect,
     connect(mapStateToProps, {follow, unfollow, setCurrentPage, toggleIsFollowingInProgress, getUsers})
 )(UserBlock)
 

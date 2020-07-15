@@ -1,5 +1,6 @@
 import React from "react";
 import css from "./User.module.css"
+import UserStatus from "./UserStatus";
 
 const Userprofile = (props) => {
     return (
@@ -10,6 +11,7 @@ const Userprofile = (props) => {
                 <button className={css.btn}>+ Message</button>
             </div>
             <p className={css.name}>{props.profile.fullName}</p>
+            <UserStatus status='bruh'/>
             <p>{props.profile.aboutMe}</p>
             <div className={css.management}>
                 <button className={css.btn}>Создать пост</button>
