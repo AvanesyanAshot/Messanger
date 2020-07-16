@@ -12,17 +12,14 @@ let initState = {
         {id: 2, time: '10:45', message: 'BRUH'},
         {id: 3, time: '10:45', message: 'Hi'},
         {id: 4, time: '10:45', message: 'thx'}
-    ],
-    newMessageText: ''
+    ]
 }
 
 // ACTION TYPE
 let NEW_MESSAGE = 'NEW-MESSAGE';
-let UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE'
 
 // ACTION CREATOR
-export const addMessage = () => ({type: NEW_MESSAGE})
-export const onMessageChange = (text) => ({type: UPDATE_NEW_MESSAGE, newText: text})
+export const addMessage = (message) => ({type: NEW_MESSAGE, message})
 
 // REDUCER
 const messagesReducer = (state = initState, action) => {
@@ -30,16 +27,8 @@ const messagesReducer = (state = initState, action) => {
         case NEW_MESSAGE:
             return {
                 ...state,
-                ...state,
-                correspondence: [...state.correspondence, {id: 5, time: new Date(), message: state.newMessageText}],
-                newMessageText: ''
+                correspondence: [...state.correspondence, {id: 5, time: new Date(), message: action.message}],
             }
-        case UPDATE_NEW_MESSAGE: {
-            return {
-                ...state,
-                newMessageText: action.newText
-            }
-        }
         default:
             return state
     }
