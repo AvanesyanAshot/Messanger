@@ -10,7 +10,7 @@ let Profile = (props) => {
 
     return (
         <div className={css.section}>
-            <Userprofile profile={props.profile}/>
+            <Userprofile profile={props.profile} status={props.status} updateUserStatus={props.updateUserStatus}/>
             <div className={css.posts}>
                 <div className={css.nav}>
                     <button className={css.link}>Projects</button>

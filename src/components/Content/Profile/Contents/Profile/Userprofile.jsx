@@ -11,7 +11,7 @@ const Userprofile = (props) => {
                 <button className={css.btn}>+ Message</button>
             </div>
             <p className={css.name}>{props.profile.fullName}</p>
-            <UserStatus status='bruh'/>
+            <UserStatus status={props.status} updateUserStatus={props.updateUserStatus}/>
             <p>{props.profile.aboutMe}</p>
             <div className={css.management}>
                 <button className={css.btn}>Создать пост</button>
