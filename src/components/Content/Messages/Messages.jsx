@@ -4,13 +4,17 @@ import MessageBlock from "./Message/message";
 import сorrespondence from "./Message/correspondence";
 import Redirect from "react-router-dom/es/Redirect";
 import {Field, reduxForm} from "redux-form";
+import {Textarea} from "../../Common/Forms/FormsControl";
+import {maxLengthCreator, required} from "../../../utls/validators/validators";
+
+const maxLength15 = maxLengthCreator(15)
 
 
 const MessageForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit} className={css.corManage}>
             <Field name='message'
-                   component='textarea'
+                   component={'textarea'}
                    placeholder='Написать сообщение...'></Field>
             <button className={css.btn}>Отправить</button>
         </form>
@@ -28,11 +32,11 @@ const Messages = (props) => {
         <сorrespondence key={m.id} message={m.message}/>
     ))
     //Functions
-    let addMessage = (values) => {
-        props.addMessage(values.message)
+    let addMessage = (value) => {
+        props.addMessage(value.message)
     }
 
-    if (!props.isAuth) return <Redirect to={'/login'}/>
+    // if (!props.isAuth) return <Redirect to={'/login'}/>
     return (
         <div className={css.section}>
             <div className={css.messageList}>

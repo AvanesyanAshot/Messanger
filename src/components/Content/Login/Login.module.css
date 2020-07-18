@@ -1,0 +1,36 @@
+.formPage {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin: 0 auto;
+    width: 500px;
+}
+
+.header {
+    font-size: 30px;
+    font-weight: bold;
+    color: #0d58c8;
+    text-transform: uppercase;
+}
+
+.form {
+    display: flex;
+    flex-flow: column;
+}
+
+.form * {
+    margin-top: 5px;
+}
+
+.input {
+    height: 32px;
+    width: 200px;
+}
+
+.btn {
+    height: 32px;
+    background: #0d58c8;
+    border: 0;
+
+    color: white;
+}

@@ -3,6 +3,8 @@
     height: 50px;
     background: #262626;
 
+    bottom: 0;
+
     color: white;
     grid-area: f;
 

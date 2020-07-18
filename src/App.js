@@ -8,14 +8,7 @@ import DiscoverContainer from "./components/Content/Discover/DiscoverContainer";
 import ProfileContainer from "./components/Content/Profile/ProfileContainer";
 import FollowersContainer from "./components/Content/Followers/FollowersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import Login from "./components/Content/Login/login";
-
-// TODO сделать блок Discover
-// TODO сделать блок Profile
-// TODO сделать блок Messages
-// TODO сделать блок Settings
-// TODO Убрать с пропсов state
-// TODO сделать классовые компоненты discover, profile, followers, messages
+import Login from "./components/Content/Login/Login";
 
 function App() {
     return (
