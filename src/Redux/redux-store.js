@@ -5,6 +5,7 @@ import messagesReducer from "./messagesReducer";
 import usersReducer from "./usersReducer";
 import profileReducer from "./profileReducer";
 import authReducer from "./authReducer";
+import appReducer from "./AppReducer";
 import { reducer as formReducer } from 'redux-form'
 
 
@@ -14,6 +15,7 @@ let reducers = combineReducers({
     Users: usersReducer,
     Profile: profileReducer,
     auth: authReducer,
+    app: appReducer,
     form: formReducer
 })
 
