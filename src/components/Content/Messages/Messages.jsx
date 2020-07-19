@@ -1,13 +1,9 @@
 import React from "react";
 import css from "./Messages.module.css"
 import MessageBlock from "./Message/message";
-import сorrespondence from "./Message/correspondence";
+import Correspondence from "./Message/correspondence";
 import Redirect from "react-router-dom/es/Redirect";
 import {Field, reduxForm} from "redux-form";
-import {Textarea} from "../../Common/Forms/FormsControl";
-import {maxLengthCreator, required} from "../../../utls/validators/validators";
-
-const maxLength15 = maxLengthCreator(15)
 
 
 const MessageForm = (props) => {
@@ -29,14 +25,14 @@ const Messages = (props) => {
     )
 
     let newCorrespondence = props.state.correspondence.map(m => (
-        <сorrespondence key={m.id} message={m.message}/>
+        <Correspondence key={m.id} message={m.message}/>
     ))
     //Functions
     let addMessage = (value) => {
         props.addMessage(value.message)
     }
 
-    // if (!props.isAuth) return <Redirect to={'/login'}/>
+    if (!props.isAuth) return <Redirect to={'/login'}/>
     return (
         <div className={css.section}>
             <div className={css.messageList}>

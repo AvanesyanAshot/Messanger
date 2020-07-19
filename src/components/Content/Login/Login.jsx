@@ -7,9 +7,9 @@ import {Input} from "../../Common/Forms/FormsControl";
 let LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit} className={css.form}>
-            <Field  className={css.input}  placeholder={'login'} name={'login'} validate={[required]} component={Input}/>
-            <Field  className={css.input}  placeholder={'password'} name={'password'}validate={[required]} type='password'  component={Input}/>
-            <div><Field  name={'rememberMe'} type="checkbox" component={Input}/>remember me</div>
+            <Field className={css.input} placeholder={'login'} name={'login'} validate={[required]} component={Input}/>
+            <Field className={css.input} placeholder={'password'} name={'password'} validate={[required]} component={Input}/>
+            <div><Field name={'rememberMe'} type="checkbox" component='input'/> remember me</div>
             <button className={css.btn}>login</button>
         </form>
     )

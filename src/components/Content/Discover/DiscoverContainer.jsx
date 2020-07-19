@@ -1,4 +1,3 @@
-import React from "react";
 import {connect} from "react-redux";
 import Discover from "./Discover";
 import {compose} from "redux";

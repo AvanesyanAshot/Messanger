@@ -1,5 +1,4 @@
 import React from "react";
-import css from "./User.module.css"
 
 class UserStatus extends React.Component {
     state = {
