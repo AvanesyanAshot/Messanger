@@ -1,7 +1,6 @@
 import React from "react";
 import css from "./User.module.css"
 import UserStatus from "./UserStatus";
-import UserStatusWithHooks from "./UserStatusWithHooks";
 
 const Userprofile = (props) => {
     return (
@@ -12,7 +11,7 @@ const Userprofile = (props) => {
                 <button className={css.btn}>+ Message</button>
             </div>
             <p className={css.name}>{props.profile.fullName}</p>
-            <UserStatusWithHooks status={props.status} updateUserStatus={props.updateUserStatus}/>
+            <UserStatus status={props.status} updateUserStatus={props.updateUserStatus}/>
             <p>{props.profile.aboutMe}</p>
             <div className={css.management}>
                 <button className={css.btn}>Создать пост</button>
