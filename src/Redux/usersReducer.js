@@ -18,7 +18,7 @@ let TOGGLE_IS_FETCHING = 'TOGGLEISFETCHING'
 let TOGGLE_IS_FOLLOWING_IN_PROGRESS = 'TOGGLEISFOLLOWINGINPROGRESS'
 
 // ACTION CREATOR
-export const setUsers = (users) => ({type: SET_USERS, users})
+export const setUsersAC = (users) => ({type: SET_USERS, users})
 export const followSuccess = (userId) => ({type: FOLLOW, userId})
 export const unfollowSuccess = (userId) => ({type: UNFOLLOW, userId})
 export const setCurrentPage = (page) => ({type: SET_CURRENT_PAGE, page})
@@ -27,15 +27,13 @@ export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFe
 export const toggleIsFollowingInProgress = (isFetching, userId) => ({type: TOGGLE_IS_FOLLOWING_IN_PROGRESS,isFetching,userId})
 
 // THUNK CREATOR
-export const getUsers = (currentPages, pageSize) => {
+export const setUsers = (currentPages, pageSize) => {
     return (dispatch) => {
         dispatch(toggleIsFetching(true))
         usersAPI.getUsers(currentPages, pageSize)
             .then(data => {
                 dispatch(toggleIsFetching(false))
-                dispatch(setUsers(data.items))
-
-                // this.props.setTotalUserCount(data.totalCount)
+                dispatch(setUsersAC(data.items))
             })
     }
 }

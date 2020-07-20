@@ -1,19 +1,25 @@
 import React from "react";
 import {connect} from "react-redux";
-import {follow, unfollow, setCurrentPage, toggleIsFollowingInProgress, getUsers} from "../../../Redux/usersReducer";
+import {follow, unfollow, setCurrentPage, toggleIsFollowingInProgress, setUsers} from "../../../Redux/usersReducer";
 import Users from "./Users";
 import Preloader from "../../Common/Preloader/Preloader";
 import {compose} from "redux";
-import {withAuthRedirect} from "../Hoc/withAuthRedirect";
+import {
+    getCurrentPages,
+    getFollowingInProgress,
+    getIsFetching,
+    getPageSize,
+    getTotalUsersCount,getUsersSuper
+} from "../../../Redux/Selectors/usersSelectros";
 
 // TODO перекинуть этот блок в profile
 
 class UserBlock extends React.Component {
     componentDidMount() {
-        this.props.getUsers(this.props.currentPages, this.props.pageSize)
+        this.props.setUsers(this.props.currentPages, this.props.pageSize)
     }
     onPageChanged = (page) => {
-        this.props.getUsers(page, this.props.pageSize)
+        this.props.setUsers(page, this.props.pageSize)
         this.props.setCurrentPage(page)
     }
     render() {
@@ -35,18 +41,18 @@ class UserBlock extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        users: state.Users.users,
-        pageSize: state.Users.pageSize,
-        totalUsersCount: state.Users.totalUsersCount,
-        currentPages: state.Users.currentPages,
-        isFetching: state.Users.isFetching,
-        followingInProgress: state.Users.followingInProgress
+        users: getUsersSuper(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPages: getCurrentPages(state),
+        isFetching: getIsFetching(state),
+        followingInProgress: getFollowingInProgress(state)
     }
 }
 
 
 export default compose(
-    connect(mapStateToProps, {follow, unfollow, setCurrentPage, toggleIsFollowingInProgress, getUsers})
+    connect(mapStateToProps, {follow, unfollow, setCurrentPage, toggleIsFollowingInProgress, setUsers})
 )(UserBlock)
 
 

@@ -35,6 +35,7 @@ let Users = (props) => {
 
         <div className={css.pagination}>
             {
+
                 pages.map(p => {
                 return <span key={p} onClick={(e) => {
                     props.onPageChanged(p)
