@@ -2,8 +2,8 @@ import React from "react";
 import css from "./Messages.module.css"
 import MessageBlock from "./Message/message";
 import Correspondence from "./Message/correspondence";
-import Redirect from "react-router-dom/es/Redirect";
 import {Field, reduxForm} from "redux-form";
+import {Redirect} from "react-router-dom";
 
 
 const MessageForm = (props) => {
