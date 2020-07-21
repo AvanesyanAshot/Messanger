@@ -2,7 +2,7 @@ import React from "react";
 import css from "./User.module.css"
 import UserStatus from "./UserStatus";
 
-const Userprofile = (props) => {
+const Userprofile = React.memo((props) => {
     return (
         <div className={css.userDetail}>
             <div className={css.header}>
@@ -21,6 +21,6 @@ const Userprofile = (props) => {
         </div>
 
     )
-}
+})
 
 export default Userprofile
