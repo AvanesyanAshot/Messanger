@@ -1,4 +1,3 @@
-import React from 'react';
 import messagesReducer, {addMessage} from './messagesReducer'
 
 test('length of correspondence should be incremented', () => {

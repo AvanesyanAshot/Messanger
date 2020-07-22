@@ -16,7 +16,7 @@ let initState = {
 }
 
 // ACTION TYPE
-let NEW_MESSAGE = 'NEW-MESSAGE';
+let NEW_MESSAGE = 'messages/NEW-MESSAGE';
 
 // ACTION CREATOR
 export const addMessage = (message) => ({type: NEW_MESSAGE, message})

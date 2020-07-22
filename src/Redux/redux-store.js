@@ -8,7 +8,6 @@ import authReducer from "./authReducer";
 import appReducer from "./AppReducer";
 import { reducer as formReducer } from 'redux-form'
 
-
 let reducers = combineReducers({
     Messages: messagesReducer,
     Discover: discoverReducer,
@@ -20,7 +19,7 @@ let reducers = combineReducers({
 })
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleware))
-window.store = store
 
+window.store = store
 export default store
 

@@ -6,7 +6,7 @@ let initState = {
 }
 
 // ACTION TYPE
-let INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
+let INITIALIZED_SUCCESS = 'app/INITIALIZED_SUCCESS';
 
 // ACTION CREATOR
 export const initializedSuccess = () => ({type: INITIALIZED_SUCCESS})
