@@ -2,7 +2,7 @@ import React from "react";
 import {Field, reduxForm} from "redux-form";
 import css from './Login.module.css'
 import {required} from "../../../utls/validators/validators";
-import {Input} from "../../Common/Forms/FormsControl";
+import {createField, Input} from "../../Common/Forms/FormsControl";
 import {connect} from "react-redux";
 import {login} from "../../../Redux/authReducer";
 import {Redirect} from "react-router-dom";
@@ -10,10 +10,9 @@ import {Redirect} from "react-router-dom";
 let LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit} className={css.form}>
-            <Field className={css.input} placeholder={'login'} name={'email'} validate={[required]} component={Input}/>
-            <Field className={css.input} placeholder={'password'} name={'password'} type={'password'} validate={[required]}
-                   component={Input}/>
-            <div><Field name={'rememberMe'} type="checkbox" component='input'/> remember me</div>
+            {createField('login', 'email', [required], Input)}
+            {createField('password', 'password', [required], Input, {type: 'password'})}
+            {createField(null, 'rememberMe', null, Input, {type: 'checkbox'}, ' remember me')}
             { props.error && <div className={css.summaryError}>{props.error}</div>}
             <button className={css.btn}>login</button>
         </form>
