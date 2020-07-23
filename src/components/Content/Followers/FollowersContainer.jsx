@@ -16,10 +16,12 @@ import {
 
 class UserBlock extends React.Component {
     componentDidMount() {
-        this.props.setUsers(this.props.currentPages, this.props.pageSize)
+        const {currentPages, pageSize} = this.props
+        this.props.setUsers(currentPages, pageSize)
     }
     onPageChanged = (page) => {
-        this.props.setUsers(page, this.props.pageSize)
+        const {pageSize} = this.props
+        this.props.setUsers(page, pageSize)
         this.props.setCurrentPage(page)
     }
     render() {

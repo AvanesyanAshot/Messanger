@@ -1,5 +1,5 @@
 import React from "react";
-import {Field, reduxForm} from "redux-form";
+import {reduxForm} from "redux-form";
 import css from './Login.module.css'
 import {required} from "../../../utls/validators/validators";
 import {createField, Input} from "../../Common/Forms/FormsControl";
@@ -12,7 +12,7 @@ let LoginForm = (props) => {
         <form onSubmit={props.handleSubmit} className={css.form}>
             {createField('login', 'email', [required], Input)}
             {createField('password', 'password', [required], Input, {type: 'password'})}
-            {createField(null, 'rememberMe', null, Input, {type: 'checkbox'}, ' remember me')}
+            {createField(null, 'rememberMe', null, 'input', {type: 'checkbox'}, ' remember me')}
             { props.error && <div className={css.summaryError}>{props.error}</div>}
             <button className={css.btn}>login</button>
         </form>

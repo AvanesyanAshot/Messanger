@@ -68,12 +68,3 @@
 .unfollow:disabled {
     color: grey;
 }
-
-.selectedPage {
-    font-weight: bold;
-}
-.pagination span {
-    display: inline-block;
-    padding: 5px 10px;
-    border:1px solid black;
-}
