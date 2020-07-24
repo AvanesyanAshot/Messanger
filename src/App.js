@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Footer from "./components/Footer/Footer";
-import {Route, withRouter} from 'react-router-dom'
+import {BrowserRouter, Route, withRouter} from 'react-router-dom'
 import Settings from "./components/Content/Settings/Settings";
 import MessagesContainer from "./components/Content/Messages/MessagesContainer";
 import DiscoverContainer from "./components/Content/Discover/DiscoverContainer";
@@ -9,10 +9,11 @@ import ProfileContainer from "./components/Content/Profile/ProfileContainer";
 import FollowersContainer from "./components/Content/Followers/FollowersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Content/Login/Login";
-import {connect} from "react-redux";
+import {connect, Provider} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./Redux/AppReducer";
 import Preloader from "./components/Common/Preloader/Preloader";
+import store from "./Redux/redux-store";
 
 class App extends React.Component {
     componentDidMount() {
@@ -46,6 +47,16 @@ class App extends React.Component {
 const mapStateToProps = (state) => ({
     initialized: state.app.initialized
 })
-export default compose(
+let AppComponent = compose(
     withRouter,
     connect(mapStateToProps, {initializeApp}))(App)
+
+let MainApp = (props) => {
+    return <BrowserRouter>
+        <Provider store={store}>
+            <AppComponent />
+        </Provider>
+    </BrowserRouter>
+}
+
+export default MainApp
