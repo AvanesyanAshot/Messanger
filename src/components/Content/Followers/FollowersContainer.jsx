@@ -27,7 +27,7 @@ class UserBlock extends React.Component {
     render() {
         return <>
             {this.props.isFetching ? <Preloader/> : null}
-            <Users totalUsersCount={this.props.totalUsersCount}
+            <Users totalItemsCount={this.props.totalItemsCount}
                    pageSize={this.props.pageSize}
                    users={this.props.users}
                    currentPages={this.props.currentPages}
@@ -45,7 +45,7 @@ let mapStateToProps = (state) => {
     return {
         users: getUsersSuper(state),
         pageSize: getPageSize(state),
-        totalUsersCount: getTotalUsersCount(state),
+        totalItemsCount: getTotalUsersCount(state),
         currentPages: getCurrentPages(state),
         isFetching: getIsFetching(state),
         followingInProgress: getFollowingInProgress(state)

@@ -34,7 +34,9 @@ export const setUsers = (currentPages, pageSize) => async (dispatch) => {
     dispatch(toggleIsFetching(true))
     let data = await usersAPI.getUsers(currentPages, pageSize)
     dispatch(toggleIsFetching(false))
+    dispatch(setTotalUserCount(data.totalCount))
     dispatch(setUsersAC(data.items))
+
 }
 const followUnfollow = async (dispatch, userId, apiMethod, actionCreator) => {
     dispatch(toggleIsFollowingInProgress(true, userId))

@@ -4,7 +4,7 @@ import avatar from '../../../assets/img/avatar.png'
 import {NavLink} from "react-router-dom";
 import Paginator from "../../Common/Paginator/Paginator";
 
-let Users = ({currentPages, selectedPage, onPageChanged, totalUsersCount, pageSize, ...props}) => {
+let Users = ({currentPages, selectedPage, onPageChanged, totalItemsCount, pageSize, ...props}) => {
     return <div className={css.wrapper}>
         <div className={css.users}>
             {
@@ -32,8 +32,11 @@ let Users = ({currentPages, selectedPage, onPageChanged, totalUsersCount, pageSi
                 </div>)
             }
         </div>
-        <Paginator currentPages={currentPages} selectedPage={selectedPage} onPageChanged={onPageChanged}
-                   totalUsersCount={totalUsersCount} pageSize={pageSize}/>
+        <div className={css.paginator}>
+            <Paginator currentPages={currentPages} selectedPage={selectedPage} onPageChanged={onPageChanged}
+                       totalItemsCount={totalItemsCount} pageSize={pageSize}/>
+        </div>
+
     </div>
 }
 
