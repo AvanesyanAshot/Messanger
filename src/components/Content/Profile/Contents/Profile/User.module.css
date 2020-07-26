@@ -27,6 +27,9 @@
 .name {
     text-align: center;
 }
+.contact {
+    margin-left: 15px;
+}
 
 
 /* managment */
@@ -37,3 +40,4 @@
     display: flex;
     justify-content: space-between;
 }
+

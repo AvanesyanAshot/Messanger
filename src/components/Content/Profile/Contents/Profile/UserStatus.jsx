@@ -22,7 +22,7 @@ const UserStatus = (props) => {
     return (
         <div>
             {!editMode && <div>
-                <span onDoubleClick={activateEditMode}>{props.status || 'Нет статуса'}</span>
+                <b>Status:  </b><span onDoubleClick={activateEditMode}>{props.status || 'Нет статуса'}</span>
             </div>
             }
             {editMode &&
