@@ -8,10 +8,12 @@ let initState = {
 // ACTION TYPE
 let SET_USER_PROFILE = 'profile/SET-USER-PROFILE';
 let SET_USER_STATUS = 'profile/SET_USER_STATUS';
+let SAVE_PHOTO = 'profile/SAVE_PHOTO';
 
 // ACTION CREATOR
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const setUserStatus = (status) => ({type: SET_USER_STATUS, status})
+export const savePhotoSuccess = (photo) => ({type: SAVE_PHOTO, photo})
 
 // THUNK CREATOR
 export const getUserProfile = (userId) => async (dispatch) => {
@@ -28,6 +30,13 @@ export const updateUserStatus = (status) => async (dispatch) => {
         dispatch(setUserStatus(status))
     }
 }
+export const savePhoto = (file) => async (dispatch) => {
+    debugger
+    let response = await profileAPI.savePhoto(file)
+    if (response.data.resultCode === 0) {
+        dispatch(savePhotoSuccess(response.data.data.photos))
+    }
+}
 
 // REDUCER
 const messagesReducer = (state = initState, action) => {
@@ -36,6 +45,8 @@ const messagesReducer = (state = initState, action) => {
             return {...state, profile: action.profile}
         case SET_USER_STATUS:
             return {...state, status: action.status}
+        case SAVE_PHOTO:
+            return {...state, profile: {...state.profile, photos: action.photo}}
         default:
             return state
     }
