@@ -18,11 +18,11 @@
     border-bottom: 1px solid #f6f6f7;
 }
 
-.link {
+.nav button {
     display: inline-block;
     padding: 16.5px 30px;
     background: #f6f6f7;
-    border: 1px solid #edeff2;
+    border: 0;
 
     color: black;
 
@@ -33,10 +33,18 @@
     transition: background 0.3s linear;
 }
 
-.link:hover {
+.nav button:hover {
     background: white;
 }
 
+.nav button:focus {
+     outline: none;
+ }
+
+.selectedMode {
+    color: white!important;
+    background: #0d58c8!important;
+}
 
 
 
