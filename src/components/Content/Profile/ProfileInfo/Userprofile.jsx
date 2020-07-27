@@ -1,7 +1,7 @@
 import React from "react";
 import css from "./User.module.css"
 import UserStatus from "./UserStatus";
-import avatar from '../../../../../assets/img/avatar.png'
+import avatar from '../../../../assets/img/avatar.png'
 
 const Userprofile = React.memo((props) => {
     const onMainPhotoSelected = (e) => {
