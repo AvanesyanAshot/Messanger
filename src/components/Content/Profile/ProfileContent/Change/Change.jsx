@@ -14,7 +14,7 @@ let Change = ({handleSubmit, profile}) => {
             <div>
                 <b>Contacts</b>:{Object.keys(profile.contacts).map(key => {
                 return <div className={css.contact} key={key}>
-                    <b>{key}</b>: {createField(key, 'contact.'+ key, [], Input)}
+                    <b>{key}</b>: {createField(key, 'contacts.'+ key, [], Input)}
                 </div>
             })}
             </div>
