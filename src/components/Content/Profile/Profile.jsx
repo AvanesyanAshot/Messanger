@@ -5,8 +5,8 @@ import Preloader from "../../Common/Preloader/Preloader";
 import ProfileContent from "./ProfileContent/ProfileContent";
 
 let Profile = ({profile, status, updateUserStatus, isOwner, savePhoto, saveProfile}) => {
-    if (!profile){
-        return <Preloader />
+    if (!profile) {
+        return <Preloader/>
     }
 
     return (
