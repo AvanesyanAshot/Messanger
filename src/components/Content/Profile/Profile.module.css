@@ -18,7 +18,7 @@
     border-bottom: 1px solid #f6f6f7;
 }
 
-.nav button {
+button {
     display: inline-block;
     padding: 16.5px 30px;
     background: #f6f6f7;
@@ -46,6 +46,11 @@
     background: #0d58c8!important;
 }
 
+/*CHANGE*/
+
+.contact {
+    padding-left: 15px;
+}
 
 
 

@@ -6,11 +6,11 @@ import Followers from "./Followers/Followers";
 import Following from "./Following/Following";
 import Change from "./Change/Change";
 
-let ProfileContainer = ({isOwner}) => {
-    let [choiceMode, setChoiсeMode] = useState('Change')
+let ProfileContainer = ({profile, isOwner, saveProfile}) => {
+    let [choiceMode, setChoiсeMode] = useState('Projects')
 
     const onSubmit = (formData) => {
-        console.log(formData)
+        saveProfile(formData)
     }
 
     return (
@@ -27,7 +27,7 @@ let ProfileContainer = ({isOwner}) => {
                 {choiceMode === 'Collections' && <Collections />}
                 {choiceMode === 'Followers' && <Followers />}
                 {choiceMode === 'Following' && <Following />}
-                {choiceMode === 'Change' && <Change onSubmit = {onSubmit}/>}
+                {choiceMode === 'Change' && <Change initialValues={profile} profile={profile} onSubmit = {onSubmit}/>}
             </div>
         </div>
     )

@@ -4,15 +4,16 @@ import Userprofile from "./ProfileInfo/Userprofile";
 import Preloader from "../../Common/Preloader/Preloader";
 import ProfileContent from "./ProfileContent/ProfileContent";
 
-let Profile = ({profile, status, updateUserStatus, isOwner, savePhoto}) => {
+let Profile = ({profile, status, updateUserStatus, isOwner, savePhoto, saveProfile}) => {
     if (!profile){
         return <Preloader />
     }
 
     return (
         <div className={css.section}>
-            <Userprofile isOwner={isOwner} profile={profile} status={status} updateUserStatus={updateUserStatus} savePhoto={savePhoto}/>
-            <ProfileContent isOwner={isOwner}/>
+            <Userprofile isOwner={isOwner} profile={profile} status={status}
+                         updateUserStatus={updateUserStatus} savePhoto={savePhoto}/>
+            <ProfileContent profile={profile} isOwner={isOwner} saveProfile={saveProfile}/>
         </div>
     )
 
