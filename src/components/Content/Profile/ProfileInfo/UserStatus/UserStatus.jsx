@@ -4,7 +4,7 @@ const UserStatus = (props) => {
     let [editMode, setEditMode] = useState(false)
     let [status, setStatus] = useState(props.status)
 
-    useEffect(()=> {
+    useEffect(() => {
         setStatus(props.status)
     }, [props.status])
 
@@ -22,13 +22,13 @@ const UserStatus = (props) => {
     return (
         <div>
             {!editMode && <div>
-                <b>Status:  </b><span onDoubleClick={activateEditMode}>{props.status || 'Нет статуса'}</span>
+                <b>Status: </b><span onDoubleClick={activateEditMode}>{props.status || 'Нет статуса'}</span>
             </div>
             }
             {editMode &&
-                <div>
-                    <input onChange={onStatusChange} autoFocus={true} onBlur={deactivateEditMode} value={status}></input>
-                </div>
+            <div>
+                <input onChange={onStatusChange} autoFocus={true} onBlur={deactivateEditMode} value={status}></input>
+            </div>
             }
         </div>
     )

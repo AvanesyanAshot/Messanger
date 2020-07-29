@@ -1,7 +1,6 @@
-import React, {useState} from "react";
+import React from "react";
 import {reduxForm} from "redux-form";
 import {createField, Input, Textarea} from "../../../../Common/Forms/FormsControl";
-import {required} from "../../../../../utls/validators/validators";
 import css from '../../Profile.module.css'
 
 let Change = ({handleSubmit, profile}) => {
@@ -9,12 +8,13 @@ let Change = ({handleSubmit, profile}) => {
         <form onSubmit={handleSubmit}>
             <b>Full Name: </b>{createField('fullName', 'fullName', [], Input)}
             <b>Looking for a job:</b>{createField('', 'lookingForAJob', [], 'input', {type: 'checkbox'})}
-            <b>My professional skills:</b>{createField('My professional skills', 'lookingForAJobDescription', [], Textarea)}
+            <b>My professional
+                skills:</b>{createField('My professional skills', 'lookingForAJobDescription', [], Textarea)}
             <b>About Me: </b>{createField('aboutMe', 'aboutMe', [], Textarea)}
             <div>
                 <b>Contacts</b>:{Object.keys(profile.contacts).map(key => {
                 return <div className={css.contact} key={key}>
-                    <b>{key}</b>: {createField(key, 'contacts.'+ key, [], Input)}
+                    <b>{key}</b>: {createField(key, 'contacts.' + key, [], Input)}
                 </div>
             })}
             </div>
@@ -23,6 +23,4 @@ let Change = ({handleSubmit, profile}) => {
     )
 }
 
-let ChangeReduxForm = reduxForm({form: 'edit-profile'})(Change)
-
-export default ChangeReduxForm
+export default reduxForm({form: 'edit-profile'})(Change)

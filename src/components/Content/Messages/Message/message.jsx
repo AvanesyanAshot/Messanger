@@ -1,12 +1,8 @@
 import React from "react";
 import css from "../Messages.module.css"
 
-// TODO Фиксануть position сообщение (появлятся в header-e)
-
 const MessageBlock = React.memo((props) => {
-    console.log('render')
     return (
-
         <div onClick={() => alert(props.id)} className={css.messageItem}>
             <div className={css.photo}>
             </div>

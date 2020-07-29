@@ -4,26 +4,21 @@ import {follow, unfollow, setCurrentPage, toggleIsFollowingInProgress, setUsers}
 import Users from "./Users";
 import Preloader from "../../Common/Preloader/Preloader";
 import {compose} from "redux";
-import {
-    getCurrentPages,
-    getFollowingInProgress,
-    getIsFetching,
-    getPageSize,
-    getTotalUsersCount,getUsersSuper
-} from "../../../Redux/Selectors/usersSelectros";
-
-// TODO перекинуть этот блок в profile
+import {getCurrentPages, getFollowingInProgress, getIsFetching,
+    getPageSize, getTotalUsersCount, getUsersSuper} from "../../../Redux/Selectors/usersSelectros";
 
 class UserBlock extends React.Component {
     componentDidMount() {
         const {currentPages, pageSize} = this.props
         this.props.setUsers(currentPages, pageSize)
     }
+
     onPageChanged = (page) => {
         const {pageSize} = this.props
         this.props.setUsers(page, pageSize)
         this.props.setCurrentPage(page)
     }
+
     render() {
         return <>
             {this.props.isFetching ? <Preloader/> : null}

@@ -23,19 +23,20 @@ let ProfileContainer = ({profile, isOwner, saveProfile}) => {
                 {isOwner && <ControlBtn choiceMode={choiceMode} setChoiсeMode={setChoiсeMode} chosen={'Change'}/>}
             </div>
             <div className={css.content}>
-                {choiceMode === 'Projects' && <Projects />}
-                {choiceMode === 'Collections' && <Collections />}
-                {choiceMode === 'Followers' && <Followers />}
-                {choiceMode === 'Following' && <Following />}
-                {choiceMode === 'Change' && <Change initialValues={profile} profile={profile} onSubmit = {onSubmit}/>}
+                {choiceMode === 'Projects' && <Projects/>}
+                {choiceMode === 'Collections' && <Collections/>}
+                {choiceMode === 'Followers' && <Followers/>}
+                {choiceMode === 'Following' && <Following/>}
+                {choiceMode === 'Change' && <Change initialValues={profile} profile={profile} onSubmit={onSubmit}/>}
             </div>
         </div>
     )
 }
 
-let ControlBtn = ({choiceMode,setChoiсeMode, chosen}) => {
+let ControlBtn = ({choiceMode, setChoiсeMode, chosen}) => {
     return (
-        <button className={choiceMode === chosen && css.selectedMode} onClick={ () => setChoiсeMode(chosen)}>{chosen}</button>
+        <button className={choiceMode === chosen && css.selectedMode}
+                onClick={() => setChoiсeMode(chosen)}>{chosen}</button>
     )
 }
 

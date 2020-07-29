@@ -2,21 +2,8 @@ import React from "react";
 import css from "./Messages.module.css"
 import MessageBlock from "./Message/message";
 import Correspondence from "./Message/correspondence";
-import {Field, reduxForm} from "redux-form";
 import {Redirect} from "react-router-dom";
-
-
-const MessageForm = (props) => {
-    return (
-        <form onSubmit={props.handleSubmit} className={css.corManage}>
-            <Field name='message'
-                   component={'textarea'}
-                   placeholder='Написать сообщение...'></Field>
-            <button className={css.btn}>Отправить</button>
-        </form>
-    )
-}
-const MessageFormRedux = reduxForm({form: 'message'})(MessageForm)
+import MessageFormRedux from './MessageForm/MessageForm'
 
 const Messages = (props) => {
     // MAP jsx

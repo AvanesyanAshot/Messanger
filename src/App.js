@@ -1,4 +1,5 @@
 import React, {Suspense} from 'react';
+import normalize from 'normalize.css'
 import './App.css';
 import Footer from "./components/Footer/Footer";
 import {BrowserRouter, Route, withRouter} from 'react-router-dom'
