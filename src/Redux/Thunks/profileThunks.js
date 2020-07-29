@@ -1,21 +1,6 @@
-import {profileAPI, usersAPI} from "../DAL/api";
-// INIT
-let initState = {
-    profile: null,
-    status: ''
-}
+import {profileAPI, usersAPI} from "../../DAL/api";
+import {savePhotoSuccess, setUserProfile, setUserStatus} from "../Actions/profileActionCreators";
 
-// ACTION TYPE
-let SET_USER_PROFILE = 'profile/SET-USER-PROFILE';
-let SET_USER_STATUS = 'profile/SET_USER_STATUS';
-let SAVE_PHOTO = 'profile/SAVE_PHOTO';
-
-// ACTION CREATOR
-export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
-export const setUserStatus = (status) => ({type: SET_USER_STATUS, status})
-export const savePhotoSuccess = (photo) => ({type: SAVE_PHOTO, photo})
-
-// THUNK CREATOR
 export const getUserProfile = (userId) => async (dispatch) => {
     let response = await usersAPI.getProfile(userId)
     dispatch(setUserProfile(response.data))
@@ -44,19 +29,3 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
         dispatch(getUserProfile(userId))
     }
 }
-
-// REDUCER
-const messagesReducer = (state = initState, action) => {
-    switch (action.type) {
-        case SET_USER_PROFILE:
-            return {...state, profile: action.profile}
-        case SET_USER_STATUS:
-            return {...state, status: action.status}
-        case SAVE_PHOTO:
-            return {...state, profile: {...state.profile, photos: action.photo}}
-        default:
-            return state
-    }
-}
-
-export default messagesReducer

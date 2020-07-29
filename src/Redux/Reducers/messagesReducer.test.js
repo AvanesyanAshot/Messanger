@@ -1,4 +1,5 @@
-import messagesReducer, {addMessage} from './messagesReducer'
+import messagesReducer from './messagesReducer'
+import {addMessage} from '../Actions/messagesActionCreators'
 
 test('length of correspondence should be incremented', () => {
     // 1. test data

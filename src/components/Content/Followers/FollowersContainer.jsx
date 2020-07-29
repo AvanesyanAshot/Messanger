@@ -1,11 +1,12 @@
 import React from "react";
 import {connect} from "react-redux";
-import {follow, unfollow, setCurrentPage, toggleIsFollowingInProgress, setUsers} from "../../../Redux/usersReducer";
+import {follow, setUsers, unfollow} from "../../../Redux/Thunks/userThunks";
 import Users from "./Users";
 import Preloader from "../../Common/Preloader/Preloader";
 import {compose} from "redux";
 import {getCurrentPages, getFollowingInProgress, getIsFetching,
     getPageSize, getTotalUsersCount, getUsersSuper} from "../../../Redux/Selectors/usersSelectros";
+import {setCurrentPage, toggleIsFollowingInProgress} from "../../../Redux/Actions/userActionCreators";
 
 class UserBlock extends React.Component {
     componentDidMount() {

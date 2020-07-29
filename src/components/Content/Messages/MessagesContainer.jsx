@@ -1,4 +1,4 @@
-import {addMessage} from '../../../Redux/messagesReducer';
+import {addMessage} from '../../../Redux/Actions/messagesActionCreators';
 import Messages from "./Messages";
 import {connect} from "react-redux";
 import {withAuthRedirect} from "../Hoc/withAuthRedirect";

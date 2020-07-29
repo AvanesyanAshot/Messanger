@@ -1,18 +1,18 @@
-import React, {Suspense} from 'react';
-import normalize from 'normalize.css'
+import React from 'react';
 import './App.css';
+import 'normalize.css'
 import Footer from "./components/Footer/Footer";
 import {BrowserRouter, Route, withRouter} from 'react-router-dom'
 import Settings from "./components/Content/Settings/Settings";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {connect, Provider} from "react-redux";
 import {compose} from "redux";
-import {initializeApp} from "./Redux/AppReducer";
 import Preloader from "./components/Common/Preloader/Preloader";
 import store from "./Redux/redux-store";
 import ProfileContainer from "./components/Content/Profile/ProfileContainer";
 import FollowersContainer from "./components/Content/Followers/FollowersContainer";
 import {withSuspence} from "./components/Content/Hoc/withSuspence";
+import {initializeApp} from "./Redux/Thunks/appThunks";
 
 // Lazy loading
 const DiscoverContainer = React.lazy(() => import('./components/Content/Discover/DiscoverContainer'));

@@ -1,9 +1,9 @@
 import React from "react";
 import css from './Login.module.css'
 import {connect} from "react-redux";
-import {login} from "../../../Redux/authReducer";
 import {Redirect} from "react-router-dom";
 import LoginReduxForm from './LoginForm/LoginForm'
+import {login} from "../../../Redux/Thunks/authThunks";
 
 let LoginPage = (props) => {
     const onSubmit = (formData) => {

@@ -15,16 +15,10 @@ let initState = {
     ]
 }
 
-// ACTION TYPE
-let NEW_MESSAGE = 'messages/NEW-MESSAGE';
-
-// ACTION CREATOR
-export const addMessage = (message) => ({type: NEW_MESSAGE, message})
-
 // REDUCER
 const messagesReducer = (state = initState, action) => {
     switch (action.type) {
-        case NEW_MESSAGE:
+        case 'messages/NEW-MESSAGE':
             return {
                 ...state,
                 correspondence: [...state.correspondence, {id: 5, time: new Date(), message: action.message}],
