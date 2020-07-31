@@ -52,7 +52,7 @@ let AppComponent = compose(
     withRouter,
     connect(mapStateToProps, {initializeApp}))(App)
 
-let MainApp = (props) => {
+let MainApp = () => {
     return <BrowserRouter>
         <Provider store={store}>
             <AppComponent/>

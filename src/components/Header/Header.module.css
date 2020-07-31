@@ -32,12 +32,13 @@
 
 .link {
     display: inline-block;
-    /*border: 1px solid red;*/
     padding: 19px 25px;
+
     font-size: 16px;
     line-height: 20px;
     color: white;
     text-decoration: none;
+
     transition: color 0.2s linear, border 0.2s linear;
 }
 
@@ -47,10 +48,10 @@
 }
 
 .login {
-    padding: 12px 19px;
+    padding: 1.2em 1.5em;
     background: #0d58c8;
     border: 1px solid #0d58c8;
-    border-radius: 7px;
+    border-radius: .8em;
 
     line-height: 10px;
     font-size: 12px;
@@ -58,8 +59,6 @@
     text-align: center;
     color: white;
     text-decoration: none;
-
-    transition: background 0.2s linear;
 }
 
 .login:hover {
@@ -71,4 +70,15 @@
 }
 
 
+@media (max-width: 767px) {
+    .logo {
+        font-size: .95rem;
+    }
+    .link {
+        font-size: .9rem;
+    }
+    .login {
+        font-size: .7rem;
+    }
+}
 

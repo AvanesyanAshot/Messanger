@@ -1,14 +1,23 @@
 /* Спецификатия */
+html {
+    font-size: 15px;
+}
+
 body {
     margin: 0;
-    padding: 0;
     color: #333;
     background: #fff;
-    line-height: 1.47059;
-    font-weight: 400;
-    letter-spacing: -.022em;
-    font-size: 14px;
+    line-height: 1.5rem;
+    font-size: 1rem;
     font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+*, ::before, ::after {
+    box-sizing: border-box;
+}
+
+* {
+    transition: all .2s linear;
 }
 
 h1,
@@ -25,9 +34,22 @@ p {
     padding: 0;
 }
 
-*, ::before, ::after {
-    box-sizing: border-box;
-}
+/*.btn {*/
+/*    padding: 1.2em 1.5em;*/
+
+/*    background: #0d58c8;*/
+/*    border: 1px solid #0d58c8;*/
+/*    border-radius: .8em;*/
+
+/*    line-height: 10px;*/
+/*    font-size: 12px;*/
+/*    text-transform: uppercase ;*/
+/*    text-align: center;*/
+/*    color: white;*/
+/*    text-decoration: none;*/
+
+/*    transition: background 0.2s linear;*/
+/*}*/
 /* App */
 
 .app-wrapper {
