@@ -1,15 +1,15 @@
 import {authAPI, securityAPI} from "../../DAL/api";
-import {stopSubmit} from "redux-form";
 import {setAuthUserData, setCaptchaUrl} from "../Actions/authActionCreators";
+import { stopSubmit } from "redux-form";
 
-export const getAuthUserData = () => async (dispatch) => {
+export const getAuthUserData = () => async (dispatch: any) => {
     const response = await authAPI.me()
     if (response.data.resultCode === 0) {
         let {id, login, email} = response.data.data
         dispatch(setAuthUserData(id, login, email, true))
     }
 }
-export const login = (email, password, rememberMe, captcha = null) => async (dispatch) => {
+export const login = (email: string, password: string, rememberMe: boolean, captcha: string) => async (dispatch: any) => {
     const response = await authAPI.login(email, password, rememberMe, captcha)
     if (response.data.resultCode === 0) {
         dispatch(getAuthUserData())
@@ -24,13 +24,13 @@ export const login = (email, password, rememberMe, captcha = null) => async (dis
 
     }
 }
-export const logout = () => async (dispatch) => {
+export const logout = () => async (dispatch: any) => {
     const response = await authAPI.logout()
     if (response.data.resultCode === 0) {
-        dispatch(getAuthUserData(null, null, null, false))
+        dispatch(setAuthUserData(null, null, null, false))
     }
 }
-export const getCaptchaUrl = () => async (dispatch) => {
+export const getCaptchaUrl = () => async (dispatch: any) => {
     const response = await securityAPI.getCaptchaUrl()
     const captchaUrl = response.data.url
     dispatch(setCaptchaUrl(captchaUrl))
