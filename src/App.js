@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import 'normalize.css'
 import Footer from "./components/Footer/Footer";
-import {BrowserRouter, Route, withRouter} from 'react-router-dom'
+import {BrowserRouter, Redirect, Route, Switch, withRouter} from 'react-router-dom'
 import Settings from "./components/Content/Settings/Settings";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {connect, Provider} from "react-redux";
@@ -32,12 +32,16 @@ class App extends React.Component {
             <div className="app-wrapper">
                 <HeaderContainer/>
                 <div className='app-content'>
-                    <Route path='/Discover' render={withSuspence(DiscoverContainer)}/>
-                    <Route path='/Profile/:userId?' render={() => <ProfileContainer/>}/>
-                    <Route path='/Followers' render={() => <FollowersContainer/>}/>
-                    <Route path='/Messages' render={withSuspence(MessagesContainer)}/>
-                    <Route path='/login' render={withSuspence(Login)}/>
-                    <Route path='/Settings' render={() => <Settings/>}/>
+                    <Switch>
+                        <Route exact path='/' render={() => <Redirect to={'/Profile'}/>}/>
+                        <Route path='/Discover' render={withSuspence(DiscoverContainer)}/>
+                        <Route path='/Profile/:userId?' render={() => <ProfileContainer/>}/>
+                        <Route path='/Followers' render={() => <FollowersContainer/>}/>
+                        <Route path='/Messages' render={withSuspence(MessagesContainer)}/>
+                        <Route path='/login' render={withSuspence(Login)}/>
+                        <Route path='/Settings' render={() => <Settings/>}/>
+                        <Route path='*' render={() => <div>ERROR 404 NOT FOUND</div>}/>
+                    </Switch>
                 </div>
                 <Footer/>
             </div>

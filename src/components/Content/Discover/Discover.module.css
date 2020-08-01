@@ -26,3 +26,20 @@
     border-radius: 2px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
+
+.categoriesTitle {
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+
+
+@media (max-width: 769px) {
+    .content {
+        grid-template-columns: none;
+        grid-template-rows: 1fr 4fr;
+
+    }
+    .categoriesTitle {
+        font-size: 1rem;
+    }
+}

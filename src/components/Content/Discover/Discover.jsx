@@ -9,7 +9,7 @@ const Discover = (props) => {
     return (
         <div className={css.content}>
             <aside className={css.nav}>
-                <h3>Popular categories</h3>
+                <h3 className={css.categoriesTitle}>Popular categories</h3>
                 some categories
                 <hr/>
             </aside>
