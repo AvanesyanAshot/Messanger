@@ -1,25 +1,20 @@
-
 export const SET_AUTH_USER_DATA = 'app/SET_AUTH_USER_DATA'
 export const SET_CAPTCHA_URL = 'app/SET_CAPTCHA_URL'
 
-export type initStateType = {
-    id: number | null
-    login: string | null
-    email: string | null
-    isAuth: boolean
-    captchaUrl: string | null
-}
+
 //INIT
-let initState: initStateType = {
-    id: null,
-    login: null,
-    email: null,
+let initialState = {
+    id: null as number | null,
+    login: null as string | null,
+    email: null as string | null,
     isAuth: false,
-    captchaUrl: null
+    captchaUrl: null as string | null
 }
 
+export type InitialStateType = typeof initialState
+
 //REDUCER
-const authReducer = (state = initState, action: any):initStateType => {
+const authReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case SET_AUTH_USER_DATA:
         case SET_CAPTCHA_URL:

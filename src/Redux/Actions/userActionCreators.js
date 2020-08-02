@@ -1,7 +1,0 @@
-export const setUsersAC = (users) => ({type: 'users/SET_USERS', users})
-export const followSuccess = (userId) => ({type: 'users/FOLLOW', userId})
-export const unfollowSuccess = (userId) => ({type: 'users/UNFOLLOW', userId})
-export const setCurrentPage = (page) => ({type: 'users/SET-CURRENT-PAGE', page})
-export const setTotalUserCount = (num) => ({type: 'users/SET-TOTAL-USER-COUNT', num})
-export const toggleIsFetching = (isFetching) => ({type: 'users/TOGGLE-IS-FETCHING', isFetching})
-export const toggleIsFollowingInProgress = (isFetching, userId) => ({type: 'users/TOGGLE-IS-FOLLOWING-IN-PROGRESS', isFetching, userId})

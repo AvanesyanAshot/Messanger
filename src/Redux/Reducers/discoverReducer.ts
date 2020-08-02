@@ -1,4 +1,8 @@
 // INIT
+type discoverItemType = {
+    id: number
+    name: string
+}
 let initState = {
     discoverData: [
         {id: 1, name: 'Pasha'},
@@ -10,11 +14,11 @@ let initState = {
         {id: 7, name: 'Artem'},
         {id: 8, name: 'Vitalik'},
         {id: 9, name: 'Grey'}
-    ]
+    ] as Array<discoverItemType>
 }
 
 // REDUCER
-const discoverReducer = (state = initState, action) => {
+const discoverReducer = (state = initState, action: any) => {
     switch (action.type) {
         default:
             return state
