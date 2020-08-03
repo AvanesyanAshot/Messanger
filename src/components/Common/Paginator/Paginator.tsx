@@ -7,8 +7,9 @@ type PropsType = {
     pageSize: number
     onPageChanged: (pageNumber: number) => void
     currentPages: number
-    portionSize: number
+    portionSize?: number
 }
+
 let Users: FC<PropsType> = ({totalItemsCount, pageSize, onPageChanged, currentPages, portionSize = 10}) => {
     let pagesCount = Math.ceil(totalItemsCount / pageSize)
 
@@ -28,14 +29,13 @@ let Users: FC<PropsType> = ({totalItemsCount, pageSize, onPageChanged, currentPa
             setPortionNumber(portionNumber - 1)
         }}>Prev</button>
         }
-        {
-            pages
-                .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
-                .map(p => {
-                    return <span key={p} onClick={(e) => {
-                        onPageChanged(p)
-                    }} className={cn({[css.selectedPage]: currentPages === p})}>{p}</span>
-                })}
+        {pages
+            .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
+            .map(p => {
+                return <span key={p} onClick={() => {
+                    onPageChanged(p)
+                }} className={cn({[css.selectedPage]: currentPages === p})}>{p}</span>
+            })}
         {portionCount > portionNumber &&
         <button className={css.pagControl} onClick={() => {
             setPortionNumber(portionNumber + 1)

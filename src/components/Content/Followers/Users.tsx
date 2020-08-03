@@ -1,10 +1,24 @@
-import React from "react";
+import React, {FC} from "react";
 import css from './User.module.css'
 import avatar from '../../../assets/img/avatar.png'
 import {NavLink} from "react-router-dom";
 import Paginator from "../../Common/Paginator/Paginator";
+import {UsersType} from "../../../types/types";
 
-let Users = ({currentPages, selectedPage, onPageChanged, totalItemsCount, pageSize, ...props}) => {
+type PropsType = {
+    totalItemsCount: number
+    pageSize: number
+    onPageChanged: (pageNumber: number) => void
+    currentPages: number
+    portionSize?: number
+    users: Array<UsersType>
+    followingInProgress: Array<number>
+    unfollow: (userId: number) => void
+    follow: (userId: number) => void
+
+}
+
+let Users: FC<PropsType> = ({currentPages, onPageChanged, totalItemsCount, pageSize, ...props}) => {
     return <div className={css.wrapper}>
         <div className={css.users}>
             {
@@ -33,7 +47,7 @@ let Users = ({currentPages, selectedPage, onPageChanged, totalItemsCount, pageSi
             }
         </div>
         <div className={css.paginator}>
-            <Paginator currentPages={currentPages} selectedPage={selectedPage} onPageChanged={onPageChanged}
+            <Paginator currentPages={currentPages} onPageChanged={onPageChanged}
                        totalItemsCount={totalItemsCount} pageSize={pageSize}/>
         </div>
 

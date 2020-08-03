@@ -7,14 +7,30 @@ import {compose} from "redux";
 import {getCurrentPages, getFollowingInProgress, getIsFetching,
     getPageSize, getTotalUsersCount, getUsersSuper} from "../../../Redux/Selectors/usersSelectros";
 import {setCurrentPage, toggleIsFollowingInProgress} from "../../../Redux/Actions/userActionCreators";
+import {UsersType} from "../../../types/types";
+import {AppStateType} from "../../../Redux/redux-store";
 
-class UserBlock extends React.Component {
+type PropsType = {
+    currentPages: number
+    pageSize: number
+    isFetching: boolean
+    followingInProgress: Array<number>
+    totalItemsCount: number
+    page: number
+    users: Array<UsersType>
+    setUsers: (currentPages: number, pageSize: number) => void
+    setCurrentPage: (page: number) => void
+    unfollow: (userId: number) => void
+    follow: (userId: number) => void
+}
+
+class UserBlock extends React.Component<PropsType> {
     componentDidMount() {
         const {currentPages, pageSize} = this.props
         this.props.setUsers(currentPages, pageSize)
     }
 
-    onPageChanged = (page) => {
+    onPageChanged = (page: number) => {
         const {pageSize} = this.props
         this.props.setUsers(page, pageSize)
         this.props.setCurrentPage(page)
@@ -31,13 +47,12 @@ class UserBlock extends React.Component {
                    follow={this.props.follow}
                    unfollow={this.props.unfollow}
                    followingInProgress={this.props.followingInProgress}
-                   toggleIsFollowingInProgress={this.props.toggleIsFollowingInProgress}
             />
         </>
     }
 }
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: AppStateType) => {
     return {
         users: getUsersSuper(state),
         pageSize: getPageSize(state),
