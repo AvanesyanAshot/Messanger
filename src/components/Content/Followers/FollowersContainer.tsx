@@ -4,25 +4,38 @@ import {follow, setUsers, unfollow} from "../../../Redux/Thunks/userThunks";
 import Users from "./Users";
 import Preloader from "../../Common/Preloader/Preloader";
 import {compose} from "redux";
-import {getCurrentPages, getFollowingInProgress, ge tIsFetching,
-    getPageSize, getTotalUsersCount, getUsers} from "../../../Redux/Selectors/usersSelectros";
+import {
+    getCurrentPages,
+    getFollowingInProgress,
+    getIsFetching,
+    getPageSize,
+    getTotalUsersCount,
+    getUsers
+} from "../../../Redux/Selectors/usersSelectros";
 import {setCurrentPage, toggleIsFollowingInProgress} from "../../../Redux/Actions/userActionCreators";
 import {UsersType} from "../../../types/types";
 import {AppStateType} from "../../../Redux/redux-store";
 
-type PropsType = {
+type MapStateToProps = {
     currentPages: number
     pageSize: number
     isFetching: boolean
     followingInProgress: Array<number>
     totalItemsCount: number
-    page: number
     users: Array<UsersType>
+}
+
+
+type MapDispatchToProps = {
     setUsers: (currentPages: number, pageSize: number) => void
     setCurrentPage: (page: number) => void
     unfollow: (userId: number) => void
     follow: (userId: number) => void
 }
+
+type OwnPropsType = {}
+
+type PropsType = MapStateToProps & MapDispatchToProps & OwnPropsType
 
 class UserBlock extends React.Component<PropsType> {
     componentDidMount() {
@@ -52,7 +65,7 @@ class UserBlock extends React.Component<PropsType> {
     }
 }
 
-let mapStateToProps = (state: AppStateType) => {
+let mapStateToProps = (state: AppStateType): MapStateToProps => {
     return {
         users: getUsers(state),
         pageSize: getPageSize(state),
@@ -65,7 +78,14 @@ let mapStateToProps = (state: AppStateType) => {
 
 
 export default compose(
-    connect(mapStateToProps, {follow, unfollow, setCurrentPage, toggleIsFollowingInProgress, setUsers})
+    // @ts-ignore
+    connect<MapStateToProps, MapDispatchToProps, OwnPropsType, AppStateType>(mapStateToProps, {
+        follow,
+        unfollow,
+        setCurrentPage,
+        toggleIsFollowingInProgress,
+        setUsers
+    })
 )(UserBlock)
 
 
