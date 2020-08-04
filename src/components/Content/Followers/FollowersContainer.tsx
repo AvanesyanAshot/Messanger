@@ -4,8 +4,8 @@ import {follow, setUsers, unfollow} from "../../../Redux/Thunks/userThunks";
 import Users from "./Users";
 import Preloader from "../../Common/Preloader/Preloader";
 import {compose} from "redux";
-import {getCurrentPages, getFollowingInProgress, getIsFetching,
-    getPageSize, getTotalUsersCount, getUsersSuper} from "../../../Redux/Selectors/usersSelectros";
+import {getCurrentPages, getFollowingInProgress, ge tIsFetching,
+    getPageSize, getTotalUsersCount, getUsers} from "../../../Redux/Selectors/usersSelectros";
 import {setCurrentPage, toggleIsFollowingInProgress} from "../../../Redux/Actions/userActionCreators";
 import {UsersType} from "../../../types/types";
 import {AppStateType} from "../../../Redux/redux-store";
@@ -54,7 +54,7 @@ class UserBlock extends React.Component<PropsType> {
 
 let mapStateToProps = (state: AppStateType) => {
     return {
-        users: getUsersSuper(state),
+        users: getUsers(state),
         pageSize: getPageSize(state),
         totalItemsCount: getTotalUsersCount(state),
         currentPages: getCurrentPages(state),
