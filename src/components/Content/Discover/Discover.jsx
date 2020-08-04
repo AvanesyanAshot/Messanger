@@ -1,6 +1,8 @@
 import React from "react";
 import css from './Discover.module.css'
 import DiscoverItem from "./DiscoverItem/DiscoverItem";
+import {AppStateType} from "../../../Redux/redux-store";
+
 
 const Discover = (props) => {
     let newDiscoverData = props.store.discoverData.map(item => (
