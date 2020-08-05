@@ -1,3 +1,5 @@
+import {MessagesActionsType} from "../Actions/messagesActionCreators";
+
 export const NEW_MESSAGE = 'messages/NEW_MESSAGE'
 // INIT
 type messageType = {
@@ -30,7 +32,7 @@ let initialState = {
 
 type InitialStateType = typeof initialState
 // REDUCER
-const messagesReducer = (state = initialState, action: any): InitialStateType => {
+const messagesReducer = (state = initialState, action: MessagesActionsType): InitialStateType => {
     switch (action.type) {
         case NEW_MESSAGE:
             return {

@@ -1,9 +1,10 @@
+import {AppActionsType} from "../Actions/appActionCreators";
+
 //Type
 type InitStateType = {
     initialized: boolean
 
 }
-
 export const INITIALIZED_SUCCESS = 'app/INITIALIZED_SUCCESS'
 
 //INIT
@@ -12,7 +13,7 @@ let initState: InitStateType = {
 }
 
 //REDUCER
-const appReducer = (state = initState, action: any):InitStateType  => {
+const appReducer = (state = initState, action: AppActionsType):InitStateType  => {
     switch (action.type) {
         case INITIALIZED_SUCCESS:
             return {...state, initialized: true}

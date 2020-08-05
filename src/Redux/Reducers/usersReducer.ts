@@ -1,5 +1,6 @@
 import {updateObjectInArray} from "../../utls/objectHelper";
 import { UsersType } from "../../types/types";
+import { UserActionsType } from "../Actions/userActionCreators";
 
 export const FOLLOW = 'users/FOLLOW'
 export const UNFOLLOW = 'users/UNFOLLOW'
@@ -23,7 +24,7 @@ export type InitialStateType = typeof initialState
 
 
 // REDUCER
-const usersReducer = (state = initialState, action: any): InitialStateType => {
+const usersReducer = (state = initialState, action: UserActionsType): InitialStateType => {
     switch (action.type) {
         case FOLLOW:
             return {
