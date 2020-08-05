@@ -13,13 +13,13 @@ type SetUsersACType = {
 }
 export const setUsersAC = (users: Array<UsersType>): SetUsersACType => ({type: SET_USERS, users})
 
-type FollowSuccessActionType = {
+export type FollowSuccessActionType = {
     type: typeof FOLLOW
     userId: number
 }
 export const followSuccess = (userId: number): FollowSuccessActionType => ({type: FOLLOW, userId})
 
-type UnfollowSuccessActionType = {
+export type UnfollowSuccessActionType = {
     type: typeof UNFOLLOW
     userId: number
 }

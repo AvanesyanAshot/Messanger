@@ -7,7 +7,7 @@ import {UserActionsType} from "../Actions/userActionCreators";
 
 type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, AuthActionsType>
 
-export const getAuthUserData = (): ThunkType => async (dispatch: any) => {
+export const getAuthUserData = (): ThunkType => async (dispatch) => {
     const response = await authAPI.me()
     if (response.data.resultCode === 0) {
         let {id, login, email} = response.data.data
@@ -29,13 +29,13 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
 
     }
 }
-export const logout = (): ThunkType => async (dispatch: any) => {
+export const logout = (): ThunkType => async (dispatch) => {
     const response = await authAPI.logout()
     if (response.data.resultCode === 0) {
         dispatch(setAuthUserData(null, null, null, false))
     }
 }
-export const getCaptchaUrl = (): ThunkType => async (dispatch: any) => {
+export const getCaptchaUrl = (): ThunkType => async (dispatch) => {
     const response = await securityAPI.getCaptchaUrl()
     const captchaUrl = response.data.url
     dispatch(setCaptchaUrl(captchaUrl))

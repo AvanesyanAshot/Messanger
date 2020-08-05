@@ -6,7 +6,7 @@ import {UserActionsType} from "../Actions/userActionCreators";
 
 type ThunkType = ThunkAction<void, AppStateType, unknown, AppActionsType>
 
-export const initializeApp = (): ThunkType => (dispatch: any) => {
+export const initializeApp = (): ThunkType => (dispatch) => {
     let promise = dispatch(getAuthUserData())
     Promise.all([promise])
         .then(() => {
