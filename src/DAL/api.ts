@@ -1,5 +1,5 @@
 import axios from "axios";
-import {ProfileType} from "../types/types";
+import {ProfileType, UsersType} from "../types/types";
 
 const instance = axios.create({
     withCredentials: true,
@@ -8,20 +8,33 @@ const instance = axios.create({
         "API-KEY": "61a5ce91-0013-44e5-9ca4-7aef27d4ef3d"
     }
 })
+type DefaultResponseType = {
+    data: {}
+    resultCode: ResultCodeEnum
+    messages: Array<string>
+}
+
 
 // Enum
 export enum ResultCodeEnum {
     Success = 0,
-    Error = 1,
+    Error = 1
 }
+
 export enum ResultCodeWithCaptcha {
     Captcha = 10
 }
 
+
+type GetUsersType = {
+    items: Array<UsersType>,
+    totalCount: number,
+    error: string
+}
 export const usersAPI = {
     getUsers(currentPage = 1, pageSize = 9) {
-        return instance.get(`users?page=${currentPage}&count=${pageSize}`)
-            .then(responce => responce.data)
+        return instance.get<GetUsersType>(`users?page=${currentPage}&count=${pageSize}`)
+            .then(res => res.data)
     },
     follow(userId: number) {
         return instance.post(`follow/${userId}`, {})
@@ -35,23 +48,25 @@ export const usersAPI = {
         return profileAPI.getProfile(userId)
     }
 }
+
 export const profileAPI = {
     getProfile(userId: number | null) {
-        return instance.get(`profile/${userId}`)
+        return instance.get<ProfileType>(`profile/${userId}`).then(res => res.data)
     },
     getStatus(userId: number) {
-        return instance.get(`profile/status/${userId}`)
+        return instance.get(`profile/status/${userId}`).then(res => res.data)
     },
     updateStatus(status: string) {
-        return instance.put('profile/status', {status})
+        return instance.put<DefaultResponseType>('profile/status', {status}).then(res => res.data)
     },
+    //! Type this later
     savePhoto(photo: any) {
         const formData = new FormData()
         formData.append("image", photo)
         return instance.put('profile/photo', formData)
     },
     saveProfile(profile: ProfileType) {
-        return instance.put('profile', profile)
+        return instance.put<DefaultResponseType>('profile', profile).then(res => res.data)
     }
 
 }
@@ -72,11 +87,6 @@ type LoginType = {
     resultCode: ResultCodeEnum | ResultCodeWithCaptcha
     messages: Array<string>
 }
-type LogoutType = {
-    data: {}
-    resultCode: ResultCodeEnum
-    messages: Array<string>
-}
 export const authAPI = {
     me() {
         return instance.get<MeType>('auth/me').then(res => res.data)
@@ -85,7 +95,7 @@ export const authAPI = {
         return instance.post<LoginType>('auth/login', {email, password, rememberMe, captcha}).then(res => res.data)
     },
     logout() {
-        return instance.delete<LogoutType>('auth/login').then(res => res.data)
+        return instance.delete<DefaultResponseType>('auth/login').then(res => res.data)
     }
 }
 
