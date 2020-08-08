@@ -14,7 +14,7 @@ let LoginForm: FC<InjectedFormProps<LoginFormValuesType, LoginFormOwnPropsType> 
         <form onSubmit={handleSubmit} className={css.form}>
             {createField('login', 'email', [required], Input)}
             {createField('password', 'password', [required], Input, {type: 'password'})}
-            {createField(null, 'rememberMe', null, 'input', {type: 'checkbox'}, ' remember me')}
+            {createField(undefined, 'rememberMe', [], 'input', {type: 'checkbox'}, ' remember me')}
             {captchaUrl && <img src={captchaUrl}/>}
             {captchaUrl && createField('Symbols from image', 'captcha', [required], 'input', {})}
 
