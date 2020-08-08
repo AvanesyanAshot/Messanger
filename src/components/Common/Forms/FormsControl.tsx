@@ -19,29 +19,27 @@ const FormControl: FC<FormControlParamsType> = ({meta: {touched, error}, childre
 }
 
 export const Textarea: FC<WrappedFieldProps> = (props) => {
-    // const {input, meta, child, ...restProps} = props
     const {input, meta, ...restProps} = props
     return <FormControl {...props}><textarea {...input} {...restProps}/></FormControl>
 }
 
 export const Input: FC<WrappedFieldProps> = (props) => {
-    // const {input, meta, child, ...restProps} = props
     const {input, meta, ...restProps} = props
     return <FormControl {...props}><input className={css.input} {...input} {...restProps}/></FormControl>
 }
 
-export const createField = (placeholder: string | undefined,
-                            name: string,
+export function createField<N extends string>(placeholder: string | undefined,
+                            name: N,
                             validators: Array<FieldValidatorsType> | null,
                             component: FC<WrappedFieldProps> | string,
-                            props = {}, text = '') => (
-    <div className={css.inputBlock}>
+                            props = {}, text = ''){
+    return <div className={css.inputBlock}>
         <Field placeholder={placeholder} name={name}
                validate={validators}
                component={component}
                {...props}
         />{text}
     </div>
-)
+}
 
 

@@ -20,6 +20,9 @@ export type LoginFormValuesType = {
     rememberMe: boolean
     captcha: string
 }
+
+export type LoginFormValuesTypeKeys = Extract<keyof LoginFormValuesType, string>
+
 let LoginPage: FC<MapStateToPropsType & MapDispatchToPropsType> = (props) => {
     const onSubmit = (formData: LoginFormValuesType) => {
         props.login(formData.email, formData.password, formData.rememberMe, formData.captcha)
