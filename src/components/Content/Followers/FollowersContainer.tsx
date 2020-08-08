@@ -4,17 +4,13 @@ import {follow, setUsers, unfollow} from "../../../Redux/Thunks/userThunks";
 import Users from "./Users";
 import Preloader from "../../Common/Preloader/Preloader";
 import {compose} from "redux";
-import {
-    getCurrentPages,
-    getFollowingInProgress,
-    getIsFetching,
-    getPageSize,
-    getTotalUsersCount,
-    getUsers
-} from "../../../Redux/Selectors/usersSelectros";
-import {setCurrentPage, toggleIsFollowingInProgress} from "../../../Redux/Actions/userActionCreators";
+import {getCurrentPages, getFollowingInProgress, getIsFetching,
+    getPageSize, getTotalUsersCount, getUsers} from "../../../Redux/Selectors/usersSelectros";
+import {userActions} from "../../../Redux/Actions/userActionCreators";
 import {UsersType} from "../../../types/types";
 import {AppStateType} from "../../../Redux/redux-store";
+
+const {setCurrentPage, toggleIsFollowingInProgress} = userActions
 
 type MapStateToProps = {
     currentPages: number
