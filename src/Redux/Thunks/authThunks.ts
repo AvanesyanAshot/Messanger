@@ -1,8 +1,10 @@
-import {authAPI, ResultCodeEnum, ResultCodeWithCaptcha, securityAPI} from "../../DAL/api";
+import {ResultCodeEnum, ResultCodeWithCaptcha} from "../../DAL/api";
 import {AuthActionsType, setAuthUserData, setCaptchaUrl} from "../Actions/authActionCreators";
 import { stopSubmit } from "redux-form";
 import {ThunkAction} from "redux-thunk";
 import {AppStateType} from "../redux-store";
+import {authAPI} from "../../DAL/auth-api";
+import {securityAPI} from "../../DAL/security-api";
 
 type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, AuthActionsType>
 

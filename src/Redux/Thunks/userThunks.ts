@@ -1,8 +1,8 @@
-import {usersAPI} from "../../DAL/api";
 import {userActions, UserActionsType} from "../Actions/userActionCreators";
 import {ThunkAction} from "redux-thunk";
 import {AppStateType} from "../redux-store";
 import {Dispatch} from "redux";
+import {usersAPI} from "../../DAL/users-api";
 
 type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, UserActionsType>
 

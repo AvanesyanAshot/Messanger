@@ -15,7 +15,6 @@ type PropsType = {
     followingInProgress: Array<number>
     unfollow: (userId: number) => void
     follow: (userId: number) => void
-
 }
 
 let Users: FC<PropsType> = ({currentPages, onPageChanged, totalItemsCount, pageSize, ...props}) => {

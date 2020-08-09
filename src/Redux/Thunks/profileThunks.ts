@@ -1,14 +1,16 @@
-import {profileAPI, ResultCodeEnum, usersAPI} from "../../DAL/api";
+import {ResultCodeEnum} from "../../DAL/api";
 import {ProfileActionsType, savePhotoSuccess, setUserProfile, setUserStatus} from "../Actions/profileActionCreators";
 import {ProfileType} from "../../types/types";
 import {ThunkAction} from "redux-thunk";
 import {AppStateType} from "../redux-store";
 import {UserActionsType} from "../Actions/userActionCreators";
+import {usersAPI} from "../../DAL/users-api";
+import {profileAPI} from "../../DAL/profile-api";
 
 type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ProfileActionsType>
 
 export const getUserProfile = (userId: number | null): ThunkType => async (dispatch) => {
-    let data = await usersAPI.getProfile(userId)
+    let data = await profileAPI.getProfile(userId)
     dispatch(setUserProfile(data))
 }
 export const getUserStatus = (userId: number): ThunkType => async (dispatch) => {
@@ -22,9 +24,9 @@ export const updateUserStatus = (status: string): ThunkType => async (dispatch) 
     }
 }
 export const savePhoto = (file: any): ThunkType => async (dispatch) => {
-    let response = await profileAPI.savePhoto(file)
-    if (response.data.resultCode === 0) {
-        dispatch(savePhotoSuccess(response.data.data.photos))
+    let data = await profileAPI.savePhoto(file)
+    if (data.resultCode === 0) {
+        dispatch(savePhotoSuccess(data.data.photos))
     }
 }
 export const saveProfile = (profile: ProfileType): ThunkType => async (dispatch, getState) => {
