@@ -2,12 +2,12 @@ import {ResultCodeEnum} from "../../DAL/api";
 import {ProfileActionsType, savePhotoSuccess, setUserProfile, setUserStatus} from "../Actions/profileActionCreators";
 import {ProfileType} from "../../types/types";
 import {ThunkAction} from "redux-thunk";
-import {AppStateType} from "../redux-store";
+import {AppStateType, BaseThunkType} from "../redux-store";
 import {UserActionsType} from "../Actions/userActionCreators";
 import {usersAPI} from "../../DAL/users-api";
 import {profileAPI} from "../../DAL/profile-api";
 
-type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ProfileActionsType>
+type ThunkType = BaseThunkType<ProfileActionsType>
 
 export const getUserProfile = (userId: number | null): ThunkType => async (dispatch) => {
     let data = await profileAPI.getProfile(userId)

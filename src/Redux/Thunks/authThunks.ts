@@ -2,11 +2,11 @@ import {ResultCodeEnum, ResultCodeWithCaptcha} from "../../DAL/api";
 import {authActions, AuthActionsType} from "../Actions/authActionCreators";
 import {stopSubmit} from "redux-form";
 import {ThunkAction} from "redux-thunk";
-import {AppStateType} from "../redux-store";
+import {AppStateType, BaseThunkType} from "../redux-store";
 import {authAPI} from "../../DAL/auth-api";
 import {securityAPI} from "../../DAL/security-api";
 
-type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, AuthActionsType>
+type ThunkType = BaseThunkType<AuthActionsType>
 
 export const getAuthUserData = (): ThunkType => async (dispatch) => {
     const data = await authAPI.me()

@@ -1,9 +1,9 @@
 import {getAuthUserData} from "./authThunks";
 import {appActions, AppActionsType} from "../Actions/appActionCreators";
 import {ThunkAction} from "redux-thunk";
-import {AppStateType} from "../redux-store";
+import {AppStateType, BaseThunkType} from "../redux-store";
 
-type ThunkType = ThunkAction<void, AppStateType, unknown, AppActionsType>
+type ThunkType = BaseThunkType<AppActionsType, void>
 
 export const initializeApp = (): ThunkType => (dispatch) => {
     let promise = dispatch(getAuthUserData())

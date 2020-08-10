@@ -1,10 +1,10 @@
 import {userActions, UserActionsType} from "../Actions/userActionCreators";
 import {ThunkAction} from "redux-thunk";
-import {AppStateType} from "../redux-store";
+import {AppStateType, BaseThunkType} from "../redux-store";
 import {Dispatch} from "redux";
 import {usersAPI} from "../../DAL/users-api";
 
-type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, UserActionsType>
+type ThunkType = BaseThunkType<UserActionsType>
 
 export const setUsers = (currentPages: number, pageSize: number): ThunkType => async (dispatch) => {
     dispatch(userActions.toggleIsFetching(true))
