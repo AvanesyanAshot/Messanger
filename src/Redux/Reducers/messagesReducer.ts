@@ -1,20 +1,20 @@
 import {MessagesActionsType} from "../Actions/messagesActionCreators";
 
+// Type
 type messageType = {
     id: number
     name: string
     time: string
     message: string
 }
-
 type correspondenceType = {
     id: number
     time: string
     message: string
 }
+type InitialStateType = typeof initialState
 
 // INIT
-
 let initialState = {
     message: [
         {id: 1, name: 'Pasha', time: '10:45', message: 'Hello world'},
@@ -31,7 +31,6 @@ let initialState = {
     ] as Array<correspondenceType>
 }
 
-type InitialStateType = typeof initialState
 // REDUCER
 const messagesReducer = (state = initialState, action: MessagesActionsType): InitialStateType => {
     switch (action.type) {

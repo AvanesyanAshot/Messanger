@@ -1,22 +1,12 @@
-import {SAVE_PHOTO, SET_USER_PROFILE, SET_USER_STATUS} from "../Reducers/profileReducer"
 import {PhotosType, ProfileType} from "../../types/types"
+import {InferActionsType} from "../redux-store";
 
-export type ProfileActionsType = setUserProfileActionType | setUserStatusActionType | savePhotoSuccessActionType
+export type ProfileActionsType = InferActionsType<typeof profileActions>
 
-type setUserProfileActionType = {
-    type: typeof SET_USER_PROFILE
-    profile: ProfileType
+export const profileActions = {
+    setUserProfile: (profile: ProfileType) => ({type: 'profile/SET-USER-PROFILE', profile} as const),
+    setUserStatus: (status: string) => ({type: 'profile/SET_USER_STATUS', status} as const),
+    savePhotoSuccess: (photos: PhotosType) => ({type: 'profile/SAVE_PHOTO', photos} as const)
 }
-export const setUserProfile = (profile: ProfileType): setUserProfileActionType => ({type: SET_USER_PROFILE, profile})
 
-type setUserStatusActionType = {
-    type: typeof SET_USER_STATUS
-    status: string
-}
-export const setUserStatus = (status: string): setUserStatusActionType => ({type: SET_USER_STATUS, status})
 
-type savePhotoSuccessActionType = {
-    type: typeof SAVE_PHOTO
-    photos: PhotosType
-}
-export const savePhotoSuccess = (photos: PhotosType): savePhotoSuccessActionType => ({type: SAVE_PHOTO, photos})

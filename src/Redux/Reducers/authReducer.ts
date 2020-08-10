@@ -1,6 +1,9 @@
 import {AuthActionsType} from "../Actions/authActionCreators";
 
-//INIT
+// Type
+export type InitialStateType = typeof initialState
+
+// INIT
 let initialState = {
     id: null as number | null,
     login: null as string | null,
@@ -8,7 +11,6 @@ let initialState = {
     isAuth: false,
     captchaUrl: null as string | null
 }
-export type InitialStateType = typeof initialState
 
 const authReducer = (state = initialState, action: AuthActionsType): InitialStateType => {
     switch (action.type) {

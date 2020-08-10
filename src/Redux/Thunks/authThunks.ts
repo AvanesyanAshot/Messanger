@@ -1,12 +1,11 @@
 import {ResultCodeEnum, ResultCodeWithCaptcha} from "../../DAL/api";
 import {authActions, AuthActionsType} from "../Actions/authActionCreators";
 import {stopSubmit} from "redux-form";
-import {ThunkAction} from "redux-thunk";
-import {AppStateType, BaseThunkType} from "../redux-store";
+import {BaseThunkType} from "../redux-store";
 import {authAPI} from "../../DAL/auth-api";
 import {securityAPI} from "../../DAL/security-api";
 
-type ThunkType = BaseThunkType<AuthActionsType>
+type ThunkType = BaseThunkType<AuthActionsType | ReturnType<typeof stopSubmit>>
 
 export const getAuthUserData = (): ThunkType => async (dispatch) => {
     const data = await authAPI.me()
@@ -15,7 +14,7 @@ export const getAuthUserData = (): ThunkType => async (dispatch) => {
         dispatch(authActions.setAuthUserData(id, login, email, true))
     }
 }
-export const login = (email: string, password: string, rememberMe: boolean, captcha: string): ThunkType => async (dispatch: any) => {
+export const login = (email: string, password: string, rememberMe: boolean, captcha: string): ThunkType => async (dispatch) => {
     const data = await authAPI.login(email, password, rememberMe, captcha)
     if (data.resultCode === ResultCodeEnum.Success) {
         dispatch(getAuthUserData())

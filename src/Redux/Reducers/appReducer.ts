@@ -1,9 +1,9 @@
 import {AppActionsType} from "../Actions/appActionCreators";
 import {InferActionsType} from "../redux-store";
 
-
 //Type
 type InitStateType = typeof initState
+
 //INIT
 let initState = {
     initialized: false

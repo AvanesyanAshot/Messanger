@@ -1,6 +1,5 @@
 import {userActions, UserActionsType} from "../Actions/userActionCreators";
-import {ThunkAction} from "redux-thunk";
-import {AppStateType, BaseThunkType} from "../redux-store";
+import {BaseThunkType} from "../redux-store";
 import {Dispatch} from "redux";
 import {usersAPI} from "../../DAL/users-api";
 
@@ -29,8 +28,8 @@ const _followUnfollow = async (dispatch: Dispatch<UserActionsType>,
 }
 
 export const follow = (userId: number): ThunkType => async (dispatch) => {
-    _followUnfollow(dispatch, userId, usersAPI.follow.bind(usersAPI), userActions.followSuccess)
+    await _followUnfollow(dispatch, userId, usersAPI.follow.bind(usersAPI), userActions.followSuccess)
 }
 export const unfollow = (userId: number): ThunkType => async (dispatch) => {
-    _followUnfollow(dispatch, userId, usersAPI.unfollow.bind(usersAPI), userActions.unfollowSuccess)
+    await _followUnfollow(dispatch, userId, usersAPI.unfollow.bind(usersAPI), userActions.unfollowSuccess)
 }

@@ -3,7 +3,7 @@ type discoverItemType = {
     id: number
     name: string
 }
-let initState = {
+let initialState = {
     discoverData: [
         {id: 1, name: 'Pasha'},
         {id: 2, name: 'Kolya'},
@@ -16,9 +16,10 @@ let initState = {
         {id: 9, name: 'Grey'}
     ] as Array<discoverItemType>
 }
+export type InitialStateType = typeof initialState
 
 // REDUCER
-const discoverReducer = (state = initState, action: any) => {
+const discoverReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         default:
             return state
