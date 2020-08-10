@@ -1,8 +1,5 @@
 import {AuthActionsType} from "../Actions/authActionCreators";
 
-export const SET_AUTH_USER_DATA = 'app/SET_AUTH_USER_DATA'
-export const SET_CAPTCHA_URL = 'app/SET_CAPTCHA_URL'
-
 //INIT
 let initialState = {
     id: null as number | null,
@@ -13,11 +10,10 @@ let initialState = {
 }
 export type InitialStateType = typeof initialState
 
-//REDUCER
 const authReducer = (state = initialState, action: AuthActionsType): InitialStateType => {
     switch (action.type) {
-        case SET_AUTH_USER_DATA:
-        case SET_CAPTCHA_URL:
+        case "app/SET_AUTH_USER_DATA":
+        case "app/SET_CAPTCHA_URL":
             return {...state, ...action.payload}
         default:
             return state

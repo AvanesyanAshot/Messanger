@@ -1,7 +1,7 @@
 import {UsersType} from "../../types/types"
-import {ActionsType} from "../redux-store";
+import {InferActionsType} from "../redux-store";
 
-export type UserActionsType = ActionsType<typeof userActions>
+export type UserActionsType = InferActionsType<typeof userActions>
 
 export const userActions = {
     setUsersAC: (users: Array<UsersType>) => ({type: 'users/SET_USERS', users} as const),

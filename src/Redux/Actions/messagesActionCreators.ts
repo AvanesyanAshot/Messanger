@@ -1,9 +1,7 @@
-import { NEW_MESSAGE } from "../Reducers/messagesReducer";
+import {InferActionsType} from "../redux-store";
 
-export type MessagesActionsType = AddMessageType
+export type MessagesActionsType = InferActionsType<typeof messagesActions>
 
-type AddMessageType = {
-    type: typeof NEW_MESSAGE
-    message: string
+export const messagesActions = {
+    addMessage:(message: string) => ({type: 'messages/NEW_MESSAGE', message} as const)
 }
-export const addMessage = (message: string): AddMessageType => ({type: NEW_MESSAGE, message})

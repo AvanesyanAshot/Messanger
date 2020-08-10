@@ -1,9 +1,8 @@
-import {INITIALIZED_SUCCESS} from "../Reducers/appReducer";
+import {InferActionsType} from "../redux-store";
 
-export type AppActionsType = initializedSuccessActionType
+export type AppActionsType = InferActionsType<typeof appActions>
 
-type initializedSuccessActionType = {
-    type: typeof INITIALIZED_SUCCESS
+export const appActions = {
+    initializedSuccess: () => ({type: 'app/INITIALIZED_SUCCESS'} as const)
 }
-export const initializedSuccess = (): initializedSuccessActionType => ({type: INITIALIZED_SUCCESS})
 

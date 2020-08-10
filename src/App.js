@@ -11,7 +11,7 @@ import Preloader from "./components/Common/Preloader/Preloader";
 import store from "./Redux/redux-store";
 import ProfileContainer from "./components/Content/Profile/ProfileContainer";
 import FollowersContainer from "./components/Content/Followers/FollowersContainer";
-import {withSuspence} from "./components/Content/Hoc/withSuspence";
+import {withSuspense} from "./components/Content/Hoc/withSuspense";
 import {initializeApp} from "./Redux/Thunks/appThunks";
 
 // Lazy loading
@@ -34,11 +34,11 @@ class App extends React.Component {
                 <div className='app-content'>
                     <Switch>
                         <Route exact path='/' render={() => <Redirect to={'/Profile'}/>}/>
-                        <Route path='/Discover' render={withSuspence(DiscoverContainer)}/>
+                        <Route path='/Discover' render={withSuspense(DiscoverContainer)}/>
                         <Route path='/Profile/:userId?' render={() => <ProfileContainer/>}/>
                         <Route path='/Followers' render={() => <FollowersContainer/>}/>
-                        <Route path='/Messages' render={withSuspence(MessagesContainer)}/>
-                        <Route path='/login' render={withSuspence(Login)}/>
+                        <Route path='/Messages' render={withSuspense(MessagesContainer)}/>
+                        <Route path='/login' render={withSuspense(Login)}/>
                         <Route path='/Settings' render={() => <Settings/>}/>
                         <Route path='*' render={() => <div>ERROR 404 NOT FOUND</div>}/>
                     </Switch>

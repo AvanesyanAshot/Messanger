@@ -1,6 +1,6 @@
 import {ResultCodeEnum, ResultCodeWithCaptcha} from "../../DAL/api";
-import {AuthActionsType, setAuthUserData, setCaptchaUrl} from "../Actions/authActionCreators";
-import { stopSubmit } from "redux-form";
+import {authActions, AuthActionsType} from "../Actions/authActionCreators";
+import {stopSubmit} from "redux-form";
 import {ThunkAction} from "redux-thunk";
 import {AppStateType} from "../redux-store";
 import {authAPI} from "../../DAL/auth-api";
@@ -12,7 +12,7 @@ export const getAuthUserData = (): ThunkType => async (dispatch) => {
     const data = await authAPI.me()
     if (data.resultCode === ResultCodeEnum.Success) {
         let {id, login, email} = data.data
-        dispatch(setAuthUserData(id, login, email, true))
+        dispatch(authActions.setAuthUserData(id, login, email, true))
     }
 }
 export const login = (email: string, password: string, rememberMe: boolean, captcha: string): ThunkType => async (dispatch: any) => {
@@ -33,11 +33,11 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
 export const logout = (): ThunkType => async (dispatch) => {
     const data = await authAPI.logout()
     if (data.resultCode === ResultCodeEnum.Success) {
-        dispatch(setAuthUserData(null, null, null, false))
+        dispatch(authActions.setAuthUserData(null, null, null, false))
     }
 }
 export const getCaptchaUrl = (): ThunkType => async (dispatch) => {
     const data = await securityAPI.getCaptchaUrl()
     const captchaUrl = data.url
-    dispatch(setCaptchaUrl(captchaUrl))
+    dispatch(authActions.setCaptchaUrl(captchaUrl))
 }
