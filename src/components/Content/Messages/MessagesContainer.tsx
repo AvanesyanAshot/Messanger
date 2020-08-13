@@ -5,6 +5,7 @@ import {withAuthRedirect} from "../Hoc/withAuthRedirect";
 import {compose} from "redux";
 import {getMessages} from "../../../Redux/Selectors/messagesSelectors";
 import {AppStateType} from "../../../Redux/redux-store";
+import React from "react";
 
 let mapStateToProps = (state: AppStateType) => {
     return {
@@ -15,4 +16,4 @@ let mapStateToProps = (state: AppStateType) => {
 export default compose(
     connect(mapStateToProps, {addMessage: messagesActions.addMessage}),
     withAuthRedirect
-)(Messages)
+)(Messages) as React.ComponentType

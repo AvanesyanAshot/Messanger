@@ -31,9 +31,8 @@ type MapDispatchToProps = {
 
 type OwnPropsType = {}
 
-type PropsType = MapStateToProps & MapDispatchToProps & OwnPropsType
 
-class UserBlock extends React.Component<PropsType> {
+class UserBlock extends React.Component<MapStateToProps & MapDispatchToProps & OwnPropsType> {
     componentDidMount() {
         const {currentPages, pageSize} = this.props
         this.props.setUsers(currentPages, pageSize)
@@ -74,8 +73,7 @@ let mapStateToProps = (state: AppStateType): MapStateToProps => {
 
 
 export default compose(
-    // @ts-ignore
-    connect<MapStateToProps, MapDispatchToProps, OwnPropsType, AppStateType>(mapStateToProps, {
+    connect(mapStateToProps, {
         follow,
         unfollow,
         setCurrentPage,

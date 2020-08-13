@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component, ComponentType, FC} from 'react';
 import './App.css';
 import 'normalize.css'
 import Footer from "./components/Footer/Footer";
@@ -8,7 +8,7 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 import {connect, Provider} from "react-redux";
 import {compose} from "redux";
 import Preloader from "./components/Common/Preloader/Preloader";
-import store from "./Redux/redux-store";
+import store, {AppStateType} from "./Redux/redux-store";
 import ProfileContainer from "./components/Content/Profile/ProfileContainer";
 import FollowersContainer from "./components/Content/Followers/FollowersContainer";
 import {withSuspense} from "./components/Content/Hoc/withSuspense";
@@ -19,7 +19,12 @@ const DiscoverContainer = React.lazy(() => import('./components/Content/Discover
 const MessagesContainer = React.lazy(() => import('./components/Content/Messages/MessagesContainer'));
 const Login = React.lazy(() => import('./components/Content/Login/Login'));
 
-class App extends React.Component {
+type MapPropsType = ReturnType<typeof mapStateToProps>
+type DispatchPropsType = {
+    initializeApp:() =>void
+}
+
+class App extends Component<MapPropsType & DispatchPropsType>{
     componentDidMount() {
         this.props.initializeApp()
     }
@@ -49,14 +54,14 @@ class App extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: AppStateType) => ({
     initialized: state.app.initialized
 })
-let AppComponent = compose(
+let AppComponent = compose<ComponentType>(
     withRouter,
     connect(mapStateToProps, {initializeApp}))(App)
 
-let MainApp = () => {
+let MainApp: FC = () => {
     return <BrowserRouter>
         <Provider store={store}>
             <AppComponent/>
