@@ -20,8 +20,7 @@ const _followUnfollow = async (dispatch: Dispatch<UserActionsType>,
                                actionCreator: (userId: number) => UserActionsType) => {
     dispatch(userActions.toggleIsFollowingInProgress(true, userId))
     let response = await apiMethod(userId)
-
-    if (response.data.resultCode === 0) {
+    if (response.resultCode === 0) {
         dispatch(actionCreator(userId))
     }
     dispatch(userActions.toggleIsFollowingInProgress(false, userId))

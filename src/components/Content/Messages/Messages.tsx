@@ -1,25 +1,37 @@
-import React from "react";
+import React, {FC} from "react";
 import css from "./Messages.module.css"
 import MessageBlock from "./Message/message";
 import Correspondence from "./Message/correspondence";
-import {Redirect} from "react-router-dom";
 import MessageFormRedux from './MessageForm/MessageForm'
+import {InitialStateType} from "../../../Redux/Reducers/messagesReducer";
 
-const Messages = (props) => {
-    // MAP jsx
-    let newMessages = props.state.message.map(m => (
-        <MessageBlock id={m.id} key={m.id} name={m.name} time={m.time} message={m.message}/>)
-    )
+type PropsType = {
+    state: InitialStateType
+    addMessage: (messageText: string) => void
+}
+
+export type MessageFromValuesType = {
+    message: string
+}
+
+const Messages: FC<PropsType> = (props) => {
+
+    let newMessages = props.state.message.map(d => (
+        // ПОФИКСИТЬ
+        // @ts-ignore
+        <MessageBlock id ={d.id} key={d.id} name={d.name} time={d.time} message={d.message}/>
+    ))
+
 
     let newCorrespondence = props.state.correspondence.map(m => (
         <Correspondence key={m.id} message={m.message}/>
     ))
-    //Functions
-    let addMessage = (value) => {
+
+
+    let addMessage = (value: MessageFromValuesType) => {
         props.addMessage(value.message)
     }
 
-    if (!props.isAuth) return <Redirect to={'/login'}/>
     return (
         <div className={css.section}>
             <div className={css.messageList}>

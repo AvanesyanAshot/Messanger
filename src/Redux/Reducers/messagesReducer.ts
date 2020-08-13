@@ -12,7 +12,6 @@ type correspondenceType = {
     time: string
     message: string
 }
-type InitialStateType = typeof initialState
 
 // INIT
 let initialState = {
@@ -49,3 +48,5 @@ const messagesReducer = (state = initialState, action: MessagesActionsType): Ini
 }
 
 export default messagesReducer
+
+export type InitialStateType = typeof initialState

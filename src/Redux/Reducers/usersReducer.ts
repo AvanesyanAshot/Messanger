@@ -14,11 +14,11 @@ let initialState = {
 
 export type InitialStateType = typeof initialState
 
-
 // REDUCER
 const usersReducer = (state = initialState, action: UserActionsType): InitialStateType => {
     switch (action.type) {
         case "users/FOLLOW":
+            debugger
             return {
                 ...state,
                 users: updateObjectInArray(state.users, action.userId, 'id', {followed: true})
