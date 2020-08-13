@@ -24,6 +24,10 @@ type DispatchPropsType = {
     initializeApp:() =>void
 }
 
+const SuspendedMessages = withSuspense(MessagesContainer)
+const SuspendedDiscover = withSuspense(DiscoverContainer)
+const SuspendedLogin = withSuspense(Login)
+
 class App extends Component<MapPropsType & DispatchPropsType>{
     componentDidMount() {
         this.props.initializeApp()
@@ -39,11 +43,11 @@ class App extends Component<MapPropsType & DispatchPropsType>{
                 <div className='app-content'>
                     <Switch>
                         <Route exact path='/' render={() => <Redirect to={'/Profile'}/>}/>
-                        <Route path='/Discover' render={withSuspense(DiscoverContainer)}/>
+                        <Route path='/Discover' render={() => <SuspendedDiscover />}/>
                         <Route path='/Profile/:userId?' render={() => <ProfileContainer/>}/>
                         <Route path='/Followers' render={() => <FollowersContainer/>}/>
-                        <Route path='/Messages' render={withSuspense(MessagesContainer)}/>
-                        <Route path='/login' render={withSuspense(Login)}/>
+                        <Route path='/Messages' render={() => <SuspendedMessages />}/>
+                        <Route path='/login' render={() => <SuspendedLogin />}/>
                         <Route path='/Settings' render={() => <Settings/>}/>
                         <Route path='*' render={() => <div>ERROR 404 NOT FOUND</div>}/>
                     </Switch>
