@@ -1,6 +1,6 @@
 import React from "react";
 
-let Projects = (props) => {
+let Projects = () => {
     return (
         <div>
             some Projects

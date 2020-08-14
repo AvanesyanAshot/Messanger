@@ -1,6 +1,6 @@
 import React from "react";
 
-let Collections = (props) => {
+let Collections = () => {
     return (
         <div>
             some Collections

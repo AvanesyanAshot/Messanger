@@ -1,9 +1,17 @@
 import React from "react";
-import {reduxForm} from "redux-form";
+import {InjectedFormProps, reduxForm} from "redux-form";
 import {createField, Input, Textarea} from "../../../../Common/Forms/FormsControl";
 import css from '../../Profile.module.css'
+import {ProfileType} from "../../../../../types/types";
 
-let Change = ({handleSubmit, profile}) => {
+
+type ProfileFromOwnPropsType = {
+    profile: ProfileType
+}
+type ProfileFormValuesType = ProfileType
+
+
+let Change: React.FC<InjectedFormProps<ProfileFormValuesType, ProfileFromOwnPropsType> & ProfileFromOwnPropsType> = ({handleSubmit, profile}) => {
     return (
         <form onSubmit={handleSubmit}>
             <b>Full Name: </b>{createField('fullName', 'fullName', [], Input)}
@@ -23,4 +31,4 @@ let Change = ({handleSubmit, profile}) => {
     )
 }
 
-export default reduxForm({form: 'edit-profile'})(Change)
+export default reduxForm<ProfileFormValuesType, ProfileFromOwnPropsType>({form: 'edit-profile'})(Change)

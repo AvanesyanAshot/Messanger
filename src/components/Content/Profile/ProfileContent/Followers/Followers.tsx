@@ -1,12 +1,12 @@
 import React from "react";
 
-let Following = (props) => {
+let Followers = () => {
     return (
         <div>
-            some Following
+            some Followers
         </div>
     )
 
 }
 
-export default Following
+export default Followers
