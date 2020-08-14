@@ -3,8 +3,17 @@ import css from "./Profile.module.css"
 import Userprofile from "./ProfileInfo/Userprofile";
 import Preloader from "../../Common/Preloader/Preloader";
 import ProfileContent from "./ProfileContent/ProfileContent";
+import {ProfileType} from "../../../types/types";
 
-let Profile = ({profile, status, updateUserStatus, isOwner, savePhoto, saveProfile}) => {
+type PropsType = {
+    profile: ProfileType
+    status: string
+    updateUserStatus: (status: string) => void
+    isOwner: boolean
+    savePhoto: (file:File) => void
+    saveProfile: (profile: ProfileType) => void
+}
+let Profile: React.FC<PropsType> = ({profile, status, updateUserStatus, isOwner, savePhoto, saveProfile}) => {
     if (!profile) {
         return <Preloader/>
     }

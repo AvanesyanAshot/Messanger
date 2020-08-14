@@ -1,12 +1,22 @@
-import React from "react";
+import React, {ChangeEvent, FC} from "react";
 import css from "./User.module.css"
 import UserStatus from "./UserStatus/UserStatus";
 import avatar from '../../../../assets/img/avatar.png'
 import ProfileData from "./ProfileData/ProfileData";
+import {ProfileType} from "../../../../types/types";
 
-const Userprofile = React.memo((props) => {
-    const onMainPhotoSelected = (e) => {
-        if (e.target.files.length) {
+type PropsType = {
+    profile: ProfileType
+    isOwner: boolean
+    status: string
+    savePhoto: (file:File) => void
+    updateUserStatus: (status: string) => void
+
+}
+
+const UserProfile: FC<PropsType> = (props) => {
+    const onMainPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files?.length) {
             props.savePhoto(e.target.files[0])
         }
     }
@@ -32,6 +42,7 @@ const Userprofile = React.memo((props) => {
         </div>
 
     )
-})
+}
+const UserProfileMemorized = React.memo(UserProfile)
 
-export default Userprofile
+export default UserProfileMemorized
