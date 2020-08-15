@@ -3,7 +3,16 @@ import '../../App.css'
 import css from './Header.module.css'
 import {NavLink} from "react-router-dom";
 
-let Header = (props) => {
+export type MapPropsType = {
+    isAuth: boolean
+    login: string | null
+}
+export type DispatchPropsType = {
+    logout: () => void
+
+}
+
+let Header: React.FC<MapPropsType & DispatchPropsType> = (props) => {
     return (
         <header className={css.header}>
             <div className={css.logo}>

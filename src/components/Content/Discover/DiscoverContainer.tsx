@@ -1,7 +1,12 @@
 import {connect} from "react-redux";
-import Discover from "./Discover.jsx";
+import Discover from "./Discover";
 import {compose} from "redux";
 import {AppStateType} from "../../../Redux/redux-store";
+import {InitialStateType} from "../../../Redux/Reducers/discoverReducer";
+
+type MapPropsType = {
+    store: InitialStateType
+}
 
 let mapStateToProps = (store: AppStateType) => {
     return {
@@ -10,5 +15,5 @@ let mapStateToProps = (store: AppStateType) => {
 }
 
 export default compose(
-    connect(mapStateToProps, {})
+    connect<MapPropsType, {}, {}, AppStateType>(mapStateToProps, {})
 )(Discover)

@@ -1,6 +1,9 @@
 import React from "react";
 
-const сorrespondence = (props) => {
+type PropsType = {
+    message: string
+}
+const сorrespondence: React.FC<PropsType> = (props) => {
     return (
         <div>
             <p>{props.message}</p>
