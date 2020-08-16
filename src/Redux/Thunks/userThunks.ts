@@ -2,6 +2,7 @@ import {userActions, UserActionsType} from '../Actions/userActionCreators';
 import {BaseThunkType} from '../redux-store';
 import {Dispatch} from 'redux';
 import {usersAPI} from '../../DAL/users-api';
+import {DefaultResponseType} from '../../DAL/api';
 
 type ThunkType = BaseThunkType<UserActionsType>
 
@@ -15,7 +16,7 @@ export const setUsers = (currentPages: number, pageSize: number): ThunkType => a
 }
 const _followUnfollow = async (dispatch: Dispatch<UserActionsType>,
                                userId: number,
-                               apiMethod: any,
+                               apiMethod: (userId: number) => Promise<DefaultResponseType>,
                                actionCreator: (userId: number) => UserActionsType) => {
     dispatch(userActions.toggleIsFollowingInProgress(true, userId))
     let response = await apiMethod(userId)
