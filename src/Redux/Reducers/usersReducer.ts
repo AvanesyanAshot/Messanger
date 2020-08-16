@@ -1,6 +1,6 @@
-import {updateObjectInArray} from "../../utls/objectHelper";
-import {UsersType} from "../../types/types";
-import {UserActionsType} from "../Actions/userActionCreators";
+import {updateObjectInArray} from '../../utls/objectHelper';
+import {UsersType} from '../../types/types';
+import {UserActionsType} from '../Actions/userActionCreators';
 
 // INIT
 let initialState = {
@@ -17,34 +17,34 @@ export type InitialStateType = typeof initialState
 // REDUCER
 const usersReducer = (state = initialState, action: UserActionsType): InitialStateType => {
     switch (action.type) {
-        case "users/FOLLOW":
+        case 'users/FOLLOW':
             debugger
             return {
                 ...state,
                 users: updateObjectInArray(state.users, action.userId, 'id', {followed: true})
             }
-        case "users/UNFOLLOW":
+        case 'users/UNFOLLOW':
             return {
                 ...state,
                 users: updateObjectInArray(state.users, action.userId, 'id', {followed: false})
             }
-        case "users/SET_USERS":
+        case 'users/SET_USERS':
             return {
                 ...state, users: [...action.users]
             }
-        case "users/SET_CURRENT_PAGE":
+        case 'users/SET_CURRENT_PAGE':
             return {
                 ...state, currentPages: action.page
             }
-        case "users/SET_TOTAL_USER_COUNT":
+        case 'users/SET_TOTAL_USER_COUNT':
             return {
                 ...state, totalUsersCount: action.num
             }
-        case "users/TOGGLE_IS_FETCHING":
+        case 'users/TOGGLE_IS_FETCHING':
             return {
                 ...state, isFetching: action.isFetching
             }
-        case "users/TOGGLE_IS_FOLLOWING_IN_PROGRESS":
+        case 'users/TOGGLE_IS_FOLLOWING_IN_PROGRESS':
             return {
                 ...state,
                 followingInProgress: action.isFetching

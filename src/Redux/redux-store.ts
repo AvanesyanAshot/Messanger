@@ -1,11 +1,11 @@
-import {Action, applyMiddleware, combineReducers, compose, createStore} from "redux";
+import {Action, applyMiddleware, combineReducers, compose, createStore} from 'redux';
 import thunkMiddleware, {ThunkAction} from 'redux-thunk'
-import discoverReducer from "./Reducers/discoverReducer";
-import messagesReducer from "./Reducers/messagesReducer";
-import usersReducer from "./Reducers/usersReducer";
-import profileReducer from "./Reducers/profileReducer";
-import authReducer from "./Reducers/authReducer";
-import appReducer from "./Reducers/appReducer";
+import discoverReducer from './Reducers/discoverReducer';
+import messagesReducer from './Reducers/messagesReducer';
+import usersReducer from './Reducers/usersReducer';
+import profileReducer from './Reducers/profileReducer';
+import authReducer from './Reducers/authReducer';
+import appReducer from './Reducers/appReducer';
 import {reducer as formReducer} from 'redux-form'
 
 let rootReducer = combineReducers({
@@ -21,7 +21,7 @@ let rootReducer = combineReducers({
 type RootReducerType = typeof rootReducer
 export type AppStateType = ReturnType<RootReducerType>
 
-export type InferActionsType<T> = T extends {[key: string]: (...args: any[]) => infer U} ? U : never
+export type InferActionsType<T> = T extends { [key: string]: (...args: any[]) => infer U } ? U : never
 
 export type BaseThunkType<A extends Action, R = Promise<void>> = ThunkAction<R, AppStateType, unknown, A>
 

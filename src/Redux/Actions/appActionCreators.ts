@@ -1,4 +1,4 @@
-import {InferActionsType} from "../redux-store";
+import {InferActionsType} from '../redux-store';
 
 export type AppActionsType = InferActionsType<typeof appActions>
 

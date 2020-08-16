@@ -1,10 +1,10 @@
-import React, {FC} from "react";
+import React, {FC} from 'react';
 import css from './Login.module.css'
-import {connect} from "react-redux";
-import {Redirect} from "react-router-dom";
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 import LoginReduxForm from './LoginForm/LoginForm'
-import {login} from "../../../Redux/Thunks/authThunks";
-import {AppStateType} from "../../../Redux/redux-store";
+import {login} from '../../../Redux/Thunks/authThunks';
+import {AppStateType} from '../../../Redux/redux-store';
 
 type MapStateToPropsType = {
     captchaUrl: string | null

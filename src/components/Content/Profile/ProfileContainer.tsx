@@ -1,15 +1,15 @@
-import React from "react";
-import {connect} from "react-redux";
-import Profile from "./Profile";
+import React from 'react';
+import {connect} from 'react-redux';
+import Profile from './Profile';
 import {getUserProfile, getUserStatus, savePhoto,
-    saveProfile, updateUserStatus} from "../../../Redux/Thunks/profileThunks";
-import {RouteComponentProps, withRouter} from "react-router-dom";
-import {withAuthRedirect} from "../Hoc/withAuthRedirect";
-import {compose} from "redux";
-import {getProfile, getStatus} from "../../../Redux/Selectors/profileSelectors";
-import {getAuthId, getIsAuth} from "../../../Redux/Selectors/authSelectors";
-import {AppStateType} from "../../../Redux/redux-store";
-import {ProfileType} from "../../../types/types";
+    saveProfile, updateUserStatus} from '../../../Redux/Thunks/profileThunks';
+import {RouteComponentProps, withRouter} from 'react-router-dom';
+import {withAuthRedirect} from '../Hoc/withAuthRedirect';
+import {compose} from 'redux';
+import {getProfile, getStatus} from '../../../Redux/Selectors/profileSelectors';
+import {getAuthId, getIsAuth} from '../../../Redux/Selectors/authSelectors';
+import {AppStateType} from '../../../Redux/redux-store';
+import {ProfileType} from '../../../types/types';
 
 type MapPropsType = ReturnType<typeof mapStateToProps>
 type DispatchPropsType = {

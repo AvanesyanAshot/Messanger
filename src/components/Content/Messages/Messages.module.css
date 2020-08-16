@@ -2,12 +2,12 @@
     padding: 7px 0;
 
     display: grid;
-    grid-template-columns: minmax(320px,auto) 4fr;
+    grid-template-columns: minmax(320px, auto) 4fr;
 }
 
 .messageList {
     padding: 5px;
-    border-right:1px solid black;
+    border-right: 1px solid black;
 }
 
 .messageItem {

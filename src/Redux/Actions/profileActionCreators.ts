@@ -1,5 +1,5 @@
-import {PhotosType, ProfileType} from "../../types/types"
-import {InferActionsType} from "../redux-store";
+import {PhotosType, ProfileType} from '../../types/types'
+import {InferActionsType} from '../redux-store';
 
 export type ProfileActionsType = InferActionsType<typeof profileActions>
 

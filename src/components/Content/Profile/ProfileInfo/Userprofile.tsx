@@ -1,15 +1,15 @@
-import React, {ChangeEvent, FC} from "react";
-import css from "./User.module.css"
-import UserStatus from "./UserStatus/UserStatus";
+import React, {ChangeEvent, FC} from 'react';
+import css from './User.module.css'
+import UserStatus from './UserStatus/UserStatus';
 import avatar from '../../../../assets/img/avatar.png'
-import ProfileData from "./ProfileData/ProfileData";
-import {ProfileType} from "../../../../types/types";
+import ProfileData from './ProfileData/ProfileData';
+import {ProfileType} from '../../../../types/types';
 
 type PropsType = {
     profile: ProfileType
     isOwner: boolean
     status: string
-    savePhoto: (file:File) => void
+    savePhoto: (file: File) => void
     updateUserStatus: (status: string) => void
 
 }
@@ -25,7 +25,7 @@ const UserProfile: FC<PropsType> = (props) => {
         <div className={css.userDetail}>
             <div className={css.header}>
                 <button className={css.btn}>+ Follow</button>
-                <div className={css.photo}></div>
+                <div className={css.photo} />
                 <div><img className={css.logo} src={props.profile.photos.large || avatar}/></div>
                 <button className={css.btn}>+ Message</button>
             </div>

@@ -1,6 +1,6 @@
-import React, {FC} from "react";
+import React, {FC} from 'react';
 import css from '../User.module.css'
-import {ContactsType, ProfileType} from "../../../../../types/types";
+import {ContactsType, ProfileType} from '../../../../../types/types';
 
 type PropsType = {
     profile: ProfileType
@@ -18,7 +18,8 @@ const ProfileData: FC<PropsType> = ({profile}) => {
                 <b>Contacts</b>:{Object
                 .keys(profile.contacts)
                 .map(key => {
-                    return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key as keyof ContactsType]}/>
+                    return <Contact key={key} contactTitle={key}
+                                    contactValue={profile.contacts[key as keyof ContactsType]}/>
                 })}
             </div>
         </div>

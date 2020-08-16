@@ -1,9 +1,9 @@
-import React, {FC} from "react";
-import css from "./Messages.module.css"
-import MessageBlock from "./Message/message";
-import Correspondence from "./Message/correspondence";
+import React, {FC} from 'react';
+import css from './Messages.module.css'
+import MessageBlock from './Message/message';
+import Correspondence from './Message/correspondence';
 import MessageFormRedux from './MessageForm/MessageForm'
-import {InitialStateType} from "../../../Redux/Reducers/messagesReducer";
+import {InitialStateType} from '../../../Redux/Reducers/messagesReducer';
 
 type PropsType = {
     state: InitialStateType
@@ -17,9 +17,9 @@ export type MessageFromValuesType = {
 const Messages: FC<PropsType> = (props) => {
 
     let newMessages = props.state.message.map(d => (
-        // ПОФИКСИТЬ
+        // todo ПОФИКСИТЬ
         // @ts-ignore
-        <MessageBlock id ={d.id} key={d.id} name={d.name} time={d.time} message={d.message}/>
+        <MessageBlock id={d.id} key={d.id} name={d.name} time={d.time} message={d.message}/>
     ))
 
 

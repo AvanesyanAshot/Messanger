@@ -1,11 +1,13 @@
 .selectedPage {
     font-weight: bold;
 }
+
 .pagination span {
     display: inline-block;
     padding: 5px 10px;
     border: 1px solid black;
 }
+
 .pagControl {
     padding: 9px;
     background: #0d58c8;

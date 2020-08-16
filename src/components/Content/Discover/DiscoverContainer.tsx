@@ -1,8 +1,8 @@
-import {connect} from "react-redux";
-import Discover from "./Discover";
-import {compose} from "redux";
-import {AppStateType} from "../../../Redux/redux-store";
-import {InitialStateType} from "../../../Redux/Reducers/discoverReducer";
+import {connect} from 'react-redux';
+import Discover from './Discover';
+import {compose} from 'redux';
+import {AppStateType} from '../../../Redux/redux-store';
+import {InitialStateType} from '../../../Redux/Reducers/discoverReducer';
 
 type MapPropsType = {
     store: InitialStateType

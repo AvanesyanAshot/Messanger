@@ -1,5 +1,5 @@
-import {DefaultResponseType, instance} from "./api";
-import {UsersType} from "../types/types";
+import {DefaultResponseType, instance} from './api';
+import {UsersType} from '../types/types';
 
 type GetUsersType = {
     items: Array<UsersType>,

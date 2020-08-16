@@ -1,9 +1,9 @@
-import {ResultCodeEnum, ResultCodeWithCaptcha} from "../../DAL/api";
-import {authActions, AuthActionsType} from "../Actions/authActionCreators";
-import {stopSubmit} from "redux-form";
-import {BaseThunkType} from "../redux-store";
-import {authAPI} from "../../DAL/auth-api";
-import {securityAPI} from "../../DAL/security-api";
+import {ResultCodeEnum, ResultCodeWithCaptcha} from '../../DAL/api';
+import {authActions, AuthActionsType} from '../Actions/authActionCreators';
+import {stopSubmit} from 'redux-form';
+import {BaseThunkType} from '../redux-store';
+import {authAPI} from '../../DAL/auth-api';
+import {securityAPI} from '../../DAL/security-api';
 
 type ThunkType = BaseThunkType<AuthActionsType | ReturnType<typeof stopSubmit>>
 

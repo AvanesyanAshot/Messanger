@@ -1,4 +1,4 @@
-import {MessagesActionsType} from "../Actions/messagesActionCreators";
+import {MessagesActionsType} from '../Actions/messagesActionCreators';
 
 // Type
 type messageType = {
@@ -33,7 +33,7 @@ let initialState = {
 // REDUCER
 const messagesReducer = (state = initialState, action: MessagesActionsType): InitialStateType => {
     switch (action.type) {
-        case "messages/NEW_MESSAGE":
+        case 'messages/NEW_MESSAGE':
             return {
                 ...state,
                 correspondence: [...state.correspondence, {

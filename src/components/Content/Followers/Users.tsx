@@ -1,9 +1,9 @@
-import React, {FC} from "react";
+import React, {FC} from 'react';
 import css from './User.module.css'
 import avatar from '../../../assets/img/avatar.png'
-import {NavLink} from "react-router-dom";
-import Paginator from "../../Common/Paginator/Paginator";
-import {UsersType} from "../../../types/types";
+import {NavLink} from 'react-router-dom';
+import Paginator from '../../Common/Paginator/Paginator';
+import {UsersType} from '../../../types/types';
 
 type PropsType = {
     totalItemsCount: number

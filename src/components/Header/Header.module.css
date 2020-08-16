@@ -26,6 +26,7 @@
 .nav {
     display: flex;
 }
+
 .nav a.activeLink {
     color: #0d58c8;
 }
@@ -55,7 +56,7 @@
 
     line-height: 10px;
     font-size: 12px;
-    text-transform: uppercase ;
+    text-transform: uppercase;
     text-align: center;
     color: white;
     text-decoration: none;
@@ -74,9 +75,11 @@
     .logo {
         font-size: .95rem;
     }
+
     .link {
         font-size: .9rem;
     }
+
     .login {
         font-size: .7rem;
     }

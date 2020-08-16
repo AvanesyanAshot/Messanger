@@ -1,7 +1,7 @@
-import {userActions, UserActionsType} from "../Actions/userActionCreators";
-import {BaseThunkType} from "../redux-store";
-import {Dispatch} from "redux";
-import {usersAPI} from "../../DAL/users-api";
+import {userActions, UserActionsType} from '../Actions/userActionCreators';
+import {BaseThunkType} from '../redux-store';
+import {Dispatch} from 'redux';
+import {usersAPI} from '../../DAL/users-api';
 
 type ThunkType = BaseThunkType<UserActionsType>
 
@@ -13,7 +13,6 @@ export const setUsers = (currentPages: number, pageSize: number): ThunkType => a
     dispatch(userActions.setUsersAC(data.items))
 
 }
-
 const _followUnfollow = async (dispatch: Dispatch<UserActionsType>,
                                userId: number,
                                apiMethod: any,
@@ -25,7 +24,6 @@ const _followUnfollow = async (dispatch: Dispatch<UserActionsType>,
     }
     dispatch(userActions.toggleIsFollowingInProgress(false, userId))
 }
-
 export const follow = (userId: number): ThunkType => async (dispatch) => {
     await _followUnfollow(dispatch, userId, usersAPI.follow.bind(usersAPI), userActions.followSuccess)
 }

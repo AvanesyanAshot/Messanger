@@ -1,14 +1,14 @@
-import React from "react";
-import {connect} from "react-redux";
-import {follow, setUsers, unfollow} from "../../../Redux/Thunks/userThunks";
-import Users from "./Users";
-import Preloader from "../../Common/Preloader/Preloader";
-import {compose} from "redux";
+import React from 'react';
+import {connect} from 'react-redux';
+import {follow, setUsers, unfollow} from '../../../Redux/Thunks/userThunks';
+import Users from './Users';
+import Preloader from '../../Common/Preloader/Preloader';
+import {compose} from 'redux';
 import {getCurrentPages, getFollowingInProgress, getIsFetching,
-    getPageSize, getTotalUsersCount, getUsers} from "../../../Redux/Selectors/usersSelectros";
-import {userActions} from "../../../Redux/Actions/userActionCreators";
-import {UsersType} from "../../../types/types";
-import {AppStateType} from "../../../Redux/redux-store";
+    getPageSize, getTotalUsersCount, getUsers} from '../../../Redux/Selectors/usersSelectros';
+import {userActions} from '../../../Redux/Actions/userActionCreators';
+import {UsersType} from '../../../types/types';
+import {AppStateType} from '../../../Redux/redux-store';
 
 const {setCurrentPage, toggleIsFollowingInProgress} = userActions
 

@@ -1,11 +1,11 @@
 import React from 'react';
-import Header, {DispatchPropsType, MapPropsType} from "./Header";
-import {connect} from "react-redux";
-import {getAuthId, getIsAuth, getLogin} from "../../Redux/Selectors/authSelectors";
-import {logout} from "../../Redux/Thunks/authThunks";
-import {AppStateType} from "../../Redux/redux-store";
+import Header, {DispatchPropsType, MapPropsType} from './Header';
+import {connect} from 'react-redux';
+import {getAuthId, getIsAuth, getLogin} from '../../Redux/Selectors/authSelectors';
+import {logout} from '../../Redux/Thunks/authThunks';
+import {AppStateType} from '../../Redux/redux-store';
 
-class HeaderContainer extends React.Component<MapPropsType & DispatchPropsType>{
+class HeaderContainer extends React.Component<MapPropsType & DispatchPropsType> {
     render() {
         return <Header {...this.props} />
     }

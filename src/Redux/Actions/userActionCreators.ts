@@ -1,5 +1,5 @@
-import {UsersType} from "../../types/types"
-import {InferActionsType} from "../redux-store";
+import {UsersType} from '../../types/types'
+import {InferActionsType} from '../redux-store';
 
 export type UserActionsType = InferActionsType<typeof userActions>
 

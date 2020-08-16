@@ -1,5 +1,5 @@
-import React from "react";
-import css from "../Messages.module.css"
+import React from 'react';
+import css from '../Messages.module.css'
 
 type PropsType = {
     id: number

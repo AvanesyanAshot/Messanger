@@ -1,8 +1,8 @@
-import {ResultCodeEnum} from "../../DAL/api";
-import {profileActions, ProfileActionsType} from "../Actions/profileActionCreators";
-import {ProfileType} from "../../types/types";
-import {BaseThunkType} from "../redux-store";
-import {profileAPI} from "../../DAL/profile-api";
+import {ResultCodeEnum} from '../../DAL/api';
+import {profileActions, ProfileActionsType} from '../Actions/profileActionCreators';
+import {ProfileType} from '../../types/types';
+import {BaseThunkType} from '../redux-store';
+import {profileAPI} from '../../DAL/profile-api';
 
 type ThunkType = BaseThunkType<ProfileActionsType>
 

@@ -1,6 +1,5 @@
-import {ProfileType} from "../../types/types"
-import {ProfileActionsType} from "../Actions/profileActionCreators";
-
+import {ProfileType} from '../../types/types'
+import {ProfileActionsType} from '../Actions/profileActionCreators';
 
 export type InitialStateType = typeof initialState
 
@@ -13,11 +12,11 @@ let initialState = {
 // REDUCER
 const messagesReducer = (state = initialState, action: ProfileActionsType): InitialStateType => {
     switch (action.type) {
-        case "profile/SET-USER-PROFILE":
+        case 'profile/SET-USER-PROFILE':
             return {...state, profile: action.profile}
-        case "profile/SET_USER_STATUS":
+        case 'profile/SET_USER_STATUS':
             return {...state, status: action.status}
-        case "profile/SAVE_PHOTO":
+        case 'profile/SAVE_PHOTO':
             return {...state, profile: {...state.profile, photos: action.photos} as ProfileType}
         default:
             return state

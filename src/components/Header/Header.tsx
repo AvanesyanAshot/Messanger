@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../App.css'
 import css from './Header.module.css'
-import {NavLink} from "react-router-dom";
+import {NavLink} from 'react-router-dom';
 
 export type MapPropsType = {
     isAuth: boolean

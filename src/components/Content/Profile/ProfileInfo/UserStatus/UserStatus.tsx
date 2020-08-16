@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useEffect, useState} from "react";
+import React, {ChangeEvent, useEffect, useState} from 'react';
 
 type PropsType = {
     status: string
@@ -32,7 +32,7 @@ const UserStatus = (props: PropsType) => {
             }
             {editMode &&
             <div>
-                <input onChange={onStatusChange} autoFocus={true} onBlur={deactivateEditMode} value={status}></input>
+                <input onChange={onStatusChange} autoFocus={true} onBlur={deactivateEditMode} value={status}/>
             </div>
             }
         </div>

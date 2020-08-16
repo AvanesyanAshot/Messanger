@@ -1,4 +1,4 @@
-import {DefaultResponseType, instance, ResultCodeEnum, ResultCodeWithCaptcha} from "./api";
+import {DefaultResponseType, instance, ResultCodeEnum, ResultCodeWithCaptcha} from './api';
 
 type MeType = {
     id: number

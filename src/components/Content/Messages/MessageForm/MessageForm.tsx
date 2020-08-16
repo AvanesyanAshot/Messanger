@@ -1,8 +1,8 @@
-import React, {FC} from "react";
-import css from "../Messages.module.css"
-import {InjectedFormProps, reduxForm} from "redux-form";
-import {createField} from "../../../Common/Forms/FormsControl";
-import {MessageFromValuesType} from "../Messages";
+import React, {FC} from 'react';
+import css from '../Messages.module.css'
+import {InjectedFormProps, reduxForm} from 'redux-form';
+import {createField} from '../../../Common/Forms/FormsControl';
+import {MessageFromValuesType} from '../Messages';
 
 export type MessageFromTypeTypeKeys = Extract<keyof MessageFromValuesType, string>
 type PropsType = {}

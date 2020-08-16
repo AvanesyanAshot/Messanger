@@ -1,7 +1,6 @@
-import {getAuthUserData} from "./authThunks";
-import {appActions, AppActionsType} from "../Actions/appActionCreators";
-import {ThunkAction} from "redux-thunk";
-import {AppStateType, BaseThunkType} from "../redux-store";
+import {getAuthUserData} from './authThunks';
+import {appActions, AppActionsType} from '../Actions/appActionCreators';
+import {BaseThunkType} from '../redux-store';
 
 type ThunkType = BaseThunkType<AppActionsType, void>
 

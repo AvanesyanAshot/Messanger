@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 import css from './Discover.module.css'
-import DiscoverItem from "./DiscoverItem/DiscoverItem";
-import {InitialStateType} from "../../../Redux/Reducers/discoverReducer";
+import DiscoverItem from './DiscoverItem/DiscoverItem';
+import {InitialStateType} from '../../../Redux/Reducers/discoverReducer';
 
 type PropsType = {
     store: InitialStateType

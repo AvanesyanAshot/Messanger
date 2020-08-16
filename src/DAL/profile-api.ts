@@ -1,5 +1,5 @@
-import {PhotosType, ProfileType} from "../types/types";
-import {DefaultResponseType, instance} from "./api";
+import {PhotosType, ProfileType} from '../types/types';
+import {DefaultResponseType, instance} from './api';
 
 type SavePhotoResponseDataType = {
     photos: PhotosType
@@ -19,7 +19,7 @@ export const profileAPI = {
     },
     savePhoto(photo: File) {
         const formData = new FormData()
-        formData.append("image", photo)
+        formData.append('image', photo)
 
         return instance.put<DefaultResponseType<SavePhotoResponseDataType>>('profile/photo', formData)
             .then(res => res.data)

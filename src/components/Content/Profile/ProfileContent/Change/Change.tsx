@@ -1,8 +1,8 @@
-import React from "react";
-import {InjectedFormProps, reduxForm} from "redux-form";
-import {createField, Input, Textarea} from "../../../../Common/Forms/FormsControl";
+import React from 'react';
+import {InjectedFormProps, reduxForm} from 'redux-form';
+import {createField, Input, Textarea} from '../../../../Common/Forms/FormsControl';
 import css from '../../Profile.module.css'
-import {ProfileType} from "../../../../../types/types";
+import {ProfileType} from '../../../../../types/types';
 
 
 type ProfileFromOwnPropsType = {

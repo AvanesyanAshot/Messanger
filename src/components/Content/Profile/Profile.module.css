@@ -38,12 +38,12 @@ button {
 }
 
 .nav button:focus {
-     outline: none;
- }
+    outline: none;
+}
 
 .selectedMode {
-    color: white!important;
-    background: #0d58c8!important;
+    color: white !important;
+    background: #0d58c8 !important;
 }
 
 /*CHANGE*/
