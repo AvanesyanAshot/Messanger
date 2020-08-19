@@ -63,7 +63,6 @@ const mapStateToProps = (state: AppStateType) => ({
 let AppComponent = compose<ComponentType>(
     withRouter,
     connect(mapStateToProps, {initializeApp}))(App)
-
 let MainApp: FC = () => {
     return <BrowserRouter>
         <Provider store={store}>
