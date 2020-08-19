@@ -4,11 +4,14 @@ import {follow, setUsers, unfollow} from '../../../Redux/Thunks/userThunks';
 import Users from './Users';
 import Preloader from '../../Common/Preloader/Preloader';
 import {compose} from 'redux';
-import {getCurrentPages, getFollowingInProgress, getIsFetching,
-    getPageSize, getTotalUsersCount, getUsers} from '../../../Redux/Selectors/usersSelectros';
+import {
+    getCurrentPages, getFollowingInProgress, getIsFetching,
+    getPageSize, getTotalUsersCount, getUsers, getUsersFilter
+} from '../../../Redux/Selectors/usersSelectros';
 import {userActions} from '../../../Redux/Actions/userActionCreators';
 import {UsersType} from '../../../types/types';
 import {AppStateType} from '../../../Redux/redux-store';
+import {FilterType} from '../../../Redux/Reducers/usersReducer';
 
 const {setCurrentPage, toggleIsFollowingInProgress} = userActions
 
@@ -19,11 +22,12 @@ type MapStateToProps = {
     followingInProgress: Array<number>
     totalItemsCount: number
     users: Array<UsersType>
+    filter: FilterType
 }
 
 
 type MapDispatchToProps = {
-    setUsers: (currentPages: number, pageSize: number) => void
+    setUsers: (currentPages: number, pageSize: number, term: string) => void
     setCurrentPage: (page: number) => void
     unfollow: (userId: number) => void
     follow: (userId: number) => void
@@ -35,13 +39,18 @@ type OwnPropsType = {}
 class UserBlock extends React.Component<MapStateToProps & MapDispatchToProps & OwnPropsType> {
     componentDidMount() {
         const {currentPages, pageSize} = this.props
-        this.props.setUsers(currentPages, pageSize)
+        this.props.setUsers(currentPages, pageSize, '')
     }
 
     onPageChanged = (page: number) => {
-        const {pageSize} = this.props
-        this.props.setUsers(page, pageSize)
+        const {pageSize, filter} = this.props
+        this.props.setUsers(page, pageSize, filter.term)
         this.props.setCurrentPage(page)
+    }
+
+    onFilterChanged = (filter: FilterType) => {
+        const {pageSize} = this.props
+        this.props.setUsers(1, pageSize, filter.term)
     }
 
     render() {
@@ -52,6 +61,7 @@ class UserBlock extends React.Component<MapStateToProps & MapDispatchToProps & O
                    users={this.props.users}
                    currentPages={this.props.currentPages}
                    onPageChanged={this.onPageChanged}
+                   onFilterChanged={this.onFilterChanged}
                    follow={this.props.follow}
                    unfollow={this.props.unfollow}
                    followingInProgress={this.props.followingInProgress}
@@ -67,7 +77,8 @@ let mapStateToProps = (state: AppStateType): MapStateToProps => {
         totalItemsCount: getTotalUsersCount(state),
         currentPages: getCurrentPages(state),
         isFetching: getIsFetching(state),
-        followingInProgress: getFollowingInProgress(state)
+        followingInProgress: getFollowingInProgress(state),
+        filter: getUsersFilter(state)
     }
 }
 

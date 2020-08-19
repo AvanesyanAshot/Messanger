@@ -8,8 +8,8 @@ type GetUsersType = {
 }
 
 export const usersAPI = {
-    getUsers(currentPage = 1, pageSize = 9) {
-        return instance.get<GetUsersType>(`users?page=${currentPage}&count=${pageSize}`)
+    getUsers(currentPage = 1, pageSize = 9, term= '') {
+        return instance.get<GetUsersType>(`users?page=${currentPage}&count=${pageSize}&term=${term}`)
             .then(res => res.data)
     },
     follow(userId: number) {

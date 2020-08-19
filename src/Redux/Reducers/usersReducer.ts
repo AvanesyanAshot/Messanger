@@ -9,10 +9,14 @@ let initialState = {
     totalUsersCount: 100,
     currentPages: 1,
     isFetching: false,
-    followingInProgress: [] as Array<number> // array of user id
+    followingInProgress: [] as Array<number>, // array of user id
+    filter: {
+        term: ''
+    }
 }
 
 export type InitialStateType = typeof initialState
+export type FilterType = typeof initialState.filter
 
 // REDUCER
 const usersReducer = (state = initialState, action: UserActionsType): InitialStateType => {
@@ -38,6 +42,10 @@ const usersReducer = (state = initialState, action: UserActionsType): InitialSta
         case 'users/SET_TOTAL_USER_COUNT':
             return {
                 ...state, totalUsersCount: action.num
+            }
+        case 'users/SET_FILTER':
+            return {
+                ...state, filter: action.payload
             }
         case 'users/TOGGLE_IS_FETCHING':
             return {

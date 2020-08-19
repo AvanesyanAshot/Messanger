@@ -6,9 +6,10 @@ import {DefaultResponseType} from '../../DAL/api';
 
 type ThunkType = BaseThunkType<UserActionsType>
 
-export const setUsers = (currentPages: number, pageSize: number): ThunkType => async (dispatch) => {
+export const setUsers = (currentPages: number, pageSize: number, term: string): ThunkType => async (dispatch) => {
     dispatch(userActions.toggleIsFetching(true))
-    let data = await usersAPI.getUsers(currentPages, pageSize)
+    dispatch(userActions.setFilter(term))
+    let data = await usersAPI.getUsers(currentPages, pageSize, term)
     dispatch(userActions.toggleIsFetching(false))
     dispatch(userActions.setTotalUserCount(data.totalCount))
     dispatch(userActions.setUsersAC(data.items))

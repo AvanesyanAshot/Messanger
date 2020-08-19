@@ -4,11 +4,14 @@ import avatar from '../../../assets/img/avatar.png'
 import {NavLink} from 'react-router-dom';
 import Paginator from '../../Common/Paginator/Paginator';
 import {UsersType} from '../../../types/types';
+import UsersSearchForm from './UsersSearchForm/UsersSearchForm';
+import {FilterType} from '../../../Redux/Reducers/usersReducer';
 
 type PropsType = {
     totalItemsCount: number
     pageSize: number
     onPageChanged: (pageNumber: number) => void
+    onFilterChanged: (filter: FilterType) => void
     currentPages: number
     portionSize?: number
     users: Array<UsersType>
@@ -19,6 +22,8 @@ type PropsType = {
 
 let Users: FC<PropsType> = ({currentPages, onPageChanged, totalItemsCount, pageSize, ...props}) => {
     return <div className={css.wrapper}>
+        <UsersSearchForm onFilterChanged={props.onFilterChanged}/>
+
         <div className={css.users}>
             {
                 props.users.map(u => <div key={u.id} className={css.card}>

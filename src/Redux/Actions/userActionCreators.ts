@@ -9,6 +9,7 @@ export const userActions = {
     unfollowSuccess: (userId: number) => ({type: 'users/UNFOLLOW', userId} as const),
     setCurrentPage: (page: number) => ({type: 'users/SET_CURRENT_PAGE', page} as const),
     setTotalUserCount: (num: number) => ({type: 'users/SET_TOTAL_USER_COUNT', num} as const),
+    setFilter: (term: string) => ({type: 'users/SET_FILTER', payload:{term}} as const),
     toggleIsFetching: (isFetching: boolean) => ({
         type: 'users/TOGGLE_IS_FETCHING',
         isFetching
