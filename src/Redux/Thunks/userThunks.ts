@@ -3,13 +3,14 @@ import {BaseThunkType} from '../redux-store';
 import {Dispatch} from 'redux';
 import {usersAPI} from '../../DAL/users-api';
 import {DefaultResponseType} from '../../DAL/api';
+import {FilterType} from '../Reducers/usersReducer';
 
 type ThunkType = BaseThunkType<UserActionsType>
 
-export const setUsers = (currentPages: number, pageSize: number, term: string): ThunkType => async (dispatch) => {
+export const setUsers = (currentPages: number, pageSize: number, filter: FilterType): ThunkType => async (dispatch) => {
     dispatch(userActions.toggleIsFetching(true))
-    dispatch(userActions.setFilter(term))
-    let data = await usersAPI.getUsers(currentPages, pageSize, term)
+    dispatch(userActions.setFilter(filter))
+    let data = await usersAPI.getUsers(currentPages, pageSize, filter.term, filter.friend)
     dispatch(userActions.toggleIsFetching(false))
     dispatch(userActions.setTotalUserCount(data.totalCount))
     dispatch(userActions.setUsersAC(data.items))

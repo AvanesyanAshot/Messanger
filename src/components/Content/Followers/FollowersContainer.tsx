@@ -5,8 +5,13 @@ import Users from './Users';
 import Preloader from '../../Common/Preloader/Preloader';
 import {compose} from 'redux';
 import {
-    getCurrentPages, getFollowingInProgress, getIsFetching,
-    getPageSize, getTotalUsersCount, getUsers, getUsersFilter
+    getCurrentPages,
+    getFollowingInProgress,
+    getIsFetching,
+    getPageSize,
+    getTotalUsersCount,
+    getUsers,
+    getUsersFilter
 } from '../../../Redux/Selectors/usersSelectros';
 import {userActions} from '../../../Redux/Actions/userActionCreators';
 import {UsersType} from '../../../types/types';
@@ -27,7 +32,7 @@ type MapStateToProps = {
 
 
 type MapDispatchToProps = {
-    setUsers: (currentPages: number, pageSize: number, term: string) => void
+    setUsers: (currentPages: number, pageSize: number, filter: FilterType) => void
     setCurrentPage: (page: number) => void
     unfollow: (userId: number) => void
     follow: (userId: number) => void
@@ -38,19 +43,19 @@ type OwnPropsType = {}
 
 class UserBlock extends React.Component<MapStateToProps & MapDispatchToProps & OwnPropsType> {
     componentDidMount() {
-        const {currentPages, pageSize} = this.props
-        this.props.setUsers(currentPages, pageSize, '')
+        const {currentPages, pageSize, filter} = this.props
+        this.props.setUsers(currentPages, pageSize, filter)
     }
 
     onPageChanged = (page: number) => {
         const {pageSize, filter} = this.props
-        this.props.setUsers(page, pageSize, filter.term)
+        this.props.setUsers(page, pageSize, filter)
         this.props.setCurrentPage(page)
     }
 
     onFilterChanged = (filter: FilterType) => {
         const {pageSize} = this.props
-        this.props.setUsers(1, pageSize, filter.term)
+        this.props.setUsers(1, pageSize, filter)
     }
 
     render() {

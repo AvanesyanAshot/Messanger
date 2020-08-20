@@ -11,7 +11,8 @@ let initialState = {
     isFetching: false,
     followingInProgress: [] as Array<number>, // array of user id
     filter: {
-        term: ''
+        term: '',
+        friend: null as null | boolean
     }
 }
 
