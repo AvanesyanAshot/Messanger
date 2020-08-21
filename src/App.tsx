@@ -10,9 +10,9 @@ import {compose} from 'redux';
 import Preloader from './components/Common/Preloader/Preloader';
 import store, {AppStateType} from './Redux/redux-store';
 import ProfileContainer from './components/Content/Profile/ProfileContainer';
-import FollowersContainer from './components/Content/Followers/FollowersContainer';
 import {withSuspense} from './components/Content/Hoc/withSuspense';
 import {initializeApp} from './Redux/Thunks/appThunks';
+import {FollowersPage} from './components/Content/Followers/FollowersContainer';
 
 // Lazy loading
 const DiscoverContainer = React.lazy(() => import('./components/Content/Discover/DiscoverContainer'));
@@ -44,7 +44,7 @@ class App extends Component<MapPropsType & DispatchPropsType> {
                         <Route exact path='/' render={() => <Redirect to={'/Profile'}/>}/>
                         <Route path='/Discover' render={() => <SuspendedDiscover/>}/>
                         <Route path='/Profile/:userId?' render={() => <ProfileContainer/>}/>
-                        <Route path='/Followers' render={() => <FollowersContainer/>}/>
+                        <Route path='/Followers' render={() => <FollowersPage />}/>
                         <Route path='/Messages' render={() => <SuspendedMessages/>}/>
                         <Route path='/login' render={() => <SuspendedLogin/>}/>
                         <Route path='/Settings' render={() => <Settings/>}/>

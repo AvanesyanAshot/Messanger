@@ -1,32 +1,52 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect} from 'react';
 import css from './User.module.css'
 import avatar from '../../../assets/img/avatar.png'
 import {NavLink} from 'react-router-dom';
 import Paginator from '../../Common/Paginator/Paginator';
-import {UsersType} from '../../../types/types';
 import UsersSearchForm from './UsersSearchForm/UsersSearchForm';
 import {FilterType} from '../../../Redux/Reducers/usersReducer';
+import {useDispatch, useSelector} from 'react-redux';
+import {getCurrentPages, getFollowingInProgress, getPageSize,
+    getTotalUsersCount, getUsers, getUsersFilter} from '../../../Redux/Selectors/usersSelectros';
+import {setUsers} from '../../../Redux/Thunks/userThunks';
+import {userActions} from '../../../Redux/Actions/userActionCreators';
 
-type PropsType = {
-    totalItemsCount: number
-    pageSize: number
-    onPageChanged: (pageNumber: number) => void
-    onFilterChanged: (filter: FilterType) => void
-    currentPages: number
-    portionSize?: number
-    users: Array<UsersType>
-    followingInProgress: Array<number>
-    unfollow: (userId: number) => void
-    follow: (userId: number) => void
-}
+const {setCurrentPage} = userActions
 
-let Users: FC<PropsType> = ({currentPages, onPageChanged, totalItemsCount, pageSize, ...props}) => {
+type PropsType = {}
+
+export const Users: FC<PropsType> = (props) => {
+    const users = useSelector(getUsers)
+    const currentPages = useSelector(getCurrentPages)
+    const totalItemsCount = useSelector(getTotalUsersCount)
+    const pageSize = useSelector(getPageSize)
+    const filter = useSelector(getUsersFilter)
+    const followingInProgress =useSelector(getFollowingInProgress)
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(setUsers(currentPages, pageSize, filter))
+    }, [])
+    const onPageChanged = (page: number) => {
+        dispatch(setUsers(page, pageSize, filter))
+        dispatch(setCurrentPage(page))
+    }
+    const onFilterChanged = (filter: FilterType) => {
+        dispatch(setUsers(1, pageSize, filter))
+    }
+    const follow = (userId: number) => {
+        dispatch(follow(userId))
+    }
+    const unfollow = (userId: number) => {
+        dispatch(unfollow(userId))
+    }
     return <div className={css.wrapper}>
-        <UsersSearchForm onFilterChanged={props.onFilterChanged}/>
+        <UsersSearchForm onFilterChanged={onFilterChanged}/>
 
         <div className={css.users}>
             {
-                props.users.map(u => <div key={u.id} className={css.card}>
+                users.map(u => <div key={u.id} className={css.card}>
                     <div className={css.userBlock}>
                         <NavLink to={`/profile/${u.id}`}>
                             <img src={u.photos.small != null ? u.photos.small : avatar} alt="#" className={css.avatar}/>
@@ -38,13 +58,13 @@ let Users: FC<PropsType> = ({currentPages, onPageChanged, totalItemsCount, pageS
                             <span>15 views</span>
                         </div>
                         {u.followed
-                            ? <button disabled={props.followingInProgress.some(id => id === u.id)}
+                            ? <button disabled={followingInProgress.some(id => id === u.id)}
                                       onClick={() => {
-                                          props.unfollow(u.id)
+                                          unfollow(u.id)
                                       }} className={css.unfollow}>Unfollow</button>
-                            : <button disabled={props.followingInProgress.some(id => id === u.id)}
+                            : <button disabled={followingInProgress.some(id => id === u.id)}
                                       onClick={() => {
-                                          props.follow(u.id)
+                                          follow(u.id)
                                       }} className={css.follow}>Follow</button>}
                     </div>
                 </div>)
@@ -57,5 +77,3 @@ let Users: FC<PropsType> = ({currentPages, onPageChanged, totalItemsCount, pageS
 
     </div>
 }
-
-export default Users
