@@ -1,14 +1,13 @@
-import React from 'react';
+import React, {FC} from 'react';
 import css from './Discover.module.css'
 import DiscoverItem from './DiscoverItem/DiscoverItem';
-import {InitialStateType} from '../../../Redux/Reducers/discoverReducer';
+import {useSelector} from 'react-redux';
+import {AppStateType} from '../../../Redux/redux-store';
 
-type PropsType = {
-    store: InitialStateType
-}
+const DiscoverPage: FC = (props) => {
+    const store = useSelector(((state: AppStateType) => state.Discover.discoverData))
 
-const Discover: React.FC<PropsType> = (props) => {
-    let newDiscoverData = props.store.discoverData.map(item => (
+    let newDiscoverData = store.map(item => (
         <DiscoverItem key={item.id} id={item.id} name={item.name}></DiscoverItem>))
 
     return (
@@ -25,4 +24,5 @@ const Discover: React.FC<PropsType> = (props) => {
     )
 }
 
-export default Discover
+export default DiscoverPage
+

@@ -16,7 +16,7 @@ import {FollowersPage} from './components/Content/Followers/FollowersContainer';
 import {LoginPage} from './components/Content/Login/Login';
 
 // Lazy loading
-const DiscoverContainer = React.lazy(() => import('./components/Content/Discover/DiscoverContainer'));
+const Discover = React.lazy(() => import('./components/Content/Discover/Discover'));
 const MessagesContainer = React.lazy(() => import('./components/Content/Messages/MessagesContainer'));
 
 type MapPropsType = ReturnType<typeof mapStateToProps>
@@ -25,12 +25,13 @@ type DispatchPropsType = {
 }
 
 const SuspendedMessages = withSuspense(MessagesContainer)
-const SuspendedDiscover = withSuspense(DiscoverContainer)
+const SuspendedDiscover = withSuspense(Discover)
 
 class App extends Component<MapPropsType & DispatchPropsType> {
     componentDidMount() {
         this.props.initializeApp()
     }
+
     render() {
         if (!this.props.initialized) {
             return <Preloader/>
@@ -43,9 +44,9 @@ class App extends Component<MapPropsType & DispatchPropsType> {
                         <Route exact path='/' render={() => <Redirect to={'/Profile'}/>}/>
                         <Route path='/Discover' render={() => <SuspendedDiscover/>}/>
                         <Route path='/Profile/:userId?' render={() => <ProfileContainer/>}/>
-                        <Route path='/Followers' render={() => <FollowersPage />}/>
+                        <Route path='/Followers' render={() => <FollowersPage/>}/>
                         <Route path='/Messages' render={() => <SuspendedMessages/>}/>
-                        <Route path='/login' render={() => <LoginPage />}/>
+                        <Route path='/login' render={() => <LoginPage/>}/>
                         <Route path='/Settings' render={() => <Settings/>}/>
                         <Route path='*' render={() => <div>ERROR 404 NOT FOUND</div>}/>
                     </Switch>
