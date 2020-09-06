@@ -1,6 +1,5 @@
 .wrapper {
     margin: 25px 0 10px 0;
-
 }
 
 .users {
@@ -28,7 +27,6 @@
     height: auto;
 }
 
-
 .country {
     margin-bottom: 10px;
 
@@ -40,11 +38,10 @@
 
 .infoBlock {
     display: flex;
-
 }
 
 .follow {
-    background: #0D61BC;
+    background: #0d61bc;
     padding: 15px 18px;
     border: 0;
 

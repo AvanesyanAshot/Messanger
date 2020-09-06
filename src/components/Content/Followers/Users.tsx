@@ -1,17 +1,23 @@
-import React, {FC, useEffect} from 'react';
+import React, { FC, useEffect } from 'react'
 import css from './User.module.css'
 import avatar from '../../../assets/img/avatar.png'
-import {NavLink} from 'react-router-dom';
-import Paginator from '../../Common/Paginator/Paginator';
-import UsersSearchForm from './UsersSearchForm/UsersSearchForm';
-import {FilterType} from '../../../Redux/Reducers/usersReducer';
-import {useDispatch, useSelector} from 'react-redux';
-import {getCurrentPages, getFollowingInProgress, getPageSize,
-    getTotalUsersCount, getUsers, getUsersFilter} from '../../../Redux/Selectors/usersSelectros';
-import {setUsers} from '../../../Redux/Thunks/userThunks';
-import {userActions} from '../../../Redux/Actions/userActionCreators';
+import { NavLink } from 'react-router-dom'
+import Paginator from '../../Common/Paginator/Paginator'
+import UsersSearchForm from './UsersSearchForm/UsersSearchForm'
+import { FilterType } from '../../../Redux/Reducers/usersReducer'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+    getCurrentPages,
+    getFollowingInProgress,
+    getPageSize,
+    getTotalUsersCount,
+    getUsers,
+    getUsersFilter,
+} from '../../../Redux/Selectors/usersSelectros'
+import { setUsers } from '../../../Redux/Thunks/userThunks'
+import { userActions } from '../../../Redux/Actions/userActionCreators'
 
-const {setCurrentPage} = userActions
+const { setCurrentPage } = userActions
 
 type PropsType = {}
 
@@ -21,7 +27,7 @@ export const Users: FC<PropsType> = (props) => {
     const totalItemsCount = useSelector(getTotalUsersCount)
     const pageSize = useSelector(getPageSize)
     const filter = useSelector(getUsersFilter)
-    const followingInProgress =useSelector(getFollowingInProgress)
+    const followingInProgress = useSelector(getFollowingInProgress)
 
     const dispatch = useDispatch()
 
@@ -41,39 +47,68 @@ export const Users: FC<PropsType> = (props) => {
     const unfollow = (userId: number) => {
         dispatch(unfollow(userId))
     }
-    return <div className={css.wrapper}>
-        <UsersSearchForm onFilterChanged={onFilterChanged}/>
+    return (
+        <div className={css.wrapper}>
+            <UsersSearchForm onFilterChanged={onFilterChanged} />
 
-        <div className={css.users}>
-            {
-                users.map(u => <div key={u.id} className={css.card}>
-                    <div className={css.userBlock}>
-                        <NavLink to={`/profile/${u.id}`}>
-                            <img src={u.photos.small != null ? u.photos.small : avatar} alt="#" className={css.avatar}/>
-                        </NavLink>
-                        <h3 className={css.userName}>{u.name}</h3>
-                        <span className={css.country}>u.address.city</span>
-                        <div className={css.infoBlock}>
-                            <span>12 likes</span>
-                            <span>15 views</span>
+            <div className={css.users}>
+                {users.map((u) => (
+                    <div key={u.id} className={css.card}>
+                        <div className={css.userBlock}>
+                            <NavLink to={`/profile/${u.id}`}>
+                                <img
+                                    src={
+                                        u.photos.small != null
+                                            ? u.photos.small
+                                            : avatar
+                                    }
+                                    alt="#"
+                                    className={css.avatar}
+                                />
+                            </NavLink>
+                            <h3 className={css.userName}>{u.name}</h3>
+                            <span className={css.country}>u.address.city</span>
+                            <div className={css.infoBlock}>
+                                <span>12 likes</span>
+                                <span>15 views</span>
+                            </div>
+                            {u.followed ? (
+                                <button
+                                    disabled={followingInProgress.some(
+                                        (id) => id === u.id
+                                    )}
+                                    onClick={() => {
+                                        unfollow(u.id)
+                                    }}
+                                    className={css.unfollow}
+                                >
+                                    Unfollow
+                                </button>
+                            ) : (
+                                <button
+                                    disabled={followingInProgress.some(
+                                        (id) => id === u.id
+                                    )}
+                                    onClick={() => {
+                                        follow(u.id)
+                                    }}
+                                    className={css.follow}
+                                >
+                                    Follow
+                                </button>
+                            )}
                         </div>
-                        {u.followed
-                            ? <button disabled={followingInProgress.some(id => id === u.id)}
-                                      onClick={() => {
-                                          unfollow(u.id)
-                                      }} className={css.unfollow}>Unfollow</button>
-                            : <button disabled={followingInProgress.some(id => id === u.id)}
-                                      onClick={() => {
-                                          follow(u.id)
-                                      }} className={css.follow}>Follow</button>}
                     </div>
-                </div>)
-            }
+                ))}
+            </div>
+            <div className={css.paginator}>
+                <Paginator
+                    currentPages={currentPages}
+                    onPageChanged={onPageChanged}
+                    totalItemsCount={totalItemsCount}
+                    pageSize={pageSize}
+                />
+            </div>
         </div>
-        <div className={css.paginator}>
-            <Paginator currentPages={currentPages} onPageChanged={onPageChanged}
-                       totalItemsCount={totalItemsCount} pageSize={pageSize}/>
-        </div>
-
-    </div>
+    )
 }
