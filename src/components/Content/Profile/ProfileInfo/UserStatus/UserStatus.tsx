@@ -1,4 +1,5 @@
-import React, {ChangeEvent, useEffect, useState} from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react'
+import useToggle from '../../../../../hooks/useToggle'
 
 type PropsType = {
     status: string
@@ -6,6 +7,7 @@ type PropsType = {
 }
 
 const UserStatus = (props: PropsType) => {
+    let [toggle, { onToggle, offToggle }] = useToggle()
     let [editMode, setEditMode] = useState(false)
     let [status, setStatus] = useState(props.status)
 
@@ -13,12 +15,8 @@ const UserStatus = (props: PropsType) => {
         setStatus(props.status)
     }, [props.status])
 
-
-    const activateEditMode = () => {
-        setEditMode(true)
-    }
-    const deactivateEditMode = () => {
-        setEditMode(false)
+    const deactivateToggle = () => {
+        offToggle()
         props.updateUserStatus(status)
     }
     const onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -26,15 +24,24 @@ const UserStatus = (props: PropsType) => {
     }
     return (
         <div>
-            {!editMode && <div>
-                <b>Status: </b><span onDoubleClick={activateEditMode}>{props.status || 'Нет статуса'}</span>
-            </div>
-            }
-            {editMode &&
-            <div>
-                <input onChange={onStatusChange} autoFocus={true} onBlur={deactivateEditMode} value={status}/>
-            </div>
-            }
+            {!toggle && (
+                <div>
+                    <b>Status: </b>
+                    <span onDoubleClick={onToggle}>
+                        {props.status || 'Нет статуса'}
+                    </span>
+                </div>
+            )}
+            {toggle && (
+                <div>
+                    <input
+                        onChange={onStatusChange}
+                        autoFocus={true}
+                        onBlur={deactivateToggle}
+                        value={status}
+                    />
+                </div>
+            )}
         </div>
     )
 }

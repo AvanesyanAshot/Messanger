@@ -14,7 +14,7 @@ import {
     getUsers,
     getUsersFilter,
 } from '../../../Redux/Selectors/usersSelectros'
-import { setUsers } from '../../../Redux/Thunks/userThunks'
+import { setUsers, follow, unfollow } from '../../../Redux/Thunks/userThunks'
 import { userActions } from '../../../Redux/Actions/userActionCreators'
 
 const { setCurrentPage } = userActions
@@ -41,10 +41,10 @@ export const Users: FC<PropsType> = (props) => {
     const onFilterChanged = (filter: FilterType) => {
         dispatch(setUsers(1, pageSize, filter))
     }
-    const follow = (userId: number) => {
+    const followHandler = (userId: number) => {
         dispatch(follow(userId))
     }
-    const unfollow = (userId: number) => {
+    const unfollowHandler = (userId: number) => {
         dispatch(unfollow(userId))
     }
     return (
@@ -78,7 +78,7 @@ export const Users: FC<PropsType> = (props) => {
                                         (id) => id === u.id
                                     )}
                                     onClick={() => {
-                                        unfollow(u.id)
+                                        unfollowHandler(u.id)
                                     }}
                                     className={css.unfollow}
                                 >
@@ -90,7 +90,7 @@ export const Users: FC<PropsType> = (props) => {
                                         (id) => id === u.id
                                     )}
                                     onClick={() => {
-                                        follow(u.id)
+                                        followHandler(u.id)
                                     }}
                                     className={css.follow}
                                 >
