@@ -8,7 +8,6 @@ type PropsType = {
 
 const UserStatus = (props: PropsType) => {
     let [toggle, { onToggle, offToggle }] = useToggle()
-    let [editMode, setEditMode] = useState(false)
     let [status, setStatus] = useState(props.status)
 
     useEffect(() => {
