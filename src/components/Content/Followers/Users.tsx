@@ -1,21 +1,22 @@
 import React, { FC, useEffect } from 'react'
-import css from './User.module.css'
-import avatar from '../../../assets/img/avatar.png'
-import { NavLink } from 'react-router-dom'
-import Paginator from '../../Common/Paginator/Paginator'
-import UsersSearchForm from './UsersSearchForm/UsersSearchForm'
-import { FilterType } from '../../../Redux/Reducers/usersReducer'
 import { useDispatch, useSelector } from 'react-redux'
+import { NavLink, useHistory } from 'react-router-dom'
+import avatar from '../../../assets/img/avatar.png'
+import { userActions } from '../../../Redux/Actions/userActionCreators'
+import { FilterType } from '../../../Redux/Reducers/usersReducer'
 import {
-    getCurrentPages,
+    getcurrentPage,
     getFollowingInProgress,
     getPageSize,
     getTotalUsersCount,
     getUsers,
     getUsersFilter,
 } from '../../../Redux/Selectors/usersSelectros'
-import { setUsers, follow, unfollow } from '../../../Redux/Thunks/userThunks'
-import { userActions } from '../../../Redux/Actions/userActionCreators'
+import { follow, setUsers, unfollow } from '../../../Redux/Thunks/userThunks'
+import Paginator from '../../Common/Paginator/Paginator'
+import css from './User.module.css'
+import UsersSearchForm from './UsersSearchForm/UsersSearchForm'
+import * as queryString from 'querystring'
 
 const { setCurrentPage } = userActions
 
@@ -23,16 +24,42 @@ type PropsType = {}
 
 export const Users: FC<PropsType> = (props) => {
     const users = useSelector(getUsers)
-    const currentPages = useSelector(getCurrentPages)
+    const currentPage = useSelector(getcurrentPage)
     const totalItemsCount = useSelector(getTotalUsersCount)
     const pageSize = useSelector(getPageSize)
     const filter = useSelector(getUsersFilter)
     const followingInProgress = useSelector(getFollowingInProgress)
 
     const dispatch = useDispatch()
+    const history = useHistory()
+
+    // useEffect(() => {
+    //     history.push({
+    //         pathname: '/Followers',
+    //         search: `?term=${filter.term}&friend=${filter.friend}&page=${currentPage}`,
+    //     })
+    // }, [filter, currentPage])
 
     useEffect(() => {
-        dispatch(setUsers(currentPages, pageSize, filter))
+        const parsed = queryString.parse(history.location.search.substr(1))
+        let actualPage = currentPage
+        let actualFilter = filter
+
+        if (!!parsed.page) actualPage = Number(parsed.page)
+        if (!!parsed.term)
+            actualFilter = { ...actualFilter, term: parsed.term as string }
+        switch (parsed.friend) {
+            case 'null':
+                actualFilter = { ...actualFilter, friend: null }
+                break
+            case 'true':
+                actualFilter = { ...actualFilter, friend: true }
+                break
+            case 'false':
+                actualFilter = { ...actualFilter, friend: false }
+                break
+        }
+        dispatch(setUsers(actualPage, pageSize, actualFilter))
     }, [])
     const onPageChanged = (page: number) => {
         dispatch(setUsers(page, pageSize, filter))
@@ -103,7 +130,7 @@ export const Users: FC<PropsType> = (props) => {
             </div>
             <div className={css.paginator}>
                 <Paginator
-                    currentPages={currentPages}
+                    currentPage={currentPage}
                     onPageChanged={onPageChanged}
                     totalItemsCount={totalItemsCount}
                     pageSize={pageSize}

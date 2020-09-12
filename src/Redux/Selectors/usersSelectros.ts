@@ -1,4 +1,4 @@
-import {AppStateType} from '../redux-store';
+import { AppStateType } from '../redux-store'
 
 //Simple Selectors
 export const getUsers = (state: AppStateType) => {
@@ -10,8 +10,8 @@ export const getPageSize = (state: AppStateType) => {
 export const getTotalUsersCount = (state: AppStateType) => {
     return state.Users.totalUsersCount
 }
-export const getCurrentPages = (state: AppStateType) => {
-    return state.Users.currentPages
+export const getcurrentPage = (state: AppStateType) => {
+    return state.Users.currentPage
 }
 export const getIsFetching = (state: AppStateType) => {
     return state.Users.isFetching
