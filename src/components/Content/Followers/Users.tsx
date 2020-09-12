@@ -22,7 +22,7 @@ const { setCurrentPage } = userActions
 
 type PropsType = {}
 
-export const Users: FC<PropsType> = (props) => {
+export const Users: FC<PropsType> = React.memo((props) => {
     const users = useSelector(getUsers)
     const currentPage = useSelector(getcurrentPage)
     const totalItemsCount = useSelector(getTotalUsersCount)
@@ -32,13 +32,6 @@ export const Users: FC<PropsType> = (props) => {
 
     const dispatch = useDispatch()
     const history = useHistory()
-
-    // useEffect(() => {
-    //     history.push({
-    //         pathname: '/Followers',
-    //         search: `?term=${filter.term}&friend=${filter.friend}&page=${currentPage}`,
-    //     })
-    // }, [filter, currentPage])
 
     useEffect(() => {
         const parsed = queryString.parse(history.location.search.substr(1))
@@ -61,6 +54,12 @@ export const Users: FC<PropsType> = (props) => {
         }
         dispatch(setUsers(actualPage, pageSize, actualFilter))
     }, [])
+    useEffect(() => {
+        history.push({
+            pathname: '/Followers',
+            search: `?term=${filter.term}&friend=${filter.friend}&page=${currentPage}`,
+        })
+    }, [filter, currentPage])
     const onPageChanged = (page: number) => {
         dispatch(setUsers(page, pageSize, filter))
         dispatch(setCurrentPage(page))
@@ -138,4 +137,4 @@ export const Users: FC<PropsType> = (props) => {
             </div>
         </div>
     )
-}
+})

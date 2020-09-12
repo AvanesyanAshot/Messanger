@@ -1,13 +1,17 @@
 import React from 'react'
 import { Field, Formik } from 'formik'
 import { FilterType } from '../../../../Redux/Reducers/usersReducer'
+import { useSelector } from 'react-redux'
+import { getUsersFilter } from '../../../../Redux/Selectors/usersSelectros'
 
 type PropsType = {
     onFilterChanged: (filter: FilterType) => void
 }
+
+type FriendFormType = 'true' | 'false' | 'null'
 type FilterTypeWithFriend = {
     term: string
-    friend: 'true' | 'false' | 'null'
+    friend: FriendFormType
 }
 
 const userSearchFormValidate = (values: any) => {
@@ -16,6 +20,8 @@ const userSearchFormValidate = (values: any) => {
 }
 
 let UsersSearchForm: React.FC<PropsType> = React.memo((props) => {
+    const filter = useSelector(getUsersFilter)
+
     const submit = (
         values: FilterTypeWithFriend,
         { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }
@@ -35,7 +41,11 @@ let UsersSearchForm: React.FC<PropsType> = React.memo((props) => {
     return (
         <>
             <Formik
-                initialValues={{ term: '', friend: 'null' }}
+                enableReinitialize
+                initialValues={{
+                    term: filter.term,
+                    friend: String(filter.friend) as FriendFormType,
+                }}
                 validate={userSearchFormValidate}
                 onSubmit={submit}
             >
