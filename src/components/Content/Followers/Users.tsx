@@ -21,6 +21,7 @@ import * as queryString from 'querystring'
 const { setCurrentPage } = userActions
 
 type PropsType = {}
+type QueryParamsType = { term?: string; page?: string; friend?: string }
 
 export const Users: FC<PropsType> = React.memo((props) => {
     const users = useSelector(getUsers)
@@ -34,7 +35,9 @@ export const Users: FC<PropsType> = React.memo((props) => {
     const history = useHistory()
 
     useEffect(() => {
-        const parsed = queryString.parse(history.location.search.substr(1))
+        const parsed = queryString.parse(
+            history.location.search.substr(1)
+        ) as QueryParamsType
         let actualPage = currentPage
         let actualFilter = filter
 
@@ -55,11 +58,18 @@ export const Users: FC<PropsType> = React.memo((props) => {
         dispatch(setUsers(actualPage, pageSize, actualFilter))
     }, [])
     useEffect(() => {
+        const query: QueryParamsType = {}
+
+        if (!!filter.term) query.term = filter.term
+        if (filter.friend !== null) query.friend = String(filter.friend)
+        if (currentPage !== 1) query.page = String(currentPage)
+
         history.push({
             pathname: '/Followers',
-            search: `?term=${filter.term}&friend=${filter.friend}&page=${currentPage}`,
+            search: queryString.stringify(query),
         })
     }, [filter, currentPage])
+
     const onPageChanged = (page: number) => {
         dispatch(setUsers(page, pageSize, filter))
         dispatch(setCurrentPage(page))
