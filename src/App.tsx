@@ -1,6 +1,7 @@
 import React, { Component, ComponentType, FC } from 'react'
 import './App.css'
 import 'normalize.css'
+import "antd/dist/antd.css";
 import Footer from './components/Footer/Footer'
 import {
     BrowserRouter,
@@ -20,6 +21,7 @@ import { withSuspense } from './components/Content/Hoc/withSuspense'
 import { initializeApp } from './Redux/Thunks/appThunks'
 import { FollowersPage } from './components/Content/Followers/FollowersContainer'
 import { LoginPage } from './components/Content/Login/Login'
+import { Button } from 'antd';
 
 // Lazy loading
 const Discover = React.lazy(
@@ -76,7 +78,9 @@ class App extends Component<MapPropsType & DispatchPropsType> {
                         <Route path="/Settings" render={() => <Settings />} />
                         <Route
                             path="*"
-                            render={() => <div>ERROR 404 NOT FOUND</div>}
+                            render={() => <div>ERROR 404 NOT FOUND
+                                <Button type='link'>main page</Button>
+                            </div>}
                         />
                     </Switch>
                 </div>
